@@ -20,11 +20,51 @@
 
   /* ---------- направления ---------- */
   var DIRS = [
-    { id: 'tourism', url: 'tourism/index.html', icon: 'airplane-tilt' },
-    { id: 'business', url: 'business/index.html', icon: 'briefcase' },
-    { id: 'projects', url: 'projects/index.html', icon: 'buildings' },
-    { id: 'construction', url: 'construction/index.html', icon: 'hard-hat' }
+    { id: 'tourism', url: 'tourism/index.html' },
+    { id: 'business', url: 'business/index.html' },
+    { id: 'projects', url: 'projects/index.html' },
+    { id: 'construction', url: 'construction/index.html' }
   ];
+
+  // фирменные значки направлений: 32×32, двухцветные; currentColor + золотая деталь var(--badge-gold)
+  var G = 'var(--badge-gold, #F4C35A)';
+  var DIR_ICON = {
+    tourism:
+      '<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">' +
+      '<path d="M16 2.5c-5.6 0-9.5 4.2-9.5 9.3 0 4.6 4.2 8.3 6.6 10.7h5.8c2.4-2.4 6.6-6.1 6.6-10.7 0-5.1-3.9-9.3-9.5-9.3Z" fill="currentColor" fill-opacity=".22"/>' +
+      '<path d="M16 2.5c-2.6 2.6-3.6 6-3.6 9.3 0 4.2 1.4 7.8 2.6 10.7h2c1.2-2.9 2.6-6.5 2.6-10.7 0-3.3-1-6.7-3.6-9.3Z" fill="' + G + '" stroke="none"/>' +
+      '<path d="M16 2.5c-2.6 2.6-3.6 6-3.6 9.3 0 4.2 1.4 7.8 2.6 10.7M16 2.5c2.6 2.6 3.6 6 3.6 9.3 0 4.2-1.4 7.8-2.6 10.7"/>' +
+      '<path d="M13.4 22.5l.9 3.3M18.6 22.5l-.9 3.3"/>' +
+      '<rect x="13.6" y="25.8" width="4.8" height="3.7" rx="1" fill="currentColor" fill-opacity=".35"/>' +
+      '<path d="M24.5 23.5c1-.7 2-.7 3 0M3.5 18.5c1-.7 2-.7 3 0" stroke-width="1.5"/>' +
+      '</svg>',
+    business:
+      '<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">' +
+      '<path d="M12 10V8a2.5 2.5 0 0 1 2.5-2.5h3A2.5 2.5 0 0 1 20 8v2"/>' +
+      '<rect x="3.5" y="10" width="25" height="17" rx="3.5" fill="currentColor" fill-opacity=".22"/>' +
+      '<path d="M3.5 17c4 1.6 8.2 2.4 12.5 2.4s8.5-.8 12.5-2.4"/>' +
+      '<rect x="13.5" y="16.5" width="5" height="5" rx="1.4" fill="' + G + '" stroke="currentColor"/>' +
+      '</svg>',
+    projects:
+      '<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">' +
+      '<path d="M5.5 28.5V11.5l8-4v21" fill="currentColor" fill-opacity=".22"/>' +
+      '<path d="M13.5 28.5V15.5h9v13" fill="currentColor" fill-opacity=".35"/>' +
+      '<path d="M3 28.5h26M8.8 14.5v.01M8.8 18.5v.01M8.8 22.5v.01M17 19.5h1.5M17 23.5h1.5" stroke-width="2.2"/>' +
+      '<path d="M25 2.8a3.6 3.6 0 0 0-3.6 3.6c0 2.7 3.6 6 3.6 6s3.6-3.3 3.6-6A3.6 3.6 0 0 0 25 2.8Z" fill="' + G + '"/>' +
+      '<circle cx="25" cy="6.4" r="1.1" fill="currentColor" stroke="none"/>' +
+      '</svg>',
+    construction:
+      '<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">' +
+      '<path d="M3 28.5h26"/>' +
+      '<path d="M8 28.5V7h3.5v21.5" fill="currentColor" fill-opacity=".22"/>' +
+      '<path d="M8 11l3.5 3.5M11.5 14.5L8 18M8 18l3.5 3.5M11.5 21.5L8 25" stroke-width="1.3"/>' +
+      '<path d="M4 7h24.5M9.75 2.5L4 7M9.75 2.5L22 7M9.75 2.5V7"/>' +
+      '<rect x="4" y="7" width="3.5" height="3" rx=".6" fill="currentColor" stroke="none"/>' +
+      '<path d="M24 7v8.5"/>' +
+      '<path d="M20.5 18.5a3.5 3.5 0 0 1 7 0v1.2h-7Z" fill="' + G + '"/>' +
+      '<path d="M19.5 19.7h9"/>' +
+      '</svg>'
+  };
 
   // иконки шести услуг каждого направления (тексты: <id>.s.<n>.t / .d)
   var SERVICES = {
@@ -131,7 +171,7 @@
         : ART[d.id];
       return '<li data-theme="' + d.id + '">' +
         '<a class="dir" href="' + BASE + d.url + '" style="--i:' + i + '">' +
-          '<span class="dir__art">' + art + '<span class="dir__badge">' + icon(d.icon) + '</span></span>' +
+          '<span class="dir__art">' + art + '<span class="badge dir__badge" aria-hidden="true">' + DIR_ICON[d.id] + '</span></span>' +
           '<span class="dir__body">' +
             '<span class="dir__name">' + esc(T('dir.' + d.id + '.name')) + '</span>' +
             '<span class="dir__text">' + esc(T('dir.' + d.id + '.text')) + '</span>' +
@@ -146,6 +186,9 @@
     var list = SERVICES[id];
     var art = document.querySelector('[data-art]');
     if (art) art.innerHTML = ART[id];
+
+    var badge = document.querySelector('[data-dir-badge]');
+    if (badge) badge.innerHTML = DIR_ICON[id];
 
     var card = document.querySelector('[data-hero-card]');
     if (card) {
