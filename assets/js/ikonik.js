@@ -74,75 +74,13 @@
   };
   var WHY = ['translate', 'map-pin', 'user-focus', 'receipt'];
 
-  /* ---------- иллюстрации направлений (цвета из темы: --primary, --art-a/b/c) ---------- */
-  function windows(x, y, cols, rows, w, h, gx, gy) {
-    var out = '';
-    for (var r = 0; r < rows; r++) for (var c = 0; c < cols; c++) {
-      out += '<rect x="' + (x + c * (w + gx)) + '" y="' + (y + r * (h + gy)) + '" width="' + w + '" height="' + h + '" rx="1.5"/>';
-    }
-    return out;
+  // диорама направления: assets/img/<id>-diorama.webp (прозрачный фон)
+  var ART_SIZE = { tourism: [1533, 974], business: [1400, 880], projects: [1400, 917], construction: [1400, 924] };
+  function diorama(id, cls, eager) {
+    var src = id === 'tourism' ? 'turkey' : id;
+    return '<img class="' + cls + '" src="' + BASE + 'assets/img/' + src + '-diorama.webp" alt="" width="' + ART_SIZE[id][0] +
+      '" height="' + ART_SIZE[id][1] + '" decoding="async"' + (eager ? '' : ' loading="lazy"') + '>';
   }
-
-  var ART = {
-    business:
-      '<svg class="art" viewBox="0 0 320 220" aria-hidden="true">' +
-      '<circle cx="250" cy="58" r="30" fill="var(--art-c)" opacity=".75"/>' +
-      '<rect x="20" y="198" width="280" height="6" rx="3" fill="var(--primary)" opacity=".18"/>' +
-      '<rect x="36" y="96" width="40" height="104" rx="5" fill="var(--art-a)"/>' +
-      '<rect x="82" y="56" width="48" height="144" rx="5" fill="var(--primary)"/>' +
-      '<path d="M106 34 L106 56" stroke="var(--primary)" stroke-width="3" stroke-linecap="round"/>' +
-      '<rect x="136" y="116" width="36" height="84" rx="5" fill="var(--art-b)"/>' +
-      '<g fill="#FFFDF9" opacity=".38">' + windows(44, 106, 3, 7, 6, 6, 6, 6) + windows(91, 68, 4, 10, 6, 6, 5, 6) + '</g>' +
-      '<g fill="var(--primary)" opacity=".28">' + windows(144, 126, 2, 5, 6, 6, 8, 8) + '</g>' +
-      '<rect x="192" y="160" width="18" height="40" rx="3" fill="var(--art-b)"/>' +
-      '<rect x="218" y="138" width="18" height="62" rx="3" fill="var(--art-b)"/>' +
-      '<rect x="244" y="116" width="18" height="84" rx="3" fill="var(--art-a)"/>' +
-      '<rect x="270" y="92" width="18" height="108" rx="3" fill="var(--primary)"/>' +
-      '<path d="M188 146 L220 124 L246 104 L286 74" stroke="var(--art-c)" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>' +
-      '<path d="M272 72 L288 72 L288 88" stroke="var(--art-c)" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>' +
-      '</svg>',
-
-    projects:
-      '<svg class="art" viewBox="0 0 320 220" aria-hidden="true">' +
-      '<path d="M18 168 L150 120 L302 150 L170 206 Z" fill="var(--art-b)"/>' +
-      '<path d="M18 168 L170 206 L170 214 L18 176 Z" fill="var(--art-a)" opacity=".55"/>' +
-      '<path d="M170 206 L302 150 L302 158 L170 214 Z" fill="var(--art-a)" opacity=".8"/>' +
-      '<g stroke="var(--primary)" stroke-width="1" opacity=".22">' +
-        '<path d="M51 156 L203 194 M84 144 L236 182 M117 132 L269 170 M66 174 L198 124 M114 186 L246 136"/>' +
-      '</g>' +
-      '<path d="M120 152 L120 84 L178 66 L232 82 L232 158 L176 176 Z" fill="none" stroke="var(--primary)" stroke-width="2" stroke-dasharray="6 5" opacity=".7"/>' +
-      '<path d="M120 152 L120 116 L176 134 L176 176 Z" fill="var(--primary)"/>' +
-      '<path d="M176 134 L232 120 L232 158 L176 176 Z" fill="var(--primary-deep)"/>' +
-      '<path d="M120 116 L176 100 L232 120 L176 134 Z" fill="var(--art-a)"/>' +
-      '<g fill="#FFFDF9" opacity=".4"><rect x="130" y="128" width="8" height="10" rx="1"/><rect x="146" y="133" width="8" height="10" rx="1"/><rect x="186" y="136" width="8" height="10" rx="1"/><rect x="204" y="131" width="8" height="10" rx="1"/></g>' +
-      '<circle cx="60" cy="150" r="13" fill="var(--art-a)"/><rect x="58" y="158" width="4" height="12" rx="2" fill="var(--primary-deep)"/>' +
-      '<circle cx="268" cy="140" r="10" fill="var(--art-a)"/><rect x="266" y="146" width="4" height="10" rx="2" fill="var(--primary-deep)"/>' +
-      '<path d="M262 40 a16 16 0 1 1 32 0 c0 12 -16 26 -16 26 s-16 -14 -16 -26Z" fill="var(--accent)"/>' +
-      '<circle cx="278" cy="40" r="6" fill="#FFFDF9"/>' +
-      '<circle cx="70" cy="50" r="20" fill="var(--art-c)" opacity=".7"/>' +
-      '</svg>',
-
-    construction:
-      '<svg class="art" viewBox="0 0 320 220" aria-hidden="true">' +
-      '<circle cx="268" cy="52" r="24" fill="var(--art-c)" opacity=".55"/>' +
-      '<rect x="20" y="198" width="280" height="6" rx="3" fill="var(--primary)" opacity=".2"/>' +
-      '<rect x="62" y="40" width="12" height="160" fill="var(--art-c)"/>' +
-      '<path d="M62 52 L74 64 M74 64 L62 76 M62 76 L74 88 M74 88 L62 100 M62 100 L74 112 M74 112 L62 124 M62 124 L74 136 M74 136 L62 148 M62 148 L74 160 M74 160 L62 172 M62 172 L74 184" stroke="var(--primary-deep)" stroke-width="1.5" opacity=".55"/>' +
-      '<rect x="30" y="34" width="232" height="10" rx="2" fill="var(--art-c)"/>' +
-      '<path d="M30 34 L68 14 L106 34" stroke="var(--primary-deep)" stroke-width="2" fill="none"/>' +
-      '<rect x="30" y="44" width="22" height="16" rx="2" fill="var(--primary-deep)"/>' +
-      '<rect x="196" y="44" width="16" height="8" rx="2" fill="var(--primary-deep)"/>' +
-      '<path d="M204 52 L204 96" stroke="var(--primary-deep)" stroke-width="1.5"/>' +
-      '<rect x="176" y="96" width="56" height="8" rx="2" fill="var(--primary)"/>' +
-      '<g fill="var(--art-b)"><rect x="128" y="118" width="150" height="82" rx="3"/></g>' +
-      '<g stroke="var(--art-a)" stroke-width="5" stroke-linecap="square" fill="none">' +
-        '<path d="M132 198 V122 M178 198 V122 M224 198 V122 M272 198 V122"/>' +
-        '<path d="M130 122 H274 M130 148 H274 M130 174 H274"/>' +
-      '</g>' +
-      '<g fill="var(--primary)" opacity=".85"><rect x="186" y="152" width="34" height="18" rx="2"/><rect x="140" y="178" width="34" height="18" rx="2"/></g>' +
-      '<path d="M96 196 a14 12 0 0 1 28 0 Z" fill="var(--art-c)"/><rect x="92" y="194" width="36" height="5" rx="2" fill="var(--art-c)"/>' +
-      '</svg>'
-  };
 
   /* ---------- контакты ---------- */
   var phoneHref = 'tel:' + D.config.phone.replace(/[^\d+]/g, '');
@@ -166,9 +104,7 @@
     var box = document.querySelector('[data-dirs]');
     if (!box) return;
     box.innerHTML = DIRS.map(function (d, i) {
-      var art = d.id === 'tourism'
-        ? '<img class="dir__img" src="' + BASE + 'assets/img/turkey-diorama.webp" alt="" width="1533" height="974" decoding="async">'
-        : ART[d.id];
+      var art = diorama(d.id, 'dir__img', true);
       return '<li data-theme="' + d.id + '">' +
         '<a class="dir" href="' + BASE + d.url + '" style="--i:' + i + '">' +
           '<span class="dir__art">' + art + '<span class="badge dir__badge" aria-hidden="true">' + DIR_ICON[d.id] + '</span></span>' +
@@ -185,7 +121,7 @@
   function renderService(id) {
     var list = SERVICES[id];
     var art = document.querySelector('[data-art]');
-    if (art) art.innerHTML = ART[id];
+    if (art) art.innerHTML = diorama(id, 'svc-stage__img', true);
 
     var badge = document.querySelector('[data-dir-badge]');
     if (badge) badge.innerHTML = DIR_ICON[id];
