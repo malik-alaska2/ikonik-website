@@ -75,7 +75,7 @@
   var WHY = ['translate', 'map-pin', 'user-focus', 'receipt'];
 
   // диорама направления: assets/img/<id>-diorama.webp (прозрачный фон)
-  var ART_SIZE = { tourism: [1533, 974], business: [1400, 880], projects: [1400, 917], construction: [1400, 924] };
+  var ART_SIZE = { tourism: [1533, 974], business: [1536, 1014], projects: [1515, 1024], construction: [1417, 1006] };
   function diorama(id, cls, eager) {
     var src = id === 'tourism' ? 'turkey' : id;
     return '<img class="' + cls + '" src="' + BASE + 'assets/img/' + src + '-diorama.webp" alt="" width="' + ART_SIZE[id][0] +
