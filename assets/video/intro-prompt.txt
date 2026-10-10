@@ -1,0 +1,13 @@
+Elegant animated logo reveal for a premium travel brand. Locked-off static camera, no zoom, no camera movement. Warm cream background the whole time. Smooth, calm, evenly paced motion design; each element is built one after another, never all at once. The final frame must exactly match the provided end image: the İKONİK TURİZM logo, with crisp, correct letters.
+
+Timing:
+0.0-1.5s: a ribbon of deep blue water flows in from the left and settles into three gentle curved waves; the water shimmers and keeps moving softly.
+1.5-3.0s: out of the water the sand-coloured fairy-chimney rocks of Cappadocia rise up one at a time, like stone growing from the ground; their small arched windows light up.
+3.0-4.5s: the Bosphorus suspension bridge draws itself in blue: first the two towers rise, then the cables and the deck stretch across.
+4.5-6.0s: the mosque builds up from the water line: the domes appear, then the slender minarets grow upward; two small birds fly past.
+6.0-7.0s: the red crescent sweeps around the scene in one graceful arc and blooms into the red tulip petals on the left.
+7.0-8.0s: the red and cream striped hot-air balloon floats gently up into place above the rocks.
+8.0-9.2s: the navy letters İKONİK appear one by one from left to right, then the golden word TURİZM with its two thin lines fades in underneath, with a soft light sweep across the gold.
+9.2-10s: the finished logo holds perfectly still.
+
+Clean flat vector-like style identical to the logo, crisp edges, no extra text, no people, no watermark.
