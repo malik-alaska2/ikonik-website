@@ -31,7 +31,7 @@ window.IK_LANG_PACK = {
     'region.filterAria': 'Touren filtern', 'region.extrasTitle': 'Zur Reise hinzufügen',
     'region.extrasLead': 'Im Anfrageformular zu jeder Tour wählbar. Preis pro Person.',
     'region.when': 'Reisezeit', 'region.seasonsAria': 'Jahreszeiten nach Monat', 'region.included': 'Im Preis enthalten',
-    'footer.allRegions': 'Alle Reiseziele', 'footer.other': 'Weitere Bereiche',
+    'footer.allRegions': 'Alle Reiseziele', 'footer.allServices': 'Alle İKONİK-Bereiche', 'footer.other': 'Weitere Bereiche',
 
     'filter.all': 'Alle', 'filter.saved': 'Merkliste',
     'empty.savedTitle': 'Hier erscheinen Ihre gemerkten Touren',

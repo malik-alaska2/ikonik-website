@@ -31,7 +31,7 @@ window.IK_LANG_PACK = {
     'region.filterAria': 'Tur filtresi', 'region.extrasTitle': 'Seyahatinize ekleyin',
     'region.extrasLead': 'Talep formunda her tura eklenebilir. Fiyat kişi başıdır.',
     'region.when': 'Ne zaman gidilir', 'region.seasonsAria': 'Aylara göre sezonlar', 'region.included': 'Fiyata dahil olanlar',
-    'footer.allRegions': 'Tüm bölgeler', 'footer.other': 'Diğer bölümler',
+    'footer.allRegions': 'Tüm bölgeler', 'footer.allServices': 'Tüm İKONİK hizmetleri', 'footer.other': 'Diğer bölümler',
 
     'filter.all': 'Tümü', 'filter.saved': 'Kaydedilenler',
     'empty.savedTitle': 'Kaydettiğiniz turlar burada görünecek',

@@ -181,3 +181,56 @@
   --slab: #5B4E8A;
   --pin: #C8643B;
 }
+
+/* ===== Направления İKONİK (стартовая страница и отдельные сайты) ===== */
+
+/* Туризм на стартовой странице: цвета бренда, песочная подложка */
+[data-theme="tourism"] {
+  --primary: #14305E;
+  --primary-deep: #0D2245;
+  --primary-soft: #DCE3EE;
+  --gold: #8F6230;
+  --tint: #F3EBDD;
+}
+
+/* Бизнес-консалтинг: глубокий петроль и латунь */
+[data-theme="business"] {
+  --bg: #F2F0EB;
+  --primary: #1F4E5F;
+  --primary-deep: #163C4A;
+  --primary-soft: #D5E3E6;
+  --accent: #B9823F;
+  --gold: #8F6230;
+  --tint: #ECEBE3;
+  --art-a: #2C6A7E;
+  --art-b: #9FC3CB;
+  --art-c: #E3C48F;
+}
+
+/* Девелопмент проектов: олива, земля и зелень участка */
+[data-theme="projects"] {
+  --bg: #F3F0E7;
+  --primary: #56652B;
+  --primary-deep: #434F20;
+  --primary-soft: #DFE3C8;
+  --accent: #C8643B;
+  --gold: #6F6A2C;
+  --tint: #F1EEDD;
+  --art-a: #6E7F38;
+  --art-b: #C7D19B;
+  --art-c: #E8B36A;
+}
+
+/* Строительный консалтинг: кирпич, бетон и сигнальный жёлтый */
+[data-theme="construction"] {
+  --bg: #F5EFEA;
+  --primary: #A4462A;
+  --primary-deep: #85371F;
+  --primary-soft: #F1D9CD;
+  --accent: #1F3A66;
+  --gold: #9A4A2A;
+  --tint: #F7E9E0;
+  --art-a: #B9573A;
+  --art-b: #D9CFC4;
+  --art-c: #F0B53C;
+}
