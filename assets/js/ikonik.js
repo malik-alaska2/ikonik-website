@@ -127,9 +127,9 @@
 
     var card = document.querySelector('[data-hero-card]');
     if (card) {
-      card.innerHTML = '<span class="t-eyebrow">' + esc(T('svc.heroCard')) + '</span><ul>' +
+      card.innerHTML = '<h2 class="t-eyebrow" id="help-title">' + esc(T('svc.heroCard')) + '</h2><ul>' +
         list.slice(0, 4).map(function (ic, n) {
-          return '<li>' + icon('check', 'i--sm') + '<span>' + esc(T(id + '.s.' + n + '.t')) + '</span></li>';
+          return '<li><a href="#services">' + icon('check', 'i--sm') + '<span>' + esc(T(id + '.s.' + n + '.t')) + '</span></a></li>';
         }).join('') + '</ul>';
     }
 
