@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="ru" data-theme="brand" data-page="brand">
+<html lang="ru" data-theme="brand" data-page="gateway">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>İkonik Turizm: сафари в Африке, пустыни Аравии, Турция и Европа</title>
-  <meta name="description" content="Туроператор İkonik Turizm: сафари в Кении и Танзании, ночь в пустыне в ОАЭ и Омане, шары над Каппадокией, озёра и города Европы. Выберите регион и оставьте заявку онлайн.">
+  <title>İKONİK: туризм, бизнес-консалтинг, девелопмент и строительный консалтинг</title>
+  <meta name="description" content="İKONİK, Стамбул: туры и путешествия, бизнес-консалтинг в Турции, девелопмент проектов и строительный консалтинг. Выберите направление.">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/img/logo/favicon-32.png">
   <link rel="icon" type="image/png" sizes="192x192" href="assets/img/logo/icon-192.png">
   <link rel="apple-touch-icon" href="assets/img/logo/apple-touch-icon.png">
@@ -16,13 +16,20 @@
   <link rel="stylesheet" href="assets/css/base.css">
   <link rel="stylesheet" href="assets/css/themes.css">
   <link rel="stylesheet" href="assets/css/home.css">
+  <link rel="stylesheet" href="assets/css/ikonik.css">
   <script>window.IK_BASE = '';</script>
   <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/lang/services.js"></script>
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"TravelAgency","name":"İKONİK TURİZM İNŞAAT PROJE ANONİM ŞİRKETİ","alternateName":"İkonik Turizm",
+  {"@context":"https://schema.org","@type":"Organization","name":"İKONİK TURİZM İNŞAAT PROJE ANONİM ŞİRKETİ","alternateName":"İKONİK",
    "url":"https://ikonik-website-sandy.vercel.app/","logo":"https://ikonik-website-sandy.vercel.app/assets/img/logo/ikonik-logo.png",
    "telephone":"+905411977002","email":"info@ikonik.travel",
-   "address":{"@type":"PostalAddress","streetAddress":"Sinanpaşa Mah., Süleyman Seba Cad. No: 14, İç Kapı No: 5","addressLocality":"Beşiktaş","addressRegion":"İstanbul","addressCountry":"TR"}}
+   "address":{"@type":"PostalAddress","streetAddress":"Sinanpaşa Mah., Süleyman Seba Cad. No: 14, İç Kapı No: 5","addressLocality":"Beşiktaş","addressRegion":"İstanbul","addressCountry":"TR"},
+   "department":[
+     {"@type":"TravelAgency","name":"İkonik Turizm","url":"https://ikonik-website-sandy.vercel.app/tourism/"},
+     {"@type":"ProfessionalService","name":"İKONİK Business Consultancy","url":"https://ikonik-website-sandy.vercel.app/business/"},
+     {"@type":"ProfessionalService","name":"İKONİK Project Development","url":"https://ikonik-website-sandy.vercel.app/projects/"},
+     {"@type":"ProfessionalService","name":"İKONİK Construction Consultancy","url":"https://ikonik-website-sandy.vercel.app/construction/"}]}
   </script>
 </head>
 <body>
@@ -31,91 +38,40 @@
 
   <header class="header">
     <div class="container header__inner">
-      <a class="wordmark" href="index.html" aria-label="İkonik Turizm, на главную" data-i18n-aria="logo.home">
-        <span data-logo-anim><img class="wordmark__img" src="assets/img/logo/ikonik-logo-horizontal@web.png" width="629" height="160" alt="İkonik Turizm"></span>
+      <a class="wordmark" href="index.html" aria-label="İKONİK">
+        <span data-logo-anim><img class="wordmark__img" src="assets/img/logo/ikonik-logo-horizontal@web.png" width="629" height="160" alt="İKONİK"></span>
       </a>
-      <nav class="nav" aria-label="Основная навигация" data-i18n-aria="nav.main">
-        <a class="nav__link" href="#regions" data-i18n="nav.regions">Регионы</a>
-        <a class="nav__link" href="#tours" data-i18n="nav.tours">Туры</a>
-        <a class="nav__link" href="#how" data-i18n="nav.how">Как забронировать</a>
-        <a class="nav__link" href="#contact" data-i18n="nav.contacts">Контакты</a>
-      </nav>
-      <div class="header__lang" data-lang-switch></div>
-      <button class="btn btn--primary btn--sm header__cta" type="button" data-book="" data-i18n="cta.pick">Подобрать тур</button>
+      <div class="header__lang" data-lang-switch style="margin-left:auto"></div>
     </div>
   </header>
 
   <main id="main">
-    <!-- ===== Выбор региона ===== -->
-    <section class="hero" id="regions" aria-labelledby="hero-title">
-      <div class="container hero__grid">
-        <div class="hero__text">
-          <h1 class="t-display" id="hero-title" data-i18n="home.title">Куда поедем?</h1>
-          <p class="hero__lead" data-i18n="home.lead">Сафари в Кении и Танзании, пустыни Аравии, Турция и Европа. Выберите регион, а мы соберём тур под ваши даты.</p>
-        </div>
-
-        <ul class="picker" data-picker aria-label="Регионы" data-i18n-aria="nav.regions"></ul>
-
-        <div class="hero__stage" data-stage aria-live="polite">
-          <div class="hero__arts" data-arts></div>
-          <div class="chip-card chip-card--climate glass-water" data-stage-climate></div>
-          <div class="chip-card chip-card--price" data-stage-price></div>
-        </div>
-
-        <div class="hero__go">
-          <a class="btn btn--primary" href="#" data-go data-i18n="home.go">Смотреть туры</a>
-          <p class="t-small t-muted" data-go-note></p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== Популярные туры ===== -->
-    <section class="section" id="tours" aria-labelledby="tours-title">
+    <section class="gw" aria-labelledby="gw-title">
       <div class="container">
-        <div class="section-head">
-          <div class="section-head__text">
-            <h2 class="t-h1" id="tours-title" data-i18n="home.toursTitle">Популярные туры</h2>
-            <p class="t-body t-muted" data-i18n="home.toursLead">Цена за человека при двухместном размещении. Перелёт подберём отдельно под ваш город вылета.</p>
-          </div>
+        <div class="gw__head">
+          <span class="t-eyebrow" data-i18n="gw.eyebrow">İKONİK · Стамбул</span>
+          <h1 class="t-display" id="gw-title" data-i18n="gw.title">Что вам нужно от İKONİK?</h1>
+          <p class="gw__lead" data-i18n="gw.lead">Четыре направления одной компании. Выберите своё, и откроется отдельный сайт с услугами и контактами.</p>
         </div>
-        <div class="tour-grid tour-grid--two" data-featured></div>
+        <ul class="dirs" data-dirs aria-label="Направления İKONİK" data-i18n-aria="gw.pickAria">
+          <!-- карточки рисует assets/js/ikonik.js; ссылки ниже на случай без JS -->
+          <li><a class="dir" href="tourism/index.html"><span class="dir__body"><span class="dir__name">Туризм и путешествия</span></span></a></li>
+          <li><a class="dir" href="business/index.html"><span class="dir__body"><span class="dir__name">Бизнес-консалтинг</span></span></a></li>
+          <li><a class="dir" href="projects/index.html"><span class="dir__body"><span class="dir__name">Девелопмент проектов</span></span></a></li>
+          <li><a class="dir" href="construction/index.html"><span class="dir__body"><span class="dir__name">Строительный консалтинг</span></span></a></li>
+        </ul>
       </div>
     </section>
 
-    <!-- ===== Как забронировать ===== -->
-    <section class="section how" id="how" aria-labelledby="how-title">
-      <div class="container">
-        <h2 class="t-h1" id="how-title" data-i18n="how.title">Как забронировать</h2>
-        <ol class="steps">
-          <li class="step">
-            <span class="step__num">1</span>
-            <h3 class="t-h3" data-i18n="how.s1.t">Выберите тур или регион</h3>
-            <p class="t-small t-muted" data-i18n="how.s1.d">Если не нашли подходящий тур, просто укажите регион и даты.</p>
-          </li>
-          <li class="step">
-            <span class="step__num">2</span>
-            <h3 class="t-h3" data-i18n="how.s2.t">Оставьте заявку</h3>
-            <p class="t-small t-muted" data-i18n="how.s2.d">Имя и телефон. Менеджер свяжется, уточнит пожелания и состав группы.</p>
-          </li>
-          <li class="step">
-            <span class="step__num">3</span>
-            <h3 class="t-h3" data-i18n="how.s3.t">Получите программу и цену</h3>
-            <p class="t-small t-muted" data-i18n="how.s3.d">Пришлём программу по дням с итоговой стоимостью. Оплата только после вашего подтверждения.</p>
-          </li>
-        </ol>
-      </div>
-    </section>
-
-    <!-- ===== Заявка ===== -->
-    <section class="section" id="contact" aria-labelledby="contact-title">
+    <section class="gw-help" aria-labelledby="help-title">
       <div class="container">
         <div class="contact">
           <div class="contact__text">
-            <h2 class="t-h1" id="contact-title" data-i18n="contact.title">Не знаете, какой регион выбрать?</h2>
-            <p class="t-body" data-i18n="contact.text">Расскажите, что хотите увидеть и когда свободны. Предложим два-три варианта с ценами.</p>
+            <h2 class="t-h1" id="help-title" data-i18n="gw.contactTitle">Не знаете, какое направление подходит?</h2>
+            <p class="t-body" data-i18n="gw.contactText">Напишите, что хотите сделать. Подскажем, кто из команды займётся вашим вопросом.</p>
           </div>
           <div class="contact__actions">
-            <button class="btn btn--light" type="button" data-book="" data-i18n="cta.pick">Подобрать тур</button>
+            <a class="btn btn--light" data-wa><i data-icon="whatsapp-logo" class="i--sm"></i><span data-i18n="gw.write">Написать в WhatsApp</span></a>
             <a class="contact__link" data-phone><i data-icon="phone" class="i--sm"></i><span></span></a>
             <a class="contact__link" data-email><i data-icon="mail" class="i--sm"></i><span></span></a>
           </div>
@@ -127,34 +83,23 @@
   <footer class="footer">
     <div class="container footer__inner">
       <a class="wordmark" href="index.html">
-        <img class="wordmark__img" src="assets/img/logo/ikonik-logo-horizontal@web.png" width="629" height="160" alt="İkonik Turizm">
+        <img class="wordmark__img" src="assets/img/logo/ikonik-logo-horizontal@web.png" width="629" height="160" alt="İKONİK">
       </a>
-      <nav class="footer__links" aria-label="Регионы" data-i18n-aria="nav.regions">
-        <a class="link" href="regions/kenya/index.html" data-i18n-c="regions.kenya.name">Кения</a>
-        <a class="link" href="regions/tanzania/index.html" data-i18n-c="regions.tanzania.name">Танзания</a>
-        <a class="link" href="regions/arabia/index.html" data-i18n-c="regions.arabia.name">Арабские страны</a>
-        <a class="link" href="regions/turkey/index.html" data-i18n-c="regions.turkey.name">Турция</a>
-        <a class="link" href="regions/europe/index.html" data-i18n-c="regions.europe.name">Европа</a>
+      <nav class="footer__links" aria-label="Направления İKONİK" data-i18n-aria="gw.pickAria">
+        <a class="link" href="tourism/index.html" data-i18n="dir.tourism.name">Туризм и путешествия</a>
+        <a class="link" href="business/index.html" data-i18n="dir.business.name">Бизнес-консалтинг</a>
+        <a class="link" href="projects/index.html" data-i18n="dir.projects.name">Девелопмент проектов</a>
+        <a class="link" href="construction/index.html" data-i18n="dir.construction.name">Строительный консалтинг</a>
       </nav>
       <address class="footer__company" data-company></address>
-      <p class="footer__copy t-caption t-muted" data-copyright>© 2026 İkonik Turizm</p>
+      <p class="footer__copy t-caption t-muted" data-copyright>© 2026 İKONİK</p>
     </div>
   </footer>
 
-  <nav class="tabbar" aria-label="Быстрая навигация" data-i18n-aria="nav.quick">
-    <a class="tabbar__item" href="#regions" aria-current="true"><i data-icon="globe"></i><span data-i18n="nav.regions">Регионы</span></a>
-    <a class="tabbar__item" href="#tours"><i data-icon="compass"></i><span data-i18n="nav.tours">Туры</span></a>
-    <button class="tabbar__main" type="button" data-book="" aria-label="Подобрать тур" data-i18n-aria="cta.pick"><i data-icon="paper-plane-tilt"></i></button>
-    <a class="tabbar__item" href="#how"><i data-icon="calendar"></i><span data-i18n="nav.book">Бронь</span></a>
-    <a class="tabbar__item" href="#contact"><i data-icon="phone"></i><span data-i18n="nav.contacts">Контакты</span></a>
-  </nav>
-
   <script src="assets/js/data.js"></script>
   <script src="assets/js/icons.js"></script>
-  <script src="assets/js/weather.js"></script>
-  <script src="assets/js/live-weather.js"></script>
   <script src="assets/js/app.js"></script>
   <script src="assets/js/logo.js"></script>
-  <script src="assets/js/home.js"></script>
+  <script src="assets/js/ikonik.js"></script>
 </body>
 </html>

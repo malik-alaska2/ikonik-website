@@ -31,7 +31,7 @@ window.IK_LANG_PACK = {
     'region.filterAria': 'Filter tours', 'region.extrasTitle': 'Add to your trip',
     'region.extrasLead': 'Available as add-ons to any tour in the booking form. Price per person.',
     'region.when': 'When to go', 'region.seasonsAria': 'Seasons by month', 'region.included': 'What’s included',
-    'footer.allRegions': 'All destinations', 'footer.other': 'Other sections',
+    'footer.allRegions': 'All destinations', 'footer.allServices': 'All İKONİK services', 'footer.other': 'Other sections',
 
     'filter.all': 'All', 'filter.saved': 'Saved',
     'empty.savedTitle': 'Your saved tours will appear here',

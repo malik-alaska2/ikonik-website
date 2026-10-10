@@ -74,7 +74,7 @@
     'region.filterAria': 'Фильтр туров', 'region.extrasTitle': 'Добавьте к поездке',
     'region.extrasLead': 'Можно выбрать в заявке к любому туру. Цена за человека.',
     'region.when': 'Когда ехать', 'region.seasonsAria': 'Сезоны по месяцам', 'region.included': 'Что входит в цену',
-    'footer.allRegions': 'Все регионы', 'footer.other': 'Другие разделы',
+    'footer.allRegions': 'Все регионы', 'footer.allServices': 'Все направления İKONİK', 'footer.other': 'Другие разделы',
 
     'filter.all': 'Все', 'filter.saved': 'Избранное',
     'empty.savedTitle': 'Здесь появятся сохранённые туры',
@@ -237,5 +237,12 @@
     location.href = url;
   }
 
-  window.IKI18N = { lang: lang, langs: LANGS, t: t, plural: plural, locale: locale, applyContent: applyContent, apply: apply, setLang: setLang };
+  // словари разделов (assets/js/lang/services.js): { ru: {...}, en: {...}, ... }
+  function extend(dicts) {
+    Object.keys(dicts.ru || {}).forEach(function (k) { RU[k] = dicts.ru[k]; });
+    var own = dicts[lang];
+    if (own && lang !== 'ru') { var u = ui(); Object.keys(own).forEach(function (k) { u[k] = own[k]; }); }
+  }
+
+  window.IKI18N = { lang: lang, langs: LANGS, t: t, plural: plural, locale: locale, applyContent: applyContent, apply: apply, setLang: setLang, extend: extend };
 })();

@@ -8,6 +8,7 @@
   var icon = window.IKIcon;
   var esc = IK.esc;
   var T = window.IKI18N.t;
+  var BASE = window.IK_BASE || '';
 
   var SWATCH = { kenya: 'paw', tanzania: 'mountains', arabia: 'sun-horizon', turkey: 'balloon', europe: 'castle-turret' };
   var root = document.documentElement;
@@ -28,7 +29,7 @@
     var from = list.length ? Math.min.apply(null, list.map(function (t) { return t.price; })) : 0;
     return '<li data-theme="' + r.id + '">' +
       '<button class="pick" type="button" ' + (live ? 'data-region="' + r.id + '" aria-pressed="false"' : 'data-book="region:' + r.id + '"') + '>' +
-        (r.art ? '<img class="pick__img" src="' + r.art + '" alt="" loading="lazy" decoding="async">' : '') +
+        (r.art ? '<img class="pick__img" src="' + BASE + r.art + '" alt="" loading="lazy" decoding="async">' : '') +
         '<span class="pick__swatch">' + icon(SWATCH[r.id] || 'globe') + '</span>' +
         '<span><span class="pick__name">' + esc(r.name) + '</span><span class="pick__countries">' + esc(r.countries) + '</span></span>' +
         (live ? '<span class="pick__meta">' + T('ticket.from') + ' ' + IK.money(from) + '</span>' : '<span class="pick__soon">' + T('home.soon') + '</span>') +
@@ -36,7 +37,7 @@
   }).join('');
 
   arts.innerHTML = D.regions.filter(function (r) { return r.art; }).map(function (r, i) {
-    return '<img class="hero__art' + (r.artFit ? ' hero__art--' + r.artFit : '') + (i === 0 ? ' is-on' : '') + '" data-art="' + r.id + '" src="' + r.art + '" alt="' +
+    return '<img class="hero__art' + (r.artFit ? ' hero__art--' + r.artFit : '') + (i === 0 ? ' is-on' : '') + '" data-art="' + r.id + '" src="' + BASE + r.art + '" alt="' +
       esc(r.page.artAlt) + '"' + (i === 0 ? '' : ' loading="lazy"') + '>';
   }).join('');
 
@@ -70,7 +71,7 @@
       img.classList.toggle('is-on', img.getAttribute('data-art') === id);
     });
     renderChips(r);
-    go.href = r.url;
+    go.href = BASE + r.url;
     go.textContent = T('home.go');
     go.setAttribute('aria-label', T('home.go') + ': ' + r.name);
     goNote.textContent = r.text;
@@ -81,7 +82,7 @@
     if (!b) return;
     var id = b.getAttribute('data-region');
     // на телефоне карточка сразу открывает регион, на компьютере первый клик показывает превью
-    if (id === current || window.matchMedia('(max-width: 720px)').matches) { location.href = IK.region(id).url; return; }
+    if (id === current || window.matchMedia('(max-width: 720px)').matches) { location.href = BASE + IK.region(id).url; return; }
     select(id);
   });
 
