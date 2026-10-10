@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="ru" data-theme="europe">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Туры в Европу: Италия, Франция, Швейцария | İkonik Turizm</title>
+  <meta name="description" content="Туры по Европе: озеро Комо и Альпы, Тоскана и Рим, Париж и лавандовый Прованс. Отели, поезда и гиды. Заявка онлайн.">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/logo/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="../../assets/img/logo/icon-192.png">
+  <link rel="apple-touch-icon" href="../../assets/img/logo/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/themes.css">
+  <link rel="stylesheet" href="../../assets/css/region.css">
+  <script>window.IK_BASE = '../../';</script>
+</head>
+<body>
+  <a class="skip" href="#main">К содержимому</a>
+
+  <nav class="rail" aria-label="Разделы страницы">
+    <a class="rail__logo" href="../../index.html" aria-label="İkonik Turizm, все регионы"><span data-logo-anim="mark"></span></a>
+    <a class="rail__item" href="#top" aria-current="true"><i data-icon="home"></i><span>Обзор</span></a>
+    <a class="rail__item" href="#tours"><i data-icon="compass"></i><span>Туры</span></a>
+    <a class="rail__item" href="#extras"><i data-icon="binoculars"></i><span>Экскурсии</span></a>
+    <a class="rail__item" href="#tours" data-show-saved><i data-icon="heart"></i><span>Избранное</span><b class="rail__badge" data-saved-count hidden></b></a>
+    <a class="rail__item" href="#contact"><i data-icon="user"></i><span>Контакты</span></a>
+    <a class="rail__item rail__item--end" href="../../index.html#regions"><i data-icon="globe"></i><span>Регионы</span></a>
+  </nav>
+
+  <main id="main">
+    <section class="stage" id="top" aria-labelledby="hello">
+      <header class="stage__greet">
+        <h1 class="t-h1" id="hello" data-hello></h1>
+        <p class="t-body t-muted" data-lead></p>
+      </header>
+
+      <img class="stage__art stage__art--cutout" src="../../assets/img/europe-diorama.webp" width="2044" height="1337"
+           alt="Альпийское озеро у заснеженной горы, итальянская деревня с черепичными крышами, лодка, красный поезд на каменном виадуке, кипарисы и лавандовое поле">
+
+      <div class="stage__ticket" data-hero-ticket></div>
+
+      <aside class="card climate stage__weather" data-climate>
+        <div class="climate__now">
+          <span data-climate-icon></span>
+          <div>
+            <p class="t-stat" data-climate-now></p>
+            <p class="t-small climate__label" data-climate-label></p>
+          </div>
+        </div>
+        <ol class="climate__months" data-climate-months></ol>
+      </aside>
+
+      <aside class="card mapcard stage__map" aria-labelledby="map-title">
+        <div class="mapcard__head">
+          <h2 class="t-h3" id="map-title" data-map-title></h2>
+          <a class="link mapcard__link" href="#route">Маршрут <i data-icon="arrow" class="i--sm"></i></a>
+        </div>
+        <div class="mapcard__map" data-map></div>
+      </aside>
+
+      <aside class="card tip stage__tip" aria-labelledby="tip-title">
+        <div>
+          <h2 class="t-small tip__title" id="tip-title">Лучшее время</h2>
+          <p class="tip__when" data-tip-when></p>
+          <p class="t-caption t-muted" data-tip-text></p>
+        </div>
+        <div class="tip__art" data-tip-art aria-hidden="true"></div>
+      </aside>
+
+      <aside class="card list stage__list" aria-labelledby="list-title">
+        <div class="list__head">
+          <h2 class="t-h3" id="list-title">Экскурсии</h2>
+          <a class="link" href="#extras">Все</a>
+        </div>
+        <ul class="list__items" data-top-extras></ul>
+      </aside>
+    </section>
+
+    <section class="section" id="tours" aria-labelledby="tours-title">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-head__text">
+            <h2 class="t-h1" id="tours-title" data-tours-title></h2>
+            <p class="t-body t-muted" data-tours-lead></p>
+          </div>
+          <div class="chips" role="group" aria-label="Фильтр туров" data-filters></div>
+        </div>
+        <div class="tour-grid" data-tours aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section class="section section--tint" id="extras" aria-labelledby="extras-title">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-head__text">
+            <h2 class="t-h1" id="extras-title">Добавьте к поездке</h2>
+            <p class="t-body t-muted">Можно выбрать в заявке к любому туру. Цена за человека.</p>
+          </div>
+        </div>
+        <ul class="extras" data-extras></ul>
+      </div>
+    </section>
+
+    <section class="section" id="route" aria-labelledby="route-title">
+      <div class="container route">
+        <div class="route__plan">
+          <div class="section-head__text">
+            <h2 class="t-h1" id="route-title" data-route-title></h2>
+            <p class="t-body t-muted" data-route-lead></p>
+          </div>
+          <ol class="days" data-route-days></ol>
+        </div>
+
+        <div class="route__side">
+          <div class="card season">
+            <h3 class="t-h3">Когда ехать</h3>
+            <ol class="season__bar" aria-label="Сезоны по месяцам" data-season-bar></ol>
+            <ul class="season__legend" data-season-legend></ul>
+          </div>
+          <div class="card included">
+            <h3 class="t-h3">Что входит в цену</h3>
+            <ul class="included__list" data-included></ul>
+            <p class="t-caption t-muted" data-included-note></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact" aria-labelledby="contact-title">
+      <div class="container">
+        <div class="cta">
+          <div class="cta__text">
+            <h2 class="t-h1" id="contact-title" data-cta-title></h2>
+            <p class="t-body" data-cta-text></p>
+            <div class="cta__actions">
+              <button class="btn btn--light" type="button" data-book-region>Подобрать тур</button>
+              <a class="cta__contact" data-phone><i data-icon="phone" class="i--sm"></i><span></span></a>
+              <a class="cta__contact" data-email><i data-icon="mail" class="i--sm"></i><span></span></a>
+            </div>
+          </div>
+          <img class="cta__art cta__art--cutout" src="../../assets/img/europe-diorama.webp" alt="" width="2044" height="1337" loading="lazy">
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <a class="wordmark" href="../../index.html">
+        <img class="wordmark__img" src="../../assets/img/logo/ikonik-logo-horizontal@web.png" width="629" height="160" alt="İkonik Turizm">
+      </a>
+      <nav class="footer__links" aria-label="Другие разделы">
+        <a class="link" href="../../index.html#regions">Все регионы</a>
+        <a class="link" href="#tours">Туры</a>
+        <a class="link" href="#contact">Контакты</a>
+      </nav>
+      <p class="t-caption t-muted">© 2026 İkonik Turizm</p>
+    </div>
+  </footer>
+
+  <nav class="tabbar" aria-label="Быстрая навигация">
+    <a class="tabbar__item" href="#tours"><i data-icon="compass"></i><span>Туры</span></a>
+    <a class="tabbar__item" href="#extras"><i data-icon="binoculars"></i><span>Экскурсии</span></a>
+    <button class="tabbar__main" type="button" data-book-region aria-label="Подобрать тур"><i data-icon="compass"></i></button>
+    <a class="tabbar__item" href="#tours" data-show-saved><i data-icon="heart"></i><span>Избранное</span></a>
+    <a class="tabbar__item" href="../../index.html#regions"><i data-icon="globe"></i><span>Регионы</span></a>
+  </nav>
+
+  <script src="../../assets/js/data.js"></script>
+  <script src="../../assets/js/icons.js"></script>
+  <script src="../../assets/js/weather.js"></script>
+  <script src="../../assets/js/app.js"></script>
+  <script src="../../assets/js/logo.js"></script>
+  <script src="../../assets/js/region.js"></script>
+</body>
+</html>

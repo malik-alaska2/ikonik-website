@@ -1,0 +1,183 @@
+/* Темы регионов.
+   Макет страницы региона общий (region.css), регион меняет только эти переменные
+   и свою диораму. Новый регион = новый блок [data-theme="..."]. */
+
+/* İkonik: главная страница и значения по умолчанию */
+:root,
+[data-theme="brand"] {
+  --primary: #14305E;
+  --primary-deep: #0D2245;
+  --primary-soft: #DCE3EE;
+  --on-primary: #FBF8F2;
+  --accent: #C8282E;
+  --gold: #8F6230;
+  --stub-from: #E7B76A;
+  --stub-to: #B9823F;
+  --tint: #F3EBDD;
+
+  --climate-bg: var(--primary);
+  --climate-line: rgba(251, 248, 242, .18);
+  --sun: #F4C35A;
+
+  --map-bg: #DCE3EE;
+  --map-water: #B7CBE0;
+  --map-land: #EEF2F7;
+  --map-ink: #5E6F8A;
+  --mapbtn-bg: var(--surface-raised);
+  --mapbtn-ink: var(--ink);
+
+  --thumb-from: #F1E2C6;
+  --thumb-to: #DDBF8A;
+
+  --season-best: var(--primary);
+  --season-good: #8EA2C2;
+  --season-ok: #D9DFEA;
+  --season-low: #D6CDBE;
+  --slab: #6B4323;
+  --pin: var(--accent);
+}
+
+/* Кения: олива и золотая саванна (референс Masai Mara) */
+[data-theme="kenya"] {
+  --bg: #F4EEE4;
+  --primary: #677132;
+  --primary-deep: #535C27;
+  --primary-soft: #DCE0C2;
+  --accent: #CF5A32;
+  --gold: #925E26;
+  --stub-from: #F0B45A;
+  --stub-to: #D27A2E;
+  --tint: #FBF1E0;
+
+  --map-bg: #DCE0C2;
+  --map-water: #B9D3CB;
+  --map-land: #EEF0DC;
+  --map-ink: #5A5D3C;
+
+  --thumb-from: #F6DFAF;
+  --thumb-to: #E2B262;
+
+  --season-good: #A9B26A;
+  --season-ok: #E4D7A8;
+  --season-low: #D6CDBE;
+}
+
+/* Танзания: бирюза, Килиманджаро и миграция (референс Tanzania) */
+[data-theme="tanzania"] {
+  --bg: #F1F0EB;
+  --primary: #1D7375;
+  --primary-deep: #155A5C;
+  --primary-soft: #D3E8E6;
+  --accent: #E39A3B;
+  --gold: #1B6567;
+  --stub-from: #8FC7CB;
+  --stub-to: #2E8486;
+  --tint: #E7F2EF;
+
+  --map-bg: #CFE6E3;
+  --map-water: #9FCFD4;
+  --map-land: #E9F3F0;
+  --map-ink: #3A6566;
+
+  --thumb-from: #DCEFEA;
+  --thumb-to: #93C8C0;
+
+  --season-good: #7FB7B1;
+  --season-ok: #D5E4D6;
+  --season-low: #D6CFC4;
+  --slab: #1D7375;
+  --pin: #1D7375;
+}
+
+/* Арабские страны: терракота, графит и дюны (референс Gulf) */
+[data-theme="arabia"] {
+  --bg: #F5EEE8;
+  --primary: #B34E25;
+  --primary-deep: #943D1B;
+  --primary-soft: #F3D9C6;
+  --accent: #B34E25;
+  --gold: #A1461F;
+  --stub-from: #EFA474;
+  --stub-to: #C2562B;
+  --tint: #FBEBDD;
+
+  --climate-bg: #393633;
+  --climate-line: rgba(251, 248, 242, .14);
+
+  --map-bg: #E8B087;
+  --map-water: #A9C9C6;
+  --map-land: #F1C8A4;
+  --map-ink: #74391B;
+  --mapbtn-bg: #393633;
+  --mapbtn-ink: #FBF8F2;
+
+  --thumb-from: #F7D7B8;
+  --thumb-to: #E39A6A;
+
+  --season-good: #E2A47A;
+  --season-ok: #F0DAC2;
+  --season-low: #D8CBBE;
+  --slab: #A9532A;
+}
+
+/* Турция: красный тюльпан и синий Босфор, Каппадокия */
+[data-theme="turkey"] {
+  --bg: #F6EFEB;
+  --primary: #A8302E;
+  --primary-deep: #87241F;
+  --primary-soft: #F2D8D2;
+  --accent: #1F3A66;
+  --gold: #9A3A2A;
+  --stub-from: #EE9D86;
+  --stub-to: #B23A33;
+  --tint: #FAEAE3;
+
+  --climate-bg: #1F3A66;
+  --climate-line: rgba(251, 248, 242, .16);
+
+  --map-bg: #F0D9CC;
+  --map-water: #A8C3DA;
+  --map-land: #F8E8DF;
+  --map-ink: #7A2E26;
+  --mapbtn-bg: #1F3A66;
+  --mapbtn-ink: #FBF8F2;
+
+  --thumb-from: #F8DCD0;
+  --thumb-to: #E59A86;
+
+  --season-good: #DE8E7E;
+  --season-ok: #F1DAD0;
+  --season-low: #D9CCC4;
+  --slab: #A8302E;
+  --pin: #1F3A66;
+}
+
+/* Европа: лаванда Прованса, альпийский сланец, черепичные крыши */
+[data-theme="europe"] {
+  --bg: #F3F1EE;
+  --primary: #5B4E8A;
+  --primary-deep: #463B70;
+  --primary-soft: #E2DDF0;
+  --accent: #C8643B;
+  --gold: #5B4E8A;
+  --stub-from: #B9AEDB;
+  --stub-to: #6A5C9A;
+  --tint: #EEEAF5;
+
+  --climate-bg: #3E4A60;
+  --climate-line: rgba(251, 248, 242, .16);
+
+  --map-bg: #DDE3EA;
+  --map-water: #A9CBE0;
+  --map-land: #EEF1F4;
+  --map-ink: #4A4D6A;
+
+  --thumb-from: #E6E0F3;
+  --thumb-to: #B3A6D6;
+
+  --season-good: #A69BCB;
+  --season-ok: #E1DCEB;
+  --season-low: #D6D1CC;
+  --slab: #5B4E8A;
+  --pin: #C8643B;
+}

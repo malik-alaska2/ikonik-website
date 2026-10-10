@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="ru" data-theme="brand">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>İkonik Turizm: сафари в Африке, пустыни Аравии, Турция и Европа</title>
+  <meta name="description" content="Туроператор İkonik Turizm: сафари в Кении и Танзании, ночь в пустыне в ОАЭ и Омане, шары над Каппадокией, озёра и города Европы. Выберите регион и оставьте заявку онлайн.">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/logo/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/img/logo/icon-192.png">
+  <link rel="apple-touch-icon" href="assets/img/logo/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/themes.css">
+  <link rel="stylesheet" href="assets/css/home.css">
+  <script>window.IK_BASE = '';</script>
+</head>
+<body>
+  <a class="skip" href="#main">К содержимому</a>
+
+  <header class="header">
+    <div class="container header__inner">
+      <a class="wordmark" href="index.html" aria-label="İkonik Turizm, на главную">
+        <span data-logo-anim><img class="wordmark__img" src="assets/img/logo/ikonik-logo-horizontal@web.png" width="629" height="160" alt="İkonik Turizm"></span>
+      </a>
+      <nav class="nav" aria-label="Основная навигация">
+        <a class="nav__link" href="#regions">Регионы</a>
+        <a class="nav__link" href="#tours">Туры</a>
+        <a class="nav__link" href="#how">Как забронировать</a>
+        <a class="nav__link" href="#contact">Контакты</a>
+      </nav>
+      <button class="btn btn--primary btn--sm header__cta" type="button" data-book="">Подобрать тур</button>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ===== Выбор региона ===== -->
+    <section class="hero" id="regions" aria-labelledby="hero-title">
+      <div class="container hero__grid">
+        <div class="hero__text">
+          <h1 class="t-display" id="hero-title">Куда поедем?</h1>
+          <p class="hero__lead">Сафари в Кении и Танзании, пустыни Аравии, Турция и Европа. Выберите регион, а мы соберём тур под ваши даты.</p>
+        </div>
+
+        <ul class="picker" data-picker aria-label="Регионы"></ul>
+
+        <div class="hero__stage" data-stage aria-live="polite">
+          <div class="hero__arts" data-arts></div>
+          <div class="chip-card chip-card--climate" data-stage-climate></div>
+          <div class="chip-card chip-card--price" data-stage-price></div>
+        </div>
+
+        <div class="hero__go">
+          <a class="btn btn--primary" href="#" data-go>Смотреть туры</a>
+          <p class="t-small t-muted" data-go-note></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Популярные туры ===== -->
+    <section class="section" id="tours" aria-labelledby="tours-title">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-head__text">
+            <h2 class="t-h1" id="tours-title">Популярные туры</h2>
+            <p class="t-body t-muted">Цена за человека при двухместном размещении. Перелёт подберём отдельно под ваш город вылета.</p>
+          </div>
+        </div>
+        <div class="tour-grid tour-grid--two" data-featured></div>
+      </div>
+    </section>
+
+    <!-- ===== Как забронировать ===== -->
+    <section class="section how" id="how" aria-labelledby="how-title">
+      <div class="container">
+        <h2 class="t-h1" id="how-title">Как забронировать</h2>
+        <ol class="steps">
+          <li class="step">
+            <span class="step__num">1</span>
+            <h3 class="t-h3">Выберите тур или регион</h3>
+            <p class="t-small t-muted">Если не нашли подходящий тур, просто укажите регион и даты.</p>
+          </li>
+          <li class="step">
+            <span class="step__num">2</span>
+            <h3 class="t-h3">Оставьте заявку</h3>
+            <p class="t-small t-muted">Имя и телефон. Менеджер свяжется, уточнит пожелания и состав группы.</p>
+          </li>
+          <li class="step">
+            <span class="step__num">3</span>
+            <h3 class="t-h3">Получите программу и цену</h3>
+            <p class="t-small t-muted">Пришлём программу по дням с итоговой стоимостью. Оплата только после вашего подтверждения.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===== Заявка ===== -->
+    <section class="section" id="contact" aria-labelledby="contact-title">
+      <div class="container">
+        <div class="contact">
+          <div class="contact__text">
+            <h2 class="t-h1" id="contact-title">Не знаете, какой регион выбрать?</h2>
+            <p class="t-body">Расскажите, что хотите увидеть и когда свободны. Предложим два-три варианта с ценами.</p>
+          </div>
+          <div class="contact__actions">
+            <button class="btn btn--light" type="button" data-book="">Подобрать тур</button>
+            <a class="contact__link" data-phone><i data-icon="phone" class="i--sm"></i><span></span></a>
+            <a class="contact__link" data-email><i data-icon="mail" class="i--sm"></i><span></span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <a class="wordmark" href="index.html">
+        <img class="wordmark__img" src="assets/img/logo/ikonik-logo-horizontal@web.png" width="629" height="160" alt="İkonik Turizm">
+      </a>
+      <nav class="footer__links" aria-label="Регионы">
+        <a class="link" href="regions/kenya/index.html">Кения</a>
+        <a class="link" href="regions/tanzania/index.html">Танзания</a>
+        <a class="link" href="regions/arabia/index.html">Арабские страны</a>
+        <a class="link" href="regions/turkey/index.html">Турция</a>
+        <a class="link" href="regions/europe/index.html">Европа</a>
+      </nav>
+      <p class="t-caption t-muted">© 2026 İkonik Turizm</p>
+    </div>
+  </footer>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/icons.js"></script>
+  <script src="assets/js/weather.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script src="assets/js/logo.js"></script>
+  <script src="assets/js/home.js"></script>
+</body>
+</html>

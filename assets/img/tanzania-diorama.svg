@@ -1,0 +1,196 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1000" height="860" viewBox="0 0 1000 860">
+  <title>Диорама: Серенгети и Килиманджаро</title>
+  <style>
+    .drift { animation: drift 14s ease-in-out infinite; }
+    .graze { animation: graze 9s ease-in-out infinite; }
+    @keyframes drift { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(30px, -10px); } }
+    @keyframes graze { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(10px); } }
+    @media (prefers-reduced-motion: reduce) { .drift, .graze { animation: none; } }
+  </style>
+  <defs>
+    <linearGradient id="grass" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#C8BE72"/>
+      <stop offset=".5" stop-color="#A6A655"/>
+      <stop offset="1" stop-color="#7F8C42"/>
+    </linearGradient>
+    <linearGradient id="mount" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7C92A0"/>
+      <stop offset="1" stop-color="#B6C5C8"/>
+    </linearGradient>
+    <linearGradient id="water" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#A9D6D9"/>
+      <stop offset="1" stop-color="#5E9FA6"/>
+    </linearGradient>
+    <filter id="blur" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="22"/>
+    </filter>
+
+    <g id="acacia">
+      <ellipse cx="8" cy="2" rx="36" ry="8" fill="#2E2414" opacity=".18"/>
+      <path d="M0 0 C 1 -18 -4 -30 -16 -44 M0 -16 C 6 -28 14 -36 26 -44 M-2 -30 C -4 -38 -2 -44 4 -50" stroke="#4E3A24" stroke-width="5" fill="none" stroke-linecap="round"/>
+      <ellipse cx="4" cy="-50" rx="50" ry="13" fill="#4C6629"/>
+      <ellipse cx="0" cy="-56" rx="40" ry="10" fill="#627F35"/>
+      <ellipse cx="-8" cy="-60" rx="22" ry="6" fill="#7C9A44"/>
+    </g>
+    <g id="bush">
+      <ellipse cx="0" cy="1" rx="20" ry="5" fill="#2E2414" opacity=".15"/>
+      <circle cx="-8" cy="-7" r="9" fill="#4F6A2C"/>
+      <circle cx="6" cy="-9" r="11" fill="#66823A"/>
+      <circle cx="-1" cy="-14" r="7" fill="#7C9A44"/>
+    </g>
+    <path id="tuft" d="M-7 0 L-5 -9 L-2 0 L1 -11 L3 0 L6 -8 L8 0Z" fill="#7E8C3A"/>
+    <path id="bird" d="M0 0 q6 -6 12 0 q6 -6 12 0" stroke="#3A3530" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <g id="gnu">
+      <ellipse cx="0" cy="1" rx="9" ry="2" fill="#2E2414" opacity=".2"/>
+      <path d="M-6 0 V-6 M-3 0 V-6 M4 0 V-6 M6 0 V-6" stroke="#2F2924" stroke-width="1.6" stroke-linecap="round"/>
+      <path d="M-8 -6 C -8 -11 -2 -13 4 -12 C 7 -12 8 -9 8 -6 Z" fill="#564B42"/>
+      <path d="M6 -11 L 11 -9 L 12 -5 L 9 -5 L 7 -8 Z" fill="#2F2924"/>
+      <path d="M1 -12.5 L 6 -11" stroke="#221C17" stroke-width="1.6"/>
+    </g>
+    <g id="zebra">
+      <ellipse cx="0" cy="1" rx="10" ry="2" fill="#2E2414" opacity=".2"/>
+      <path d="M-6 0 V-7 M-3 0 V-7 M4 0 V-7 M7 0 V-7" stroke="#2A2623" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M-9 -7 C -9 -13 -2 -14 5 -13 C 8 -13 9 -10 9 -7 Z" fill="#F4F1EA"/>
+      <path d="M-6 -13 V-7 M-2 -14 V-7 M2 -14 V-7 M6 -13 V-8" stroke="#2A2623" stroke-width="1.3"/>
+      <path d="M6 -12 L 9 -19 L 12 -18 L 12 -14 L 9 -10 Z" fill="#F4F1EA" stroke="#2A2623" stroke-width="1"/>
+    </g>
+  </defs>
+
+  <!-- небо: Килиманджаро -->
+  <path d="M150 400 C 250 330 330 230 400 190 C 430 172 470 158 500 156 C 560 152 600 162 640 182 C 720 226 790 320 860 400Z" fill="url(#mount)"/>
+  <path d="M400 190 C 430 172 470 158 500 156 C 560 152 600 162 640 182 C 664 196 684 212 700 226 L 676 220 L 660 236 L 640 222 L 618 238 L 598 222 L 576 240 L 556 224 L 534 240 L 514 224 L 494 240 L 472 224 L 452 238 L 432 222 L 410 234 L 388 222 L 366 230 C 376 214 388 200 400 190Z" fill="#FBF8F2"/>
+  <g fill="#FFFDF9" opacity=".95">
+    <ellipse cx="330" cy="300" rx="80" ry="18"/><ellipse cx="380" cy="288" rx="44" ry="18"/>
+    <ellipse cx="560" cy="306" rx="96" ry="18"/><ellipse cx="610" cy="292" rx="50" ry="18"/>
+    <ellipse cx="760" cy="316" rx="70" ry="16"/>
+  </g>
+  <g transform="translate(150,230)"><g class="drift">
+    <use href="#bird" xlink:href="#bird"/>
+    <use href="#bird" xlink:href="#bird" transform="translate(34,-16) scale(.8)"/>
+    <use href="#bird" xlink:href="#bird" transform="translate(64,4) scale(.7)"/>
+    <use href="#bird" xlink:href="#bird" transform="translate(90,-24) scale(.6)"/>
+    <use href="#bird" xlink:href="#bird" transform="translate(20,22) scale(.6)"/>
+  </g></g>
+
+  <!-- бирюзовая подложка и плита -->
+  <polygon points="500,260 890,470 500,680 110,470" transform="translate(0,124)" fill="#123C3D" opacity=".28" filter="url(#blur)"/>
+  <g stroke-linejoin="round">
+    <polygon points="500,260 890,470 500,680 110,470" transform="translate(0,100)" fill="#155A5C" stroke="#155A5C" stroke-width="72"/>
+    <polygon points="500,260 890,470 500,680 110,470" transform="translate(0,86)" fill="#2A8C8E" stroke="#2A8C8E" stroke-width="72"/>
+    <polygon points="500,260 890,470 500,680 110,470" transform="translate(0,64)" fill="#6B4A2C" stroke="#6B4A2C" stroke-width="40"/>
+    <polygon points="500,260 890,470 500,680 110,470" transform="translate(0,40)" fill="#8A6038" stroke="#8A6038" stroke-width="40"/>
+    <polygon points="500,260 890,470 500,680 110,470" transform="translate(0,16)" fill="#5E6E2E" stroke="#5E6E2E" stroke-width="40"/>
+    <polygon points="500,260 890,470 500,680 110,470" fill="url(#grass)" stroke="url(#grass)" stroke-width="40"/>
+  </g>
+
+  <!-- поверхность -->
+  <g fill="#8C9A45" opacity=".5">
+    <ellipse cx="300" cy="470" rx="62" ry="16"/><ellipse cx="520" cy="380" rx="70" ry="14"/>
+    <ellipse cx="430" cy="600" rx="72" ry="18"/><ellipse cx="700" cy="420" rx="52" ry="12"/>
+  </g>
+  <path d="M430 660 C 380 610 330 560 390 520 S 470 470 400 432" stroke="#D9BF8C" stroke-width="24" fill="none" stroke-linecap="round"/>
+  <path d="M800 424 C 730 470 770 520 690 560 S 560 600 562 636" stroke="#8C7A55" stroke-width="40" fill="none" stroke-linecap="round"/>
+  <path d="M800 424 C 730 470 770 520 690 560 S 560 600 562 636" stroke="url(#water)" stroke-width="30" fill="none" stroke-linecap="round"/>
+  <path d="M760 466 C 748 480 752 500 736 516 M648 576 C 630 584 610 590 596 604" stroke="#FFFFFF" stroke-opacity=".45" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <g>
+    <use href="#tuft" xlink:href="#tuft" transform="translate(300,420)"/>
+    <use href="#tuft" xlink:href="#tuft" transform="translate(520,330)"/>
+    <use href="#tuft" xlink:href="#tuft" transform="translate(190,480)"/>
+    <use href="#tuft" xlink:href="#tuft" transform="translate(360,520)"/>
+    <use href="#tuft" xlink:href="#tuft" transform="translate(800,480)"/>
+    <use href="#tuft" xlink:href="#tuft" transform="translate(640,630)"/>
+  </g>
+
+  <use href="#acacia" xlink:href="#acacia" transform="translate(470,330) scale(.75)"/>
+  <use href="#acacia" xlink:href="#acacia" transform="translate(700,340) scale(1.05)"/>
+
+  <!-- дальнее стадо -->
+  <g class="graze">
+    <use href="#gnu" xlink:href="#gnu" transform="translate(560,372) scale(1.2)"/>
+    <use href="#gnu" xlink:href="#gnu" transform="translate(586,380) scale(1.2)"/>
+    <use href="#gnu" xlink:href="#gnu" transform="translate(612,370) scale(1.2)"/>
+    <use href="#gnu" xlink:href="#gnu" transform="translate(600,392) scale(1.3)"/>
+    <use href="#gnu" xlink:href="#gnu" transform="translate(634,388) scale(1.3)"/>
+    <use href="#gnu" xlink:href="#gnu" transform="translate(660,376) scale(1.2)"/>
+    <use href="#gnu" xlink:href="#gnu" transform="translate(540,396) scale(1.3)"/>
+    <use href="#gnu" xlink:href="#gnu" transform="translate(574,404) scale(1.4)"/>
+    <use href="#gnu" xlink:href="#gnu" transform="translate(650,404) scale(1.4)"/>
+    <use href="#gnu" xlink:href="#gnu" transform="translate(690,396) scale(1.3)"/>
+  </g>
+
+  <!-- лодж с соломенной крышей -->
+  <g transform="translate(250,312) scale(1.3)">
+    <ellipse cx="66" cy="98" rx="74" ry="12" fill="#2E2414" opacity=".2"/>
+    <rect x="16" y="80" width="5" height="18" fill="#5A3E24"/>
+    <rect x="62" y="80" width="5" height="18" fill="#5A3E24"/>
+    <rect x="108" y="80" width="5" height="18" fill="#5A3E24"/>
+    <path d="M112 86 h16 l14 12 h-16z" fill="#7A5432"/>
+    <path d="M0 72 H112 L126 84 H14Z" fill="#8A5E36"/>
+    <path d="M14 84 H126 V89 H14Z" fill="#6B4A2C"/>
+    <path d="M12 44 H100 V72 H12Z" fill="#A0703F"/>
+    <path d="M100 44 L112 52 V72 H100Z" fill="#87592F"/>
+    <rect x="22" y="52" width="16" height="12" rx="2" fill="#F2C46A"/>
+    <rect x="74" y="52" width="16" height="12" rx="2" fill="#F2C46A"/>
+    <rect x="46" y="50" width="18" height="22" rx="2" fill="#4E3420"/>
+    <path d="M-6 48 L30 8 L84 8 L120 48Z" fill="#9C7B45"/>
+    <path d="M84 8 L120 48 L128 54 L92 14Z" fill="#7C5F33"/>
+    <path d="M30 8 L56 -4 L84 8Z" fill="#8A6A3A"/>
+    <path d="M6 40 L36 12 M24 44 L46 12 M44 46 L58 10 M64 46 L70 10 M84 46 L82 10 M102 44 L92 12" stroke="#7C5F33" stroke-width="1.2" opacity=".7"/>
+    <path d="M2 72 V64 H112 V72 M26 64 V72 M50 64 V72 M90 64 V72" stroke="#5A3E24" stroke-width="2" fill="none"/>
+  </g>
+
+  <use href="#acacia" xlink:href="#acacia" transform="translate(200,452) scale(1.1)"/>
+  <use href="#bush" xlink:href="#bush" transform="translate(480,420)"/>
+
+  <!-- стадо у реки -->
+  <g class="graze">
+    <use href="#gnu" xlink:href="#gnu" transform="translate(650,452) scale(2)"/>
+    <use href="#gnu" xlink:href="#gnu" transform="translate(690,446) scale(2)"/>
+    <use href="#gnu" xlink:href="#gnu" transform="translate(624,470) scale(2.1)"/>
+    <use href="#gnu" xlink:href="#gnu" transform="translate(668,480) scale(2.1)"/>
+    <use href="#gnu" xlink:href="#gnu" transform="translate(712,470) scale(2)"/>
+    <use href="#gnu" xlink:href="#gnu" transform="translate(600,494) scale(2.2)"/>
+    <use href="#gnu" xlink:href="#gnu" transform="translate(644,504) scale(2.2)"/>
+    <use href="#gnu" xlink:href="#gnu" transform="translate(800,520) scale(2)"/>
+    <use href="#gnu" xlink:href="#gnu" transform="translate(830,500) scale(1.9)"/>
+    <use href="#gnu" xlink:href="#gnu" transform="translate(770,560) scale(2.2)"/>
+    <use href="#gnu" xlink:href="#gnu" transform="translate(740,590) scale(2.3)"/>
+    <use href="#gnu" xlink:href="#gnu" transform="translate(700,612) scale(2.3)"/>
+    <use href="#gnu" xlink:href="#gnu" transform="translate(746,520) scale(2)"/>
+  </g>
+
+  <!-- зебры -->
+  <use href="#zebra" xlink:href="#zebra" transform="translate(236,512) scale(2.3)"/>
+  <use href="#zebra" xlink:href="#zebra" transform="translate(296,532) scale(2.2) translate(0,0) scale(-1,1)"/>
+
+  <use href="#acacia" xlink:href="#acacia" transform="translate(820,470) scale(.85)"/>
+  <use href="#bush" xlink:href="#bush" transform="translate(560,560)"/>
+
+  <!-- табличка -->
+  <g transform="translate(250,590) rotate(-4)">
+    <ellipse cx="0" cy="2" rx="48" ry="6" fill="#2E2414" opacity=".18"/>
+    <rect x="-38" y="-50" width="6" height="52" rx="1" fill="#5A3E24"/>
+    <rect x="32" y="-50" width="6" height="52" rx="1" fill="#5A3E24"/>
+    <rect x="-52" y="-64" width="104" height="40" rx="5" fill="#7A5432" stroke="#5A3E24" stroke-width="2"/>
+    <text x="0" y="-46" text-anchor="middle" font-family="Manrope, Arial, sans-serif" font-weight="800" font-size="13" fill="#FBF1E0" letter-spacing=".4">СЕРЕНГЕТИ</text>
+    <text x="0" y="-33" text-anchor="middle" font-family="Manrope, Arial, sans-serif" font-weight="700" font-size="6.5" fill="#9FD0D6" letter-spacing=".5">НАЦИОНАЛЬНЫЙ ПАРК</text>
+  </g>
+
+  <!-- бирюзовый джип -->
+  <g transform="translate(462,628) scale(1.2)">
+    <ellipse cx="2" cy="2" rx="64" ry="9" fill="#2E2414" opacity=".22"/>
+    <rect x="-52" y="-38" width="88" height="26" rx="6" fill="#2E8486"/>
+    <path d="M30 -32 H50 a6 6 0 0 1 6 6 V-12 H30Z" fill="#2E8486"/>
+    <rect x="-52" y="-22" width="108" height="6" rx="2" fill="#1F6466"/>
+    <path d="M36 -34 L42 -50 M-48 -38 V-62 M-6 -38 V-62 M30 -38 V-62" stroke="#2F3534" stroke-width="2.5" stroke-linecap="round"/>
+    <g fill="#5A3E24"><circle cx="-34" cy="-44" r="5.5"/><circle cx="-16" cy="-44" r="5.5"/><circle cx="4" cy="-44" r="5.5"/></g>
+    <g fill="#C9A86A"><ellipse cx="-34" cy="-49" rx="7" ry="2.4"/><ellipse cx="-16" cy="-49" rx="7" ry="2.4"/><ellipse cx="4" cy="-49" rx="7" ry="2.4"/></g>
+    <rect x="-54" y="-68" width="90" height="8" rx="3" fill="#4B5451"/>
+    <circle cx="-57" cy="-28" r="10" fill="#2E2A25"/><circle cx="-57" cy="-28" r="4" fill="#8A857C"/>
+    <circle cx="-30" cy="-10" r="12" fill="#2E2A25"/><circle cx="-30" cy="-10" r="5" fill="#8A857C"/>
+    <circle cx="36" cy="-10" r="12" fill="#2E2A25"/><circle cx="36" cy="-10" r="5" fill="#8A857C"/>
+    <circle cx="55" cy="-22" r="2.5" fill="#FBF1E0"/>
+  </g>
+
+  <use href="#acacia" xlink:href="#acacia" transform="translate(360,600) scale(.8)"/>
+</svg>

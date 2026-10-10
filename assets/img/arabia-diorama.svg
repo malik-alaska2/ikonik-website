@@ -1,0 +1,152 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1000" height="860" viewBox="0 0 1000 860">
+  <title>Диорама: пустыня Аравии</title>
+  <style>
+    .walk { animation: walk 12s ease-in-out infinite; }
+    .haze { animation: haze 10s ease-in-out infinite; }
+    @keyframes walk { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(14px); } }
+    @keyframes haze { 0%, 100% { opacity: .5; } 50% { opacity: .7; } }
+    @media (prefers-reduced-motion: reduce) { .walk, .haze { animation: none; } }
+  </style>
+  <defs>
+    <linearGradient id="sand" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#EEB57E"/>
+      <stop offset=".55" stop-color="#DE9259"/>
+      <stop offset="1" stop-color="#C9763F"/>
+    </linearGradient>
+    <linearGradient id="far" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F2BE8C"/>
+      <stop offset="1" stop-color="#E7A673"/>
+    </linearGradient>
+    <filter id="blur" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="22"/>
+    </filter>
+
+    <g id="tree">
+      <ellipse cx="4" cy="2" rx="22" ry="5" fill="#5A2A10" opacity=".22"/>
+      <path d="M0 0 C 2 -14 -2 -26 -10 -38 M-1 -18 C 6 -26 12 -34 22 -40 M-6 -30 C -14 -36 -20 -38 -28 -38 M14 -32 C 16 -40 20 -46 26 -50 M-10 -38 C -12 -46 -10 -52 -6 -58 M22 -40 C 28 -42 32 -42 36 -40" stroke="#3E2A1E" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+    </g>
+    <g id="ghaf">
+      <ellipse cx="4" cy="2" rx="30" ry="6" fill="#5A2A10" opacity=".2"/>
+      <path d="M0 0 C 1 -14 -3 -22 -10 -32 M0 -12 C 6 -20 12 -26 20 -32" stroke="#4A3324" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+      <ellipse cx="2" cy="-36" rx="34" ry="12" fill="#7E8650"/>
+      <ellipse cx="-4" cy="-42" rx="24" ry="8" fill="#949C62"/>
+    </g>
+    <g id="rocks">
+      <ellipse cx="0" cy="0" rx="20" ry="11" fill="#8C6550"/><ellipse cx="-4" cy="-5" rx="12" ry="5" fill="#A88470"/>
+      <ellipse cx="22" cy="4" rx="11" ry="7" fill="#7A5644"/><ellipse cx="20" cy="1" rx="6" ry="3" fill="#946E5A"/>
+    </g>
+    <path id="tuft" d="M-7 0 L-5 -9 L-2 0 L1 -11 L3 0 L6 -8 L8 0Z" fill="#A9783E"/>
+    <g id="camel">
+      <ellipse cx="0" cy="1" rx="16" ry="3" fill="#5A2A10" opacity=".22"/>
+      <path d="M-9 0 V-16 M-5 0 V-16 M7 0 V-16 M11 0 V-16" stroke="#9C6A3A" stroke-width="2.6" stroke-linecap="round"/>
+      <path d="M-13 -14 C -14 -22 -8 -30 -2 -26 C 2 -32 8 -30 10 -22 C 13 -20 14 -16 12 -14 Z" fill="#C08A50"/>
+      <path d="M10 -18 C 14 -22 16 -30 18 -34 C 20 -38 25 -38 27 -35 L 26 -32 L 21 -32 C 19 -26 16 -18 12 -14Z" fill="#C08A50"/>
+      <path d="M-13 -16 C -16 -14 -17 -10 -16 -6" stroke="#9C6A3A" stroke-width="1.5" fill="none"/>
+      <path d="M-6 -27 C -4 -30 0 -30 2 -27 L 1 -20 L -5 -20Z" fill="#B8412A"/>
+    </g>
+  </defs>
+
+  <!-- небо и дальние дюны -->
+  <circle cx="770" cy="170" r="64" fill="#F6C08A" opacity=".45"/>
+  <path class="haze" d="M110 440 C 210 360 320 316 420 334 C 520 352 566 290 664 280 C 770 270 830 360 890 440Z" fill="url(#far)" opacity=".6"/>
+
+  <!-- плита -->
+  <polygon points="500,260 890,470 500,680 110,470" transform="translate(0,118)" fill="#5A2A10" opacity=".3" filter="url(#blur)"/>
+  <g stroke-linejoin="round" stroke-width="40">
+    <polygon points="500,260 890,470 500,680 110,470" transform="translate(0,82)" fill="#6E3218" stroke="#6E3218"/>
+    <polygon points="500,260 890,470 500,680 110,470" transform="translate(0,58)" fill="#8C4120" stroke="#8C4120"/>
+    <polygon points="500,260 890,470 500,680 110,470" transform="translate(0,34)" fill="#A9532A" stroke="#A9532A"/>
+    <polygon points="500,260 890,470 500,680 110,470" transform="translate(0,14)" fill="#C26A38" stroke="#C26A38"/>
+    <polygon points="500,260 890,470 500,680 110,470" fill="url(#sand)" stroke="url(#sand)"/>
+  </g>
+  <g fill="#5A2A10" opacity=".35">
+    <circle cx="190" cy="560" r="5"/><circle cx="270" cy="612" r="4"/><circle cx="420" cy="690" r="5"/>
+    <circle cx="612" cy="684" r="4"/><circle cx="742" cy="620" r="5"/><circle cx="830" cy="566" r="4"/>
+  </g>
+
+  <!-- дюны -->
+  <path d="M240 424 C 320 334 400 300 470 288 C 522 300 562 342 604 404 C 520 424 360 432 240 424Z" fill="#EBA36B"/>
+  <path d="M470 288 C 522 300 562 342 604 404 C 576 412 548 418 522 422 C 512 380 494 330 470 288Z" fill="#C46E3A"/>
+  <path d="M600 452 C 660 384 720 362 780 370 C 822 390 850 430 862 462 C 782 474 682 474 600 452Z" fill="#E99E66"/>
+  <path d="M780 370 C 822 390 850 430 862 462 C 842 464 822 466 802 466 C 802 430 796 400 780 370Z" fill="#C46E3A"/>
+  <g stroke="#F6C99A" stroke-width="2" fill="none" stroke-linecap="round" opacity=".7">
+    <path d="M300 410 C 340 396 380 398 420 408"/><path d="M330 392 C 360 380 392 382 420 390"/>
+    <path d="M650 446 C 690 436 730 438 770 448"/><path d="M300 540 C 340 530 380 532 420 542"/>
+    <path d="M560 600 C 600 590 640 592 680 600"/><path d="M180 480 C 210 472 240 474 270 482"/>
+  </g>
+
+  <!-- колея -->
+  <path d="M440 662 C 390 612 350 562 420 522 S 520 472 470 442" stroke="#E2A06A" stroke-width="26" fill="none" stroke-linecap="round" opacity=".7"/>
+  <path d="M432 664 C 382 614 342 564 412 524 S 512 474 462 444 M450 660 C 400 610 360 560 430 520 S 530 470 480 440" stroke="#B4652F" stroke-width="2.5" fill="none" stroke-linecap="round" opacity=".6"/>
+
+  <g>
+    <use href="#tuft" xlink:href="#tuft" transform="translate(300,460)"/>
+    <use href="#tuft" xlink:href="#tuft" transform="translate(560,470)"/>
+    <use href="#tuft" xlink:href="#tuft" transform="translate(190,500)"/>
+    <use href="#tuft" xlink:href="#tuft" transform="translate(360,560)"/>
+    <use href="#tuft" xlink:href="#tuft" transform="translate(800,500)"/>
+    <use href="#tuft" xlink:href="#tuft" transform="translate(640,620)"/>
+    <use href="#tuft" xlink:href="#tuft" transform="translate(520,640)"/>
+  </g>
+
+  <use href="#tree" xlink:href="#tree" transform="translate(560,356) scale(.9)"/>
+  <use href="#tree" xlink:href="#tree" transform="translate(700,330) scale(.8)"/>
+  <use href="#rocks" xlink:href="#rocks" transform="translate(640,400)"/>
+
+  <!-- бедуинский шатёр -->
+  <g transform="translate(320,404) scale(1.25)">
+    <ellipse cx="60" cy="42" rx="70" ry="9" fill="#5A2A10" opacity=".22"/>
+    <path d="M-6 40 L-14 46 M126 40 L134 46" stroke="#4A3324" stroke-width="1.5"/>
+    <path d="M0 40 L10 8 L60 0 L110 8 L120 40Z" fill="#3E2A22"/>
+    <path d="M10 8 L60 0 L110 8 M5 24 L115 24" stroke="#C9A06A" stroke-width="3" fill="none"/>
+    <path d="M30 40 L36 18 H84 L90 40Z" fill="#1E1410"/>
+    <path d="M30 40 H90 L100 48 H20Z" fill="#B8412A"/>
+    <rect x="42" y="32" width="12" height="7" rx="2" fill="#E2B061"/>
+    <rect x="64" y="32" width="12" height="7" rx="2" fill="#E2B061"/>
+    <path d="M60 0 V40" stroke="#2A1C16" stroke-width="2"/>
+  </g>
+
+  <use href="#ghaf" xlink:href="#ghaf" transform="translate(490,470)"/>
+
+  <!-- караван -->
+  <g class="walk">
+    <use href="#camel" xlink:href="#camel" transform="translate(650,500) scale(1.9)"/>
+    <use href="#camel" xlink:href="#camel" transform="translate(712,512) scale(1.9)"/>
+    <use href="#camel" xlink:href="#camel" transform="translate(772,522) scale(1.8)"/>
+  </g>
+
+  <use href="#rocks" xlink:href="#rocks" transform="translate(760,580) scale(1.2)"/>
+  <use href="#rocks" xlink:href="#rocks" transform="translate(300,620) scale(.9)"/>
+
+  <!-- большое сухое дерево -->
+  <use href="#tree" xlink:href="#tree" transform="translate(230,500) scale(2.2)"/>
+
+  <!-- табличка -->
+  <g transform="translate(262,590) rotate(-4)">
+    <ellipse cx="0" cy="2" rx="50" ry="6" fill="#5A2A10" opacity=".2"/>
+    <rect x="-40" y="-50" width="6" height="52" rx="1" fill="#4A3324"/>
+    <rect x="34" y="-50" width="6" height="52" rx="1" fill="#4A3324"/>
+    <rect x="-56" y="-64" width="112" height="40" rx="5" fill="#6B4A2A" stroke="#4A3324" stroke-width="2"/>
+    <text x="0" y="-46" text-anchor="middle" font-family="Manrope, Arial, sans-serif" font-weight="800" font-size="12.5" fill="#FBF1E0" letter-spacing=".4">РУБ-ЭЛЬ-ХАЛИ</text>
+    <text x="0" y="-33" text-anchor="middle" font-family="Manrope, Arial, sans-serif" font-weight="700" font-size="7" fill="#F2B98A" letter-spacing="1.2">ПУСТАЯ ЧЕТВЕРТЬ</text>
+  </g>
+
+  <!-- внедорожник с багажником -->
+  <g transform="translate(470,624) scale(1.25)">
+    <ellipse cx="2" cy="2" rx="66" ry="9" fill="#5A2A10" opacity=".25"/>
+    <path d="M-54 -14 V-44 a6 6 0 0 1 6 -6 H22 L40 -32 H52 a6 6 0 0 1 6 6 V-14Z" fill="#D2C2A2"/>
+    <path d="M-44 -46 H-20 V-34 H-44Z M-16 -46 H10 V-34 H-16Z M14 -46 H20 L33 -34 H14Z" fill="#3E4A50"/>
+    <rect x="-56" y="-18" width="116" height="5" rx="2" fill="#A0906F"/>
+    <rect x="-52" y="-56" width="72" height="4" rx="1" fill="#2E2A25"/>
+    <rect x="-46" y="-66" width="22" height="10" rx="2" fill="#4A4038"/>
+    <rect x="-20" y="-64" width="26" height="8" rx="2" fill="#5A4E44"/>
+    <rect x="8" y="-62" width="10" height="6" rx="1.5" fill="#3E342C"/>
+    <circle cx="-61" cy="-30" r="10" fill="#2E2A25"/><circle cx="-61" cy="-30" r="4" fill="#8A857C"/>
+    <circle cx="-32" cy="-10" r="12" fill="#2E2A25"/><circle cx="-32" cy="-10" r="5" fill="#8A857C"/>
+    <circle cx="38" cy="-10" r="12" fill="#2E2A25"/><circle cx="38" cy="-10" r="5" fill="#8A857C"/>
+    <circle cx="57" cy="-24" r="2.5" fill="#FBF1E0"/>
+  </g>
+
+  <use href="#tree" xlink:href="#tree" transform="translate(820,500) scale(.9)"/>
+  <use href="#rocks" xlink:href="#rocks" transform="translate(600,650) scale(.8)"/>
+</svg>

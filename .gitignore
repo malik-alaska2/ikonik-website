@@ -1,0 +1,8 @@
+# служебное: скиллы Claude, кэш, референсы дизайна
+.claude/
+.impeccable/
+skills-lock.json
+reference/
+.vercel
+.env*
+node_modules/
