@@ -47,6 +47,16 @@
   });
   if (!logos.length) return;
 
+  // если была заставка, сборка логотипа в шапке начинается после неё
+  document.addEventListener('ik:intro-done', function () {
+    logos.forEach(function (el) {
+      el.classList.remove('is-intro', 'is-quick');
+      void el.offsetWidth;
+      el.classList.add('is-intro');
+      setTimeout(function () { el.classList.remove('is-intro'); }, 2600);
+    });
+  });
+
   var current = null;
   function syncRegion() {
     var theme = document.documentElement.getAttribute('data-theme');

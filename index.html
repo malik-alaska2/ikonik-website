@@ -18,8 +18,15 @@
   <link rel="stylesheet" href="assets/css/home.css">
   <script>window.IK_BASE = '';</script>
   <script src="assets/js/i18n.js"></script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"TravelAgency","name":"İKONİK TURİZM İNŞAAT PROJE ANONİM ŞİRKETİ","alternateName":"İkonik Turizm",
+   "url":"https://ikonik-website-sandy.vercel.app/","logo":"https://ikonik-website-sandy.vercel.app/assets/img/logo/ikonik-logo.png",
+   "telephone":"+905411977002","email":"info@ikonik.travel",
+   "address":{"@type":"PostalAddress","streetAddress":"Sinanpaşa Mah., Süleyman Seba Cad. No: 14, İç Kapı No: 5","addressLocality":"Beşiktaş","addressRegion":"İstanbul","addressCountry":"TR"}}
+  </script>
 </head>
 <body>
+  <script src="assets/js/intro.js"></script>
   <a class="skip" href="#main" data-i18n="skip">К содержимому</a>
 
   <header class="header">
@@ -129,7 +136,8 @@
         <a class="link" href="regions/turkey/index.html" data-i18n-c="regions.turkey.name">Турция</a>
         <a class="link" href="regions/europe/index.html" data-i18n-c="regions.europe.name">Европа</a>
       </nav>
-      <p class="t-caption t-muted">© 2026 İkonik Turizm</p>
+      <address class="footer__company" data-company></address>
+      <p class="footer__copy t-caption t-muted" data-copyright>© 2026 İkonik Turizm</p>
     </div>
   </footer>
 

@@ -2,6 +2,7 @@
 window.IK_LANG_PACK = {
   ui: {
     'skip': 'Vai al contenuto',
+    'intro.skip': 'Salta',
     'lang.label': 'Lingua',
     'nav.main': 'Navigazione principale', 'nav.quick': 'Navigazione rapida',
     'nav.regions': 'Destinazioni', 'nav.tours': 'Tour', 'nav.how': 'Come prenotare', 'nav.contacts': 'Contatti', 'nav.book': 'Prenota',

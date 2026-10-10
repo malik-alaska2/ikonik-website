@@ -2,6 +2,7 @@
 window.IK_LANG_PACK = {
   ui: {
     'skip': 'İçeriğe geç',
+    'intro.skip': 'Geç',
     'lang.label': 'Dil',
     'nav.main': 'Ana menü', 'nav.quick': 'Hızlı menü',
     'nav.regions': 'Bölgeler', 'nav.tours': 'Turlar', 'nav.how': 'Nasıl rezervasyon yapılır', 'nav.contacts': 'İletişim', 'nav.book': 'Rezervasyon',

@@ -594,3 +594,43 @@ ul { margin: 0; padding: 0; list-style: none; }
   .ticket__title { min-height: 0; }
   .ticket__text { -webkit-line-clamp: 2; }
 }
+
+/* ---------- заставка с анимированным логотипом (assets/js/intro.js) ---------- */
+.ik-intro-lock, .ik-intro-lock body { overflow: hidden; }
+.intro {
+  position: fixed; inset: 0; z-index: 1000;
+  display: grid; place-items: center;
+  background: #F5EDE2; /* цвет фона самого видео */
+  transition: opacity 650ms var(--ease), visibility 650ms;
+}
+.intro__video {
+  width: min(78vmin, 640px); height: auto; aspect-ratio: 1;
+  opacity: 0; transition: opacity 300ms ease;
+  -webkit-mask-image: radial-gradient(closest-side, #000 82%, transparent 100%);
+          mask-image: radial-gradient(closest-side, #000 82%, transparent 100%);
+}
+.intro.is-playing .intro__video { opacity: 1; }
+.intro.is-leaving { opacity: 0; visibility: hidden; }
+.intro.is-leaving .intro__video { transform: scale(1.04); transition: transform 650ms var(--ease), opacity 300ms ease; }
+.intro__skip {
+  position: absolute; right: var(--s-6); bottom: var(--s-6);
+  min-height: 40px; padding: 0 var(--s-5); border-radius: var(--r-full);
+  background: rgba(255, 253, 249, .8); border: 1px solid var(--border);
+  font-size: 14px; font-weight: 700; color: #4E4434;
+  box-shadow: var(--shadow-sm);
+}
+.intro__skip:hover { background: #fff; }
+
+/* ---------- подвал с реквизитами компании ---------- */
+.footer__inner { display: grid; grid-template-columns: auto 1fr minmax(0, 340px); align-items: start; gap: var(--s-6) var(--s-12); }
+.footer__links { padding-top: 10px; }
+.footer__company { font-style: normal; display: grid; gap: 10px; font-size: 14px; color: var(--ink-muted); }
+.footer__name { font-size: 12px; font-weight: 800; letter-spacing: .04em; color: var(--ink); line-height: 1.4; }
+.footer__line { display: grid; grid-template-columns: 16px 1fr; gap: 10px; align-items: start; line-height: 1.45; transition: color var(--t-fast) var(--ease); }
+.footer__line .i { margin-top: 2px; color: var(--primary); }
+.footer__line:hover { color: var(--ink); }
+.footer__copy { grid-column: 1 / -1; padding-top: var(--s-6); border-top: 1px solid var(--border); }
+@media (max-width: 900px) {
+  .footer__inner { grid-template-columns: 1fr; gap: var(--s-6); }
+  .footer__links { padding-top: 0; }
+}

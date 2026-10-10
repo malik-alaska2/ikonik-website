@@ -340,6 +340,21 @@
 
   I.apply(document);
 
+  /* ---------- реквизиты компании в подвале ---------- */
+  var co = D.config.company;
+  document.querySelectorAll('[data-company]').forEach(function (box) {
+    box.innerHTML =
+      '<b class="footer__name">' + esc(co.name) + '</b>' +
+      '<a class="footer__line" href="' + co.maps + '" target="_blank" rel="noopener">' + icon('map-pin', 'i--sm') +
+        '<span>' + esc(co.street) + '<br>' + esc(co.building) + '<br>' + esc(co.city) + '</span></a>' +
+      '<a class="footer__line" href="tel:' + D.config.phone.replace(/[^\d+]/g, '') + '">' + icon('phone', 'i--sm') + '<span>' + esc(D.config.phone) + '</span></a>' +
+      (D.config.whatsapp ? '<a class="footer__line" href="https://wa.me/' + D.config.whatsapp + '" target="_blank" rel="noopener">' + icon('whatsapp-logo', 'i--sm') + '<span>WhatsApp</span></a>' : '') +
+      '<a class="footer__line" href="mailto:' + D.config.email + '">' + icon('mail', 'i--sm') + '<span>' + esc(D.config.email) + '</span></a>';
+  });
+  document.querySelectorAll('[data-copyright]').forEach(function (el) {
+    el.textContent = '© ' + new Date().getFullYear() + ' ' + co.name;
+  });
+
   window.IK = {
     tourCard: tourCard,
     stubScene: function (id) { return STUB_SCENES[id] || STUB_SCENES.generic; },

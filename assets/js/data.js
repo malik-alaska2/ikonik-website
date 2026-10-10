@@ -7,10 +7,18 @@ window.IKONIK = {
   config: {
     // Номер WhatsApp в международном формате без "+", например "905321234567".
     // Если заполнен, заявка дополнительно открывается в WhatsApp.
-    whatsapp: '',
-    phone: '+90 000 000 00 00',
+    whatsapp: '905411977002',
+    phone: '+90 541 197 70 02',
     email: 'info@ikonik.travel',
-    currency: '$'
+    currency: '$',
+    // реквизиты компании: подвал всех страниц и разметка для поисковиков
+    company: {
+      name: 'İKONİK TURİZM İNŞAAT PROJE ANONİM ŞİRKETİ',
+      street: 'Sinanpaşa Mah., Süleyman Seba Cad.',
+      building: 'No: 14, İç Kapı No: 5',
+      city: 'Beşiktaş / İstanbul',
+      maps: 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent('Süleyman Seba Cad. No:14, Sinanpaşa, Beşiktaş, İstanbul')
+    }
   },
 
   regions: [

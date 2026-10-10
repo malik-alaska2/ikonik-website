@@ -2,6 +2,7 @@
 window.IK_LANG_PACK = {
   ui: {
     'skip': 'Zum Inhalt',
+    'intro.skip': 'Überspringen',
     'lang.label': 'Sprache',
     'nav.main': 'Hauptnavigation', 'nav.quick': 'Schnellnavigation',
     'nav.regions': 'Reiseziele', 'nav.tours': 'Touren', 'nav.how': 'So buchen Sie', 'nav.contacts': 'Kontakt', 'nav.book': 'Buchen',
