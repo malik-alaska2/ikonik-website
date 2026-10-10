@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ru" data-theme="brand">
+<html lang="ru" data-theme="brand" data-page="brand">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,22 +17,24 @@
   <link rel="stylesheet" href="assets/css/themes.css">
   <link rel="stylesheet" href="assets/css/home.css">
   <script>window.IK_BASE = '';</script>
+  <script src="assets/js/i18n.js"></script>
 </head>
 <body>
-  <a class="skip" href="#main">К содержимому</a>
+  <a class="skip" href="#main" data-i18n="skip">К содержимому</a>
 
   <header class="header">
     <div class="container header__inner">
-      <a class="wordmark" href="index.html" aria-label="İkonik Turizm, на главную">
+      <a class="wordmark" href="index.html" aria-label="İkonik Turizm, на главную" data-i18n-aria="logo.home">
         <span data-logo-anim><img class="wordmark__img" src="assets/img/logo/ikonik-logo-horizontal@web.png" width="629" height="160" alt="İkonik Turizm"></span>
       </a>
-      <nav class="nav" aria-label="Основная навигация">
-        <a class="nav__link" href="#regions">Регионы</a>
-        <a class="nav__link" href="#tours">Туры</a>
-        <a class="nav__link" href="#how">Как забронировать</a>
-        <a class="nav__link" href="#contact">Контакты</a>
+      <nav class="nav" aria-label="Основная навигация" data-i18n-aria="nav.main">
+        <a class="nav__link" href="#regions" data-i18n="nav.regions">Регионы</a>
+        <a class="nav__link" href="#tours" data-i18n="nav.tours">Туры</a>
+        <a class="nav__link" href="#how" data-i18n="nav.how">Как забронировать</a>
+        <a class="nav__link" href="#contact" data-i18n="nav.contacts">Контакты</a>
       </nav>
-      <button class="btn btn--primary btn--sm header__cta" type="button" data-book="">Подобрать тур</button>
+      <div class="header__lang" data-lang-switch></div>
+      <button class="btn btn--primary btn--sm header__cta" type="button" data-book="" data-i18n="cta.pick">Подобрать тур</button>
     </div>
   </header>
 
@@ -41,20 +43,20 @@
     <section class="hero" id="regions" aria-labelledby="hero-title">
       <div class="container hero__grid">
         <div class="hero__text">
-          <h1 class="t-display" id="hero-title">Куда поедем?</h1>
-          <p class="hero__lead">Сафари в Кении и Танзании, пустыни Аравии, Турция и Европа. Выберите регион, а мы соберём тур под ваши даты.</p>
+          <h1 class="t-display" id="hero-title" data-i18n="home.title">Куда поедем?</h1>
+          <p class="hero__lead" data-i18n="home.lead">Сафари в Кении и Танзании, пустыни Аравии, Турция и Европа. Выберите регион, а мы соберём тур под ваши даты.</p>
         </div>
 
-        <ul class="picker" data-picker aria-label="Регионы"></ul>
+        <ul class="picker" data-picker aria-label="Регионы" data-i18n-aria="nav.regions"></ul>
 
         <div class="hero__stage" data-stage aria-live="polite">
           <div class="hero__arts" data-arts></div>
-          <div class="chip-card chip-card--climate" data-stage-climate></div>
+          <div class="chip-card chip-card--climate glass-water" data-stage-climate></div>
           <div class="chip-card chip-card--price" data-stage-price></div>
         </div>
 
         <div class="hero__go">
-          <a class="btn btn--primary" href="#" data-go>Смотреть туры</a>
+          <a class="btn btn--primary" href="#" data-go data-i18n="home.go">Смотреть туры</a>
           <p class="t-small t-muted" data-go-note></p>
         </div>
       </div>
@@ -65,8 +67,8 @@
       <div class="container">
         <div class="section-head">
           <div class="section-head__text">
-            <h2 class="t-h1" id="tours-title">Популярные туры</h2>
-            <p class="t-body t-muted">Цена за человека при двухместном размещении. Перелёт подберём отдельно под ваш город вылета.</p>
+            <h2 class="t-h1" id="tours-title" data-i18n="home.toursTitle">Популярные туры</h2>
+            <p class="t-body t-muted" data-i18n="home.toursLead">Цена за человека при двухместном размещении. Перелёт подберём отдельно под ваш город вылета.</p>
           </div>
         </div>
         <div class="tour-grid tour-grid--two" data-featured></div>
@@ -76,22 +78,22 @@
     <!-- ===== Как забронировать ===== -->
     <section class="section how" id="how" aria-labelledby="how-title">
       <div class="container">
-        <h2 class="t-h1" id="how-title">Как забронировать</h2>
+        <h2 class="t-h1" id="how-title" data-i18n="how.title">Как забронировать</h2>
         <ol class="steps">
           <li class="step">
             <span class="step__num">1</span>
-            <h3 class="t-h3">Выберите тур или регион</h3>
-            <p class="t-small t-muted">Если не нашли подходящий тур, просто укажите регион и даты.</p>
+            <h3 class="t-h3" data-i18n="how.s1.t">Выберите тур или регион</h3>
+            <p class="t-small t-muted" data-i18n="how.s1.d">Если не нашли подходящий тур, просто укажите регион и даты.</p>
           </li>
           <li class="step">
             <span class="step__num">2</span>
-            <h3 class="t-h3">Оставьте заявку</h3>
-            <p class="t-small t-muted">Имя и телефон. Менеджер свяжется, уточнит пожелания и состав группы.</p>
+            <h3 class="t-h3" data-i18n="how.s2.t">Оставьте заявку</h3>
+            <p class="t-small t-muted" data-i18n="how.s2.d">Имя и телефон. Менеджер свяжется, уточнит пожелания и состав группы.</p>
           </li>
           <li class="step">
             <span class="step__num">3</span>
-            <h3 class="t-h3">Получите программу и цену</h3>
-            <p class="t-small t-muted">Пришлём программу по дням с итоговой стоимостью. Оплата только после вашего подтверждения.</p>
+            <h3 class="t-h3" data-i18n="how.s3.t">Получите программу и цену</h3>
+            <p class="t-small t-muted" data-i18n="how.s3.d">Пришлём программу по дням с итоговой стоимостью. Оплата только после вашего подтверждения.</p>
           </li>
         </ol>
       </div>
@@ -102,11 +104,11 @@
       <div class="container">
         <div class="contact">
           <div class="contact__text">
-            <h2 class="t-h1" id="contact-title">Не знаете, какой регион выбрать?</h2>
-            <p class="t-body">Расскажите, что хотите увидеть и когда свободны. Предложим два-три варианта с ценами.</p>
+            <h2 class="t-h1" id="contact-title" data-i18n="contact.title">Не знаете, какой регион выбрать?</h2>
+            <p class="t-body" data-i18n="contact.text">Расскажите, что хотите увидеть и когда свободны. Предложим два-три варианта с ценами.</p>
           </div>
           <div class="contact__actions">
-            <button class="btn btn--light" type="button" data-book="">Подобрать тур</button>
+            <button class="btn btn--light" type="button" data-book="" data-i18n="cta.pick">Подобрать тур</button>
             <a class="contact__link" data-phone><i data-icon="phone" class="i--sm"></i><span></span></a>
             <a class="contact__link" data-email><i data-icon="mail" class="i--sm"></i><span></span></a>
           </div>
@@ -120,23 +122,23 @@
       <a class="wordmark" href="index.html">
         <img class="wordmark__img" src="assets/img/logo/ikonik-logo-horizontal@web.png" width="629" height="160" alt="İkonik Turizm">
       </a>
-      <nav class="footer__links" aria-label="Регионы">
-        <a class="link" href="regions/kenya/index.html">Кения</a>
-        <a class="link" href="regions/tanzania/index.html">Танзания</a>
-        <a class="link" href="regions/arabia/index.html">Арабские страны</a>
-        <a class="link" href="regions/turkey/index.html">Турция</a>
-        <a class="link" href="regions/europe/index.html">Европа</a>
+      <nav class="footer__links" aria-label="Регионы" data-i18n-aria="nav.regions">
+        <a class="link" href="regions/kenya/index.html" data-i18n-c="regions.kenya.name">Кения</a>
+        <a class="link" href="regions/tanzania/index.html" data-i18n-c="regions.tanzania.name">Танзания</a>
+        <a class="link" href="regions/arabia/index.html" data-i18n-c="regions.arabia.name">Арабские страны</a>
+        <a class="link" href="regions/turkey/index.html" data-i18n-c="regions.turkey.name">Турция</a>
+        <a class="link" href="regions/europe/index.html" data-i18n-c="regions.europe.name">Европа</a>
       </nav>
       <p class="t-caption t-muted">© 2026 İkonik Turizm</p>
     </div>
   </footer>
 
-  <nav class="tabbar" aria-label="Быстрая навигация">
-    <a class="tabbar__item" href="#regions" aria-current="true"><i data-icon="globe"></i><span>Регионы</span></a>
-    <a class="tabbar__item" href="#tours"><i data-icon="compass"></i><span>Туры</span></a>
-    <button class="tabbar__main" type="button" data-book="" aria-label="Подобрать тур"><i data-icon="paper-plane-tilt"></i></button>
-    <a class="tabbar__item" href="#how"><i data-icon="calendar"></i><span>Бронь</span></a>
-    <a class="tabbar__item" href="#contact"><i data-icon="phone"></i><span>Контакты</span></a>
+  <nav class="tabbar" aria-label="Быстрая навигация" data-i18n-aria="nav.quick">
+    <a class="tabbar__item" href="#regions" aria-current="true"><i data-icon="globe"></i><span data-i18n="nav.regions">Регионы</span></a>
+    <a class="tabbar__item" href="#tours"><i data-icon="compass"></i><span data-i18n="nav.tours">Туры</span></a>
+    <button class="tabbar__main" type="button" data-book="" aria-label="Подобрать тур" data-i18n-aria="cta.pick"><i data-icon="paper-plane-tilt"></i></button>
+    <a class="tabbar__item" href="#how"><i data-icon="calendar"></i><span data-i18n="nav.book">Бронь</span></a>
+    <a class="tabbar__item" href="#contact"><i data-icon="phone"></i><span data-i18n="nav.contacts">Контакты</span></a>
   </nav>
 
   <script src="assets/js/data.js"></script>

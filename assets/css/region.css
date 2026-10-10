@@ -106,9 +106,9 @@ main, .footer { padding-left: var(--rail); }
 
 /* ---------- climate card ---------- */
 .climate {
-  background: var(--climate-bg); border-color: transparent; color: var(--on-primary);
+  --water-img: url(../img/water.svg);
+  color: var(--on-primary);
   padding: var(--s-5) var(--s-6);
-  box-shadow: var(--shadow-lg), inset 0 1px 0 rgba(255,255,255,.18);
 }
 .climate__now { display: flex; align-items: center; gap: var(--s-4); }
 .climate__now .wx { margin: -10px -4px -10px -8px; }
@@ -323,4 +323,14 @@ main, .footer { padding-left: var(--rail); }
   .extra .thumb { width: 56px; height: 56px; }
   .extra .thumb .i { font-size: 28px; }
   .extra .btn { grid-column: 1 / -1; }
+}
+
+/* переключатель языка: в боковой панели на компьютере, в углу сцены на телефоне */
+.rail__lang { margin-top: auto; }
+.rail__lang .lang__btn { width: 70px; height: 44px; justify-content: center; padding: 0; border-radius: var(--r-md); }
+.rail__lang .lang__menu { top: auto; bottom: 0; right: auto; left: calc(100% + 10px); }
+.stage__lang { display: none; }
+@media (max-width: 900px) {
+  .stage > .stage__lang { display: block; position: absolute; z-index: 5; top: var(--s-6); right: var(--gutter); }
+  .stage__greet { padding-right: 76px; }
 }

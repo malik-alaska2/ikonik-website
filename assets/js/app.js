@@ -3,20 +3,18 @@
 
 (function () {
   var D = window.IKONIK;
+  var I = window.IKI18N;
+  var T = I.t;
+  I.applyContent(D);
   var icon = window.IKIcon;
   var BASE = window.IK_BASE || '';
   var SAVED_KEY = 'ikonik:saved';
 
   /* ---------- utils ---------- */
-  function plural(n, forms) {
-    var a = Math.abs(n) % 100, b = a % 10;
-    if (a > 10 && a < 20) return forms[2];
-    if (b > 1 && b < 5) return forms[1];
-    if (b === 1) return forms[0];
-    return forms[2];
-  }
+  // plural(n, ключ): формы слова из словаря языка (см. i18n.js)
+  function plural(n, key) { return I.plural(n, key); }
   function money(n) {
-    return D.config.currency + n.toLocaleString('ru-RU').replace(/,/g, ' ');
+    return D.config.currency + n.toLocaleString(I.locale());
   }
   function esc(s) {
     return String(s).replace(/[&<>"']/g, function (c) {
@@ -124,18 +122,18 @@
               '<span class="t-small t-muted">' + esc(t.place) + '</span>' +
             '</div>' +
             '<button class="icon-btn" type="button" data-save="' + t.id + '" aria-pressed="' + saved + '" ' +
-              'aria-label="Сохранить тур «' + esc(t.title) + '»">' + icon('bookmark', '', saved) + '</button>' +
+              'aria-label="' + esc(T('ticket.save', { t: t.title })) + '">' + icon('bookmark', '', saved) + '</button>' +
           '</div>' +
           (opts.compact ? '' : '<p class="ticket__text">' + esc(t.text) + '</p>') +
           '<div class="ticket__stats">' + stats + '</div>' +
           '<div class="ticket__buy">' +
-            '<div class="price"><span class="price__note">от</span><span class="price__value">' + money(t.price) + '</span><span class="price__note">за человека</span></div>' +
-            '<button class="btn btn--primary btn--sm" type="button" data-book="' + t.id + '">Забронировать</button>' +
+            '<div class="price"><span class="price__note">' + T('ticket.from') + '</span><span class="price__value">' + money(t.price) + '</span><span class="price__note">' + T('ticket.perPerson') + '</span></div>' +
+            '<button class="btn btn--primary btn--sm" type="button" data-book="' + t.id + '">' + T('ticket.book') + '</button>' +
           '</div>' +
           more +
         '</div>' +
         '<div class="ticket__stub" aria-hidden="true">' +
-          '<div class="ticket__days"><strong>' + t.days + '</strong>' + plural(t.days, ['день', 'дня', 'дней']) + '</div>' +
+          '<div class="ticket__days"><strong>' + t.days + '</strong>' + plural(t.days, 'days') + '</div>' +
           (STUB_SCENES[t.region] || STUB_SCENES.generic) +
           photo('tours/' + t.id, 'ticket__photo') +
           '<div class="ticket__barcode"></div>' +
@@ -152,10 +150,9 @@
       var tours = D.tours.filter(function (t) { return t.region === r.id; });
       html += '<optgroup label="' + esc(r.name) + '">';
       tours.forEach(function (t) {
-        html += '<option value="' + t.id + '">' + esc(t.title) + ', ' + t.days + ' ' +
-          plural(t.days, ['день', 'дня', 'дней']) + ', от ' + money(t.price) + '</option>';
+        html += '<option value="' + t.id + '">' + esc(T('opt.tour', { title: t.title, days: t.days + ' ' + plural(t.days, 'days'), price: money(t.price) })) + '</option>';
       });
-      html += '<option value="region:' + r.id + '">Подобрать тур: ' + esc(r.name) + '</option>';
+      html += '<option value="region:' + r.id + '">' + esc(T('opt.pick', { region: r.name })) + '</option>';
       html += '</optgroup>';
     });
     return html;
@@ -178,35 +175,35 @@
     modal.innerHTML =
       '<div class="modal__panel">' +
         '<div class="modal__head">' +
-          '<div><h2 class="t-h2" id="book-title">Заявка на тур</h2>' +
-          '<p class="t-small t-muted">Менеджер уточнит даты и пришлёт итоговую стоимость. Оплата только после подтверждения.</p></div>' +
-          '<button class="icon-btn" type="button" data-close aria-label="Закрыть">' + icon('x') + '</button>' +
+          '<div><h2 class="t-h2" id="book-title">' + T('book.title') + '</h2>' +
+          '<p class="t-small t-muted">' + T('book.lead') + '</p></div>' +
+          '<button class="icon-btn" type="button" data-close aria-label="' + T('book.close') + '">' + icon('x') + '</button>' +
         '</div>' +
         '<form class="form" novalidate>' +
-          '<label class="field"><span class="field__label">Тур</span><select name="tour">' + tourOptions() + '</select></label>' +
+          '<label class="field"><span class="field__label">' + T('f.tour') + '</span><select name="tour">' + tourOptions() + '</select></label>' +
           '<div class="form__row form__row--3">' +
-            '<label class="field"><span class="field__label">Дата начала <span>примерно</span></span><input type="date" name="date"></label>' +
-            '<label class="field"><span class="field__label">Взрослые</span><input type="number" name="adults" min="1" max="20" value="2" inputmode="numeric"></label>' +
-            '<label class="field"><span class="field__label">Дети</span><input type="number" name="kids" min="0" max="20" value="0" inputmode="numeric"></label>' +
+            '<label class="field"><span class="field__label">' + T('f.date') + ' <span>' + T('f.approx') + '</span></span><input type="date" name="date"></label>' +
+            '<label class="field"><span class="field__label">' + T('f.adults') + '</span><input type="number" name="adults" min="1" max="20" value="2" inputmode="numeric"></label>' +
+            '<label class="field"><span class="field__label">' + T('f.kids') + '</span><input type="number" name="kids" min="0" max="20" value="0" inputmode="numeric"></label>' +
           '</div>' +
-          '<div class="field" data-extras hidden><span class="field__label">Добавить к поездке</span><div class="form" style="gap:10px">' + extrasFields() + '</div></div>' +
+          '<div class="field" data-extras hidden><span class="field__label">' + T('f.extras') + '</span><div class="form" style="gap:10px">' + extrasFields() + '</div></div>' +
           '<div class="form__row">' +
-            '<label class="field"><span class="field__label">Имя</span><input type="text" name="name" autocomplete="name" required>' +
-              '<span class="field__error">Укажите имя</span></label>' +
-            '<label class="field"><span class="field__label">Телефон или WhatsApp</span><input type="tel" name="phone" autocomplete="tel" required placeholder="+7 900 000 00 00">' +
-              '<span class="field__error">Нужен номер, чтобы связаться с вами</span></label>' +
+            '<label class="field"><span class="field__label">' + T('f.name') + '</span><input type="text" name="name" autocomplete="name" required>' +
+              '<span class="field__error">' + T('f.nameErr') + '</span></label>' +
+            '<label class="field"><span class="field__label">' + T('f.phone') + '</span><input type="tel" name="phone" autocomplete="tel" required placeholder="' + T('f.phonePh') + '">' +
+              '<span class="field__error">' + T('f.phoneErr') + '</span></label>' +
           '</div>' +
-          '<label class="field"><span class="field__label">Email <span>необязательно</span></span><input type="email" name="email" autocomplete="email"></label>' +
-          '<label class="field"><span class="field__label">Пожелания <span>необязательно</span></span><textarea name="comment" placeholder="Например: медовый месяц, нужен лодж с видом на реку"></textarea></label>' +
-          '<div class="field"><label class="check"><input type="checkbox" name="consent" required> <span>Согласен на обработку персональных данных для подбора тура</span></label>' +
-            '<span class="field__error">Без согласия мы не сможем обработать заявку</span></div>' +
-          '<button class="btn btn--primary btn--block" type="submit">Отправить заявку</button>' +
+          '<label class="field"><span class="field__label">' + T('f.email') + ' <span>' + T('f.optional') + '</span></span><input type="email" name="email" autocomplete="email"></label>' +
+          '<label class="field"><span class="field__label">' + T('f.comment') + ' <span>' + T('f.optional') + '</span></span><textarea name="comment" placeholder="' + esc(T('f.commentPh')) + '"></textarea></label>' +
+          '<div class="field"><label class="check"><input type="checkbox" name="consent" required> <span>' + T('f.consent') + '</span></label>' +
+            '<span class="field__error">' + T('f.consentErr') + '</span></div>' +
+          '<button class="btn btn--primary btn--block" type="submit">' + T('f.submit') + '</button>' +
         '</form>' +
         '<div class="done" hidden>' +
           '<div class="done__mark">' + icon('check') + '</div>' +
-          '<h2 class="t-h2">Заявка отправлена</h2>' +
+          '<h2 class="t-h2">' + T('done.title') + '</h2>' +
           '<p class="t-small t-muted" data-done-text></p>' +
-          '<button class="btn btn--ghost" type="button" data-close>Закрыть</button>' +
+          '<button class="btn btn--ghost" type="button" data-close>' + T('book.close') + '</button>' +
         '</div>' +
       '</div>';
     document.body.appendChild(modal);
@@ -260,14 +257,14 @@
     var el = form.elements;
     var val = el.tour.value;
     var tour = byId(D.tours, val);
-    var what = tour ? tour.title : 'Подбор тура: ' + region(val.slice(7)).name;
+    var what = tour ? tour.title : T('req.pick', { region: region(val.slice(7)).name });
     var extras = Array.prototype.filter.call(form.querySelectorAll('[name="extras"]'), function (c) {
       return c.checked && !c.closest('[hidden]');
     }).map(function (c) { return byId(D.extras, c.value).title; });
 
     var request = {
       tour: what,
-      date: el.date.value || 'не указана',
+      date: el.date.value || T('req.noDate'),
       adults: el.adults.value,
       kids: el.kids.value,
       extras: extras,
@@ -281,10 +278,10 @@
     console.info('[İkonik] Заявка', request);
 
     if (D.config.whatsapp) {
-      var msg = 'Заявка: ' + request.tour + '\nДата: ' + request.date +
-        '\nВзрослые: ' + request.adults + ', дети: ' + request.kids +
-        (extras.length ? '\nДополнительно: ' + extras.join(', ') : '') +
-        '\nИмя: ' + request.name + '\nТелефон: ' + request.phone +
+      var msg = T('wa.request') + ': ' + request.tour + '\n' + T('wa.date') + ': ' + request.date +
+        '\n' + T('wa.adults') + ': ' + request.adults + ', ' + T('wa.kids') + ': ' + request.kids +
+        (extras.length ? '\n' + T('wa.extras') + ': ' + extras.join(', ') : '') +
+        '\n' + T('wa.name') + ': ' + request.name + '\n' + T('wa.phone') + ': ' + request.phone +
         (request.comment ? '\n' + request.comment : '');
       window.open('https://wa.me/' + D.config.whatsapp + '?text=' + encodeURIComponent(msg), '_blank', 'noopener');
     }
@@ -293,7 +290,7 @@
     var done = modal.querySelector('.done');
     done.hidden = false;
     done.querySelector('[data-done-text]').textContent =
-      request.name + ', мы свяжемся с вами по номеру ' + request.phone + ', чтобы уточнить детали тура «' + request.tour + '».';
+      T('done.text', { name: request.name, phone: request.phone, tour: request.tour });
     done.querySelector('[data-close]').focus();
   }
 
@@ -340,6 +337,8 @@
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' && modal && modal.classList.contains('is-open')) closeBooking();
   });
+
+  I.apply(document);
 
   window.IK = {
     tourCard: tourCard,

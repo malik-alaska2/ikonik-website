@@ -7,6 +7,7 @@
   var IK = window.IK;
   var icon = window.IKIcon;
   var esc = IK.esc;
+  var T = window.IKI18N.t;
 
   var SWATCH = { kenya: 'paw', tanzania: 'mountains', arabia: 'sun-horizon', turkey: 'balloon', europe: 'castle-turret' };
   var root = document.documentElement;
@@ -30,7 +31,7 @@
         (r.art ? '<img class="pick__img" src="' + r.art + '" alt="" loading="lazy" decoding="async">' : '') +
         '<span class="pick__swatch">' + icon(SWATCH[r.id] || 'globe') + '</span>' +
         '<span><span class="pick__name">' + esc(r.name) + '</span><span class="pick__countries">' + esc(r.countries) + '</span></span>' +
-        (live ? '<span class="pick__meta">от ' + IK.money(from) + '</span>' : '<span class="pick__soon">Скоро, примем заявку</span>') +
+        (live ? '<span class="pick__meta">' + T('ticket.from') + ' ' + IK.money(from) + '</span>' : '<span class="pick__soon">' + T('home.soon') + '</span>') +
       '</button></li>';
   }).join('');
 
@@ -46,8 +47,8 @@
     var from = Math.min.apply(null, list.map(function (t) { return t.price; }));
     var minD = Math.min.apply(null, list.map(function (t) { return t.days; }));
     var maxD = Math.max.apply(null, list.map(function (t) { return t.days; }));
-    price.innerHTML = '<span>Туры от</span><b>' + IK.money(from) + '</b><span>' + list.length + ' ' +
-      IK.plural(list.length, ['тур', 'тура', 'туров']) + ', от ' + minD + ' до ' + maxD + ' дней</span>';
+    price.innerHTML = '<span>' + T('home.toursFrom') + '</span><b>' + IK.money(from) + '</b><span>' + list.length + ' ' +
+      IK.plural(list.length, 'home.toursCount') + ', ' + T('home.daysRange', { min: minD, max: maxD }) + '</span>';
   }
 
   function select(id) {
@@ -63,8 +64,8 @@
     });
     renderChips(r);
     go.href = r.url;
-    go.textContent = 'Смотреть туры';
-    go.setAttribute('aria-label', 'Смотреть туры: ' + r.name);
+    go.textContent = T('home.go');
+    go.setAttribute('aria-label', T('home.go') + ': ' + r.name);
     goNote.textContent = r.text;
   }
 
@@ -88,7 +89,7 @@
   var first = D.regions[0];
   renderChips(first);
   go.href = '#tours';
-  goNote.textContent = 'Наведите на регион или нажмите на него, чтобы увидеть, как он выглядит.';
+  goNote.textContent = T('home.goNote');
 
   /* ---------- популярные туры ---------- */
   document.querySelector('[data-featured]').innerHTML = D.tours.filter(function (t) { return t.featured; })

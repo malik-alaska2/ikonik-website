@@ -6,6 +6,7 @@
   var IK = window.IK;
   var icon = window.IKIcon;
   var esc = IK.esc;
+  var T = window.IKI18N.t;
 
   var REGION = document.documentElement.getAttribute('data-theme');
   var R = IK.region(REGION);
@@ -22,7 +23,9 @@
   }
 
   /* ---------- hero ---------- */
-  set('[data-hello]', esc(P.hello) + ' <span aria-hidden="true">👋</span>');
+  // вместо эмодзи: значок региона в его цвете, как на логотипе
+  var BADGE = { kenya: 'paw', tanzania: 'mountains', arabia: 'sun-horizon', turkey: 'balloon', europe: 'castle-turret' };
+  set('[data-hello]', esc(P.hello) + ' <span class="hello-badge" aria-hidden="true">' + icon(BADGE[REGION] || 'globe') + '</span>');
   text('[data-lead]', P.lead);
 
   var featured = tours.filter(function (t) { return t.id === P.featured; })[0] || tours[0];
@@ -45,7 +48,7 @@
   set('[data-top-extras]', extras.slice(0, 3).map(function (x) {
     return '<li class="row">' + thumb(x) +
       '<div><p class="row__title">' + esc(x.title) + '</p><p class="row__meta">' + esc(x.time) + ', ' + IK.money(x.price) + '</p></div>' +
-      '<button class="icon-btn" type="button" data-book="extra:' + x.id + '" aria-label="Добавить в заявку: ' + esc(x.title) + '">' + icon('plus') + '</button>' +
+      '<button class="icon-btn" type="button" data-book="extra:' + x.id + '" aria-label="' + esc(T('extra.addAria', { x: x.title })) + '">' + icon('plus') + '</button>' +
       '</li>';
   }).join(''));
 
@@ -67,7 +70,7 @@
     '</svg>' +
     M.pins.map(function (p) {
       return '<button class="pin' + (p.home ? ' pin--home' : '') + '" type="button" style="left:' + p.x + '%;top:' + p.y + '%"' +
-        (p.tour ? ' data-goto="' + p.tour + '"' : '') + ' aria-label="' + esc(p.name) + (p.tour ? ': показать тур' : '') + '">' +
+        (p.tour ? ' data-goto="' + p.tour + '"' : '') + ' aria-label="' + esc(p.tour ? T('pin.aria', { name: p.name }) : p.name) + '">' +
         icon(p.home ? 'plane' : p.icon) + '<span class="pin__label">' + esc(p.name) + '</span></button>';
     }).join('');
 
@@ -91,20 +94,20 @@
   });
 
   filters.innerHTML =
-    '<button class="chip" type="button" data-filter="all" aria-pressed="true">Все <span class="chip__count">' + tours.length + '</span></button>' +
+    '<button class="chip" type="button" data-filter="all" aria-pressed="true">' + T('filter.all') + ' <span class="chip__count">' + tours.length + '</span></button>' +
     P.filters.map(function (f, i) {
       return '<button class="chip" type="button" data-filter="f' + i + '" aria-pressed="false">' + esc(f.label) + '</button>';
     }).join('') +
-    '<button class="chip" type="button" data-filter="saved" aria-pressed="false">' + icon('heart', 'i--sm') + 'Избранное</button>';
+    '<button class="chip" type="button" data-filter="saved" aria-pressed="false">' + icon('heart', 'i--sm') + T('filter.saved') + '</button>';
 
   function renderTours() {
     var list = tours.filter(RULES[current]);
     if (!list.length) {
       grid.innerHTML = current === 'saved'
-        ? '<div class="empty">' + icon('bookmark', 'i--lg') + '<p class="t-h3">Здесь появятся сохранённые туры</p>' +
-          '<p class="t-small">Нажмите на закладку в карточке тура, чтобы вернуться к нему позже.</p>' +
-          '<button class="btn btn--ghost btn--sm" type="button" data-filter-go="all">Показать все туры</button></div>'
-        : '<div class="empty"><p class="t-h3">Под этот фильтр туров пока нет</p><button class="btn btn--ghost btn--sm" type="button" data-filter-go="all">Показать все туры</button></div>';
+        ? '<div class="empty">' + icon('bookmark', 'i--lg') + '<p class="t-h3">' + T('empty.savedTitle') + '</p>' +
+          '<p class="t-small">' + T('empty.savedText') + '</p>' +
+          '<button class="btn btn--ghost btn--sm" type="button" data-filter-go="all">' + T('empty.showAll') + '</button></div>'
+        : '<div class="empty"><p class="t-h3">' + T('empty.none') + '</p><button class="btn btn--ghost btn--sm" type="button" data-filter-go="all">' + T('empty.showAll') + '</button></div>';
       return;
     }
     grid.innerHTML = list.map(function (t) { return IK.tourCard(t); }).join('');
@@ -156,8 +159,8 @@
   set('[data-extras]', extras.map(function (x) {
     return '<li class="extra">' + thumb(x) +
       '<div><h3 class="t-h3">' + esc(x.title) + '</h3><p class="t-small t-muted">' + esc(x.time) + '</p>' +
-      '<p class="extra__price">' + IK.money(x.price) + ' за человека</p></div>' +
-      '<button class="btn btn--ghost btn--sm" type="button" data-book="extra:' + x.id + '">' + icon('plus', 'i--sm') + 'В заявку</button>' +
+      '<p class="extra__price">' + IK.money(x.price) + ' ' + T('extra.perPerson') + '</p></div>' +
+      '<button class="btn btn--ghost btn--sm" type="button" data-book="extra:' + x.id + '">' + icon('plus', 'i--sm') + T('extra.add') + '</button>' +
       '</li>';
   }).join(''));
 
@@ -169,7 +172,7 @@
       '</h3><p class="t-small t-muted">' + esc(d[1]) + '</p></div></li>';
   }).join(''));
 
-  var MONTHS = ['Янв', 'Фев', 'Мар', 'Апр', 'Май', 'Июн', 'Июл', 'Авг', 'Сен', 'Окт', 'Ноя', 'Дек'];
+  var MONTHS = T('months');
   set('[data-season-bar]', P.season.months.map(function (s, i) {
     return '<li data-s="' + s + '" title="' + esc(P.season.legend[s]) + '">' + MONTHS[i] + '</li>';
   }).join(''));

@@ -119,8 +119,9 @@ body { transition: background-color var(--t-slow) var(--ease); }
   padding: var(--s-4) var(--s-5);
 }
 .chip-card--climate {
+  --water-img: url(../img/water.svg);
   top: var(--s-6); right: var(--s-6);
-  background: var(--climate-bg); color: var(--on-primary); border-color: transparent;
+  color: var(--on-primary);
   display: flex; gap: var(--s-3); align-items: center;
 }
 .chip-card--climate .wx { --wx-size: 52px; margin: -8px -2px -8px -6px; }
@@ -229,3 +230,12 @@ body { transition: background-color var(--t-slow) var(--ease); }
   .pick__meta, .pick__soon { grid-column: 2; grid-row: 2; align-self: start; justify-self: end; color: var(--primary-deep); }
   .pick__soon { font-size: 10.5px; }
 }
+
+/* переключатель языка в шапке */
+.header__lang { margin-left: calc(-1 * var(--s-4)); }
+@media (max-width: 860px) {
+  .header__lang { margin-left: auto; }
+}
+
+/* стеклянный чип погоды: фон из .glass-water, а не общий фон .chip-card */
+.chip-card.glass-water { background: var(--glass-bg); border-color: rgba(255, 255, 255, .3); }
