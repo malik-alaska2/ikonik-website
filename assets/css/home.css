@@ -72,6 +72,7 @@ body { transition: background-color var(--t-slow) var(--ease); }
   box-shadow: inset 0 1px 0 rgba(255,255,255,.25);
 }
 .pick__swatch .i { font-size: 22px; }
+.pick__img { display: none; }
 .pick__name { display: block; font-size: 17px; font-weight: 800; line-height: 1.25; }
 .pick__countries { display: block; font-size: 13px; color: var(--ink-muted); }
 .pick__meta { font-size: 13px; font-weight: 700; color: var(--ink-muted); white-space: nowrap; }
@@ -141,14 +142,10 @@ body { transition: background-color var(--t-slow) var(--ease); }
   .hero { padding-top: var(--s-8); }
   .hero__stage { aspect-ratio: 1 / 1; }
   .hero__arts { inset: 56px 0 0; }
-  .hero__art { width: 128%; }
   .chip-card { padding: var(--s-3) var(--s-4); }
   .chip-card--climate { top: var(--s-3); right: var(--s-3); }
   .chip-card--climate b { font-size: 22px; }
   .chip-card--price { left: var(--s-3); bottom: var(--s-3); }
-  .pick { grid-template-columns: 40px 1fr; }
-  .pick__swatch { width: 40px; height: 40px; }
-  .pick__meta, .pick__soon { grid-column: 2; justify-self: start; }
 }
 
 /* ---------- туры ---------- */
@@ -193,4 +190,42 @@ body { transition: background-color var(--t-slow) var(--ease); }
 .contact__link:hover { opacity: 1; text-decoration: underline; text-underline-offset: 3px; }
 @media (max-width: 760px) {
   .contact { grid-template-columns: 1fr; padding: var(--s-8) var(--s-6); }
+}
+
+/* ---------- телефон: регионы как карточки приложения ---------- */
+@media (max-width: 860px) {
+  .header__cta { display: none; }
+}
+@media (max-width: 720px) {
+  .hero { padding-block: var(--s-6) var(--s-8); }
+  .hero__grid { grid-template-areas: "text" "picker"; gap: var(--s-6); }
+  .hero__stage, .hero__go { display: none; }
+  .hero__lead { font-size: 16px; }
+
+  .picker {
+    display: flex; gap: var(--s-3);
+    overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain;
+    margin-inline: calc(-1 * var(--gutter)); padding: var(--s-1) var(--gutter) var(--s-4);
+    scroll-padding-inline: var(--gutter); scrollbar-width: none;
+  }
+  .picker::-webkit-scrollbar { display: none; }
+  .picker > li { flex: 0 0 78%; scroll-snap-align: start; display: flex; }
+  .pick, .pick[aria-pressed="true"] {
+    display: grid; grid-template-columns: 1fr auto; grid-template-rows: auto auto auto; gap: 2px var(--s-3);
+    align-content: start; padding: var(--s-3) var(--s-3) var(--s-4);
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--r-xl); box-shadow: var(--shadow-md), var(--highlight);
+  }
+  .pick__img {
+    display: block; grid-column: 1 / -1; width: 100%; aspect-ratio: 4 / 3; object-fit: contain;
+    margin-bottom: var(--s-3); padding: var(--s-2);
+    border-radius: var(--r-lg);
+    background: radial-gradient(80% 70% at 50% 40%, var(--surface-raised), transparent 75%), linear-gradient(170deg, var(--tint), var(--primary-soft));
+    filter: drop-shadow(0 10px 12px rgba(74, 52, 24, .16));
+  }
+  .pick__swatch { display: none; }
+  .pick > span:not([class]) { padding-left: var(--s-1); }
+  .pick__name { font-size: 18px; }
+  .pick__meta, .pick__soon { grid-column: 2; grid-row: 2; align-self: start; justify-self: end; color: var(--primary-deep); }
+  .pick__soon { font-size: 10.5px; }
 }

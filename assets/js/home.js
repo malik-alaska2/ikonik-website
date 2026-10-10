@@ -27,6 +27,7 @@
     var from = list.length ? Math.min.apply(null, list.map(function (t) { return t.price; })) : 0;
     return '<li data-theme="' + r.id + '">' +
       '<button class="pick" type="button" ' + (live ? 'data-region="' + r.id + '" aria-pressed="false"' : 'data-book="region:' + r.id + '"') + '>' +
+        (r.art ? '<img class="pick__img" src="' + r.art + '" alt="" loading="lazy" decoding="async">' : '') +
         '<span class="pick__swatch">' + icon(SWATCH[r.id] || 'globe') + '</span>' +
         '<span><span class="pick__name">' + esc(r.name) + '</span><span class="pick__countries">' + esc(r.countries) + '</span></span>' +
         (live ? '<span class="pick__meta">от ' + IK.money(from) + '</span>' : '<span class="pick__soon">Скоро, примем заявку</span>') +
@@ -71,7 +72,8 @@
     var b = e.target.closest('[data-region]');
     if (!b) return;
     var id = b.getAttribute('data-region');
-    if (id === current) { location.href = IK.region(id).url; return; }
+    // на телефоне карточка сразу открывает регион, на компьютере первый клик показывает превью
+    if (id === current || window.matchMedia('(max-width: 720px)').matches) { location.href = IK.region(id).url; return; }
     select(id);
   });
 
