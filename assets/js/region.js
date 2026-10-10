@@ -41,6 +41,23 @@
   }).join(''));
   $('[data-climate-months]').setAttribute('aria-label', C.aria);
 
+  // настоящая погода: текущая температура и прогноз на 5 дней (если сеть доступна)
+  if (window.IKLiveWeather) {
+    window.IKLiveWeather(REGION).then(function (w) {
+      if (!w) return;
+      set('[data-climate-icon]', window.IKWeather(w.type, 'wx--lg'));
+      text('[data-climate-now]', w.temp);
+      text('[data-climate-label]', w.place);
+      $('[data-climate-label]').title = w.condition;
+      set('[data-climate-months]', w.days.map(function (d, i) {
+        return '<li><span>' + esc(d.label) + '</span>' + window.IKWeather(d.type, '', i + 1) + '<b>' + d.max + '</b></li>';
+      }).join(''));
+      $('[data-climate-months]').setAttribute('aria-label', T('wx.forecast'));
+      $('[data-climate]').setAttribute('aria-label', w.place + ', ' + w.temp + ', ' + w.condition);
+      $('[data-climate]').classList.add('is-live');
+    });
+  }
+
   text('[data-tip-when]', P.tip.when);
   text('[data-tip-text]', P.tip.text);
   set('[data-tip-art]', IK.stubScene(REGION) + IK.photo('tips/' + REGION, 'tip__photo'));

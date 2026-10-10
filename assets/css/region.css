@@ -112,7 +112,8 @@ main, .footer { padding-left: var(--rail); }
 }
 .climate__now { display: flex; align-items: center; gap: var(--s-4); }
 .climate__now .wx { margin: -10px -4px -10px -8px; }
-.climate__label { opacity: .85; margin-top: 4px; }
+.climate__label { opacity: .85; margin-top: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.climate__now > div { min-width: 0; }
 .climate__months {
   display: grid; grid-template-columns: repeat(5, 1fr);
   margin: var(--s-5) 0 0; padding: var(--s-4) 0 0; list-style: none;
