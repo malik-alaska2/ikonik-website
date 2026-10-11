@@ -48,7 +48,6 @@
 /* ---------- стартовая страница ---------- */
 .gw { padding-block: var(--s-16) var(--s-24); }
 .gw__head { display: grid; gap: var(--s-4); max-width: 760px; margin-bottom: var(--s-12); }
-.gw__head .t-eyebrow { color: var(--gold); }
 .gw__lead { font-size: 18px; line-height: 1.5; color: var(--ink-muted); max-width: 56ch; }
 
 .dirs { display: grid; gap: var(--s-6); grid-template-columns: repeat(4, minmax(0, 1fr)); }

@@ -15,7 +15,6 @@ window.IKI18N.extend({
     'meta.construction.title': 'Строительный консалтинг в Турции | İKONİK',
     'meta.construction.desc': 'Техническая экспертиза, сметы и контроль затрат, тендеры, технадзор, контроль качества и сопровождение строительных договоров.',
 
-    'gw.eyebrow': 'İKONİK · Стамбул',
     'gw.title': 'Что вам нужно от İKONİK?',
     'gw.lead': 'Четыре направления одной компании. Выберите своё, и откроется отдельный сайт с услугами и контактами.',
     'gw.pickAria': 'Направления İKONİK',
@@ -111,7 +110,6 @@ window.IKI18N.extend({
     'meta.construction.title': 'Construction Consultancy in Turkey | İKONİK',
     'meta.construction.desc': 'Technical due diligence, cost estimates and control, tenders, site supervision, quality control and construction contract support.',
 
-    'gw.eyebrow': 'İKONİK · Istanbul',
     'gw.title': 'What do you need from İKONİK?',
     'gw.lead': 'Four lines of work, one company. Choose yours to open its own site with services and contacts.',
     'gw.pickAria': 'İKONİK services',
@@ -207,7 +205,6 @@ window.IKI18N.extend({
     'meta.construction.title': 'Türkiye’de İnşaat Danışmanlığı | İKONİK',
     'meta.construction.desc': 'Teknik inceleme, keşif ve maliyet kontrolü, ihaleler, yapı denetimi, kalite kontrol ve inşaat sözleşmesi desteği.',
 
-    'gw.eyebrow': 'İKONİK · İstanbul',
     'gw.title': 'İKONİK’ten neye ihtiyacınız var?',
     'gw.lead': 'Tek şirket, dört alan. Seçiminizi yapın; hizmetler ve iletişim bilgileriyle ayrı bir site açılacak.',
     'gw.pickAria': 'İKONİK hizmetleri',
@@ -303,7 +300,6 @@ window.IKI18N.extend({
     'meta.construction.title': 'Consulenza edile in Turchia | İKONİK',
     'meta.construction.desc': 'Due diligence tecnica, computi e controllo costi, gare d’appalto, direzione lavori, controllo qualità e supporto contrattuale.',
 
-    'gw.eyebrow': 'İKONİK · Istanbul',
     'gw.title': 'Di cosa hai bisogno da İKONİK?',
     'gw.lead': 'Quattro settori, un’unica azienda. Scegli il tuo: si aprirà un sito dedicato con servizi e contatti.',
     'gw.pickAria': 'Servizi İKONİK',
@@ -399,7 +395,6 @@ window.IKI18N.extend({
     'meta.construction.title': 'Bauberatung in der Türkei | İKONİK',
     'meta.construction.desc': 'Technische Due Diligence, Kostenschätzung und -kontrolle, Ausschreibungen, Bauüberwachung, Qualitätskontrolle und Vertragsbegleitung.',
 
-    'gw.eyebrow': 'İKONİK · Istanbul',
     'gw.title': 'Was brauchen Sie von İKONİK?',
     'gw.lead': 'Vier Bereiche, ein Unternehmen. Wählen Sie Ihren, und es öffnet sich eine eigene Seite mit Leistungen und Kontakten.',
     'gw.pickAria': 'Bereiche von İKONİK',
