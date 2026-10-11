@@ -63,6 +63,7 @@ window.IK_LANG_PACK = {
 
     'wx.today': 'Bugün',
     'wx.forecast': '5 günlük tahmin',
+    'wx.localTime': 'Yerel saat',
     'wx.c.clear': 'açık',
     'wx.c.partly': 'parçalı bulutlu',
     'wx.c.cloudy': 'bulutlu',

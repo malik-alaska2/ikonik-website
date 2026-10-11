@@ -119,7 +119,6 @@ body { transition: background-color var(--t-slow) var(--ease); }
   padding: var(--s-4) var(--s-5);
 }
 .chip-card--climate {
-  --water-img: url(../img/water.svg);
   top: var(--s-6); right: var(--s-6);
   color: var(--on-primary);
   display: flex; gap: var(--s-3); align-items: center;
@@ -238,4 +237,7 @@ body { transition: background-color var(--t-slow) var(--ease); }
 }
 
 /* стеклянный чип погоды: фон из .glass-water, а не общий фон .chip-card */
-.chip-card.glass-water { background: var(--glass-bg); border-color: rgba(255, 255, 255, .3); }
+.chip-card.glass-water { background: var(--glass-bg); border-color: rgba(255, 255, 255, .45); }
+
+/* чип погоды: время слева, погода справа */
+.chip-card__wx { display: flex; gap: var(--s-3); align-items: center; }
