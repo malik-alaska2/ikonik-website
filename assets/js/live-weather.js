@@ -1,6 +1,7 @@
 /* Живая погода региона: Open-Meteo (без ключа, CORS открыт).
    IKLiveWeather(regionId) -> Promise<{ temp, type, condition, place, days: [{ label, type, max }] }> или null.
-   Ответ кэшируется в sessionStorage на 30 минут. Без сети остаются климатические данные из data.js. */
+   Ответ кэшируется в sessionStorage на 30 минут. Без сети остаются климатические данные из data.js.
+   IKClock(el, regionId) — местное время региона в el, обновляется раз в 15 секунд. */
 
 (function () {
   var POINTS = {
@@ -9,6 +10,14 @@
     arabia: [25.2, 55.27],     // Дубай
     turkey: [38.64, 34.83],    // Каппадокия (Гёреме)
     europe: [43.77, 11.25]     // Флоренция
+  };
+  // часовой пояс той же точки
+  var ZONES = {
+    kenya: 'Africa/Nairobi',
+    tanzania: 'Africa/Dar_es_Salaam',
+    arabia: 'Asia/Dubai',
+    turkey: 'Europe/Istanbul',
+    europe: 'Europe/Rome'
   };
   var TTL = 30 * 60 * 1000;
 
@@ -60,5 +69,26 @@
     });
   }
 
+  function clock(el, id) {
+    var I = window.IKI18N;
+    clearInterval(el._clock);
+    if (!ZONES[id]) { el.hidden = true; return; }
+    var fmt;
+    try {
+      fmt = new Intl.DateTimeFormat(I.locale(), { hour: '2-digit', minute: '2-digit', hour12: false, timeZone: ZONES[id] });
+    } catch (e) { el.hidden = true; return; }
+    el.hidden = false;
+    el.innerHTML = '<b></b><span>' + I.t('wx.localTime') + '</span>';
+    var b = el.querySelector('b');
+    function tick() {
+      var now = new Date();
+      b.textContent = fmt.format(now);
+      b.setAttribute('datetime', now.toISOString());
+    }
+    tick();
+    el._clock = setInterval(tick, 15000);
+  }
+
   window.IKLiveWeather = live;
+  window.IKClock = clock;
 })();

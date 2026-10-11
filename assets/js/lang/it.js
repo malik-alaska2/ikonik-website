@@ -63,6 +63,7 @@ window.IK_LANG_PACK = {
 
     'wx.today': 'Oggi',
     'wx.forecast': 'Previsioni a 5 giorni',
+    'wx.localTime': 'Ora locale',
     'wx.c.clear': 'sereno',
     'wx.c.partly': 'poco nuvoloso',
     'wx.c.cloudy': 'nuvoloso',

@@ -42,6 +42,7 @@
   $('[data-climate-months]').setAttribute('aria-label', C.aria);
 
   // настоящая погода: текущая температура и прогноз на 5 дней (если сеть доступна)
+  if (window.IKClock) window.IKClock($('[data-clock]'), REGION);
   if (window.IKLiveWeather) {
     window.IKLiveWeather(REGION).then(function (w) {
       if (!w) return;

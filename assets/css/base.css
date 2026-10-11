@@ -513,42 +513,39 @@ ul { margin: 0; padding: 0; list-style: none; }
   100% { transform: none; }
 }
 
-/* ---------- стекло с водой: только карточки погоды ---------- */
+/* ---------- прозрачное стекло: карточки погоды ----------
+   Сквозь размытие видно то, что под карточкой; лёгкий оттенок темы держит белый текст читаемым. */
 .glass-water {
   position: relative; isolation: isolate; overflow: hidden;
   --glass-bg: linear-gradient(160deg,
-    color-mix(in srgb, var(--climate-bg) 68%, transparent),
-    color-mix(in srgb, var(--climate-bg) 88%, transparent));
+    color-mix(in srgb, var(--climate-bg) 34%, transparent),
+    color-mix(in srgb, var(--climate-bg) 52%, transparent));
   background: var(--glass-bg);
-  -webkit-backdrop-filter: blur(16px) saturate(1.5);
-          backdrop-filter: blur(16px) saturate(1.5);
-  border: 1px solid rgba(255, 255, 255, .3);
-  box-shadow: var(--shadow-lg), inset 0 1px 0 rgba(255, 255, 255, .4), inset 0 -1px 0 rgba(255, 255, 255, .1);
+  -webkit-backdrop-filter: blur(18px) saturate(1.6);
+          backdrop-filter: blur(18px) saturate(1.6);
+  border: 1px solid rgba(255, 255, 255, .45);
+  box-shadow: var(--shadow-lg), inset 0 1px 0 rgba(255, 255, 255, .55), inset 0 -1px 0 rgba(255, 255, 255, .15);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, .18);
 }
-/* блики воды (assets/img/water.svg переливается сам) */
-.glass-water::before {
-  content: ""; position: absolute; inset: -25%; z-index: -1; pointer-events: none;
-  background: var(--water-img) 0 0 / 100% 100%;
-  opacity: .2; mix-blend-mode: screen;
-}
-/* стеклянный отблеск сверху */
+/* стеклянный блик сверху */
 .glass-water::after {
   content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
   background:
-    radial-gradient(120% 70% at 15% -10%, rgba(255, 255, 255, .32), transparent 55%),
-    linear-gradient(180deg, rgba(255, 255, 255, .12), transparent 40%);
-}
-@media (prefers-reduced-motion: no-preference) {
-  .glass-water::before { animation: water-drift 26s ease-in-out infinite alternate; }
-}
-@keyframes water-drift {
-  from { transform: translate(-4%, -3%) rotate(0deg); }
-  to   { transform: translate(4%, 3%) rotate(2deg); }
+    radial-gradient(120% 70% at 15% -10%, rgba(255, 255, 255, .38), transparent 55%),
+    linear-gradient(180deg, rgba(255, 255, 255, .16), transparent 45%);
 }
 @media (prefers-reduced-transparency: reduce) {
   .glass-water { background: var(--climate-bg); -webkit-backdrop-filter: none; backdrop-filter: none; }
-  .glass-water::before { display: none; }
 }
+
+/* местное время слева в карточке погоды (IKClock, assets/js/live-weather.js) */
+.clock {
+  display: grid; gap: 4px; align-content: center; flex: none;
+  padding-right: var(--s-4); margin-right: var(--s-1);
+  border-right: 1px solid rgba(255, 255, 255, .35);
+  font-variant-numeric: tabular-nums;
+}
+.clock span { white-space: nowrap; }
 
 /* ---------- ровные карточки туров: одинаковая сетка и высота ---------- */
 .tour-grid { grid-auto-rows: 1fr; }

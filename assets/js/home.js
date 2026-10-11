@@ -43,12 +43,14 @@
 
   function renderChips(r) {
     var C = r.page.climate;
-    climate.innerHTML = window.IKWeather(C.icon || 'sun') + '<div><b>' + C.now + '</b><span>' + esc(r.page.tip.when) + '</span></div>';
+    climate.innerHTML = '<time class="clock" data-clock></time>' +
+      '<div class="chip-card__wx">' + window.IKWeather(C.icon || 'sun') + '<div><b>' + C.now + '</b><span>' + esc(r.page.tip.when) + '</span></div></div>';
+    if (window.IKClock) window.IKClock(climate.querySelector('[data-clock]'), r.id);
     // настоящая погода выбранного региона (если сеть доступна)
     if (window.IKLiveWeather) {
       window.IKLiveWeather(r.id).then(function (w) {
         if (!w || (current || D.regions[0].id) !== r.id) return;
-        climate.innerHTML = window.IKWeather(w.type) + '<div><b>' + w.temp + '</b><span title="' + esc(w.condition) + '">' + esc(w.place) + '</span></div>';
+        climate.querySelector('.chip-card__wx').innerHTML = window.IKWeather(w.type) + '<div><b>' + w.temp + '</b><span title="' + esc(w.condition) + '">' + esc(w.place) + '</span></div>';
       });
     }
     var list = toursOf(r.id);

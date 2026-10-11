@@ -106,14 +106,23 @@ main, .footer { padding-left: var(--rail); }
 
 /* ---------- climate card ---------- */
 .climate {
-  --water-img: url(../img/water.svg);
   color: var(--on-primary);
   padding: var(--s-5) var(--s-6);
 }
 .climate__now { display: flex; align-items: center; gap: var(--s-4); }
 .climate__now .wx { margin: -10px -4px -10px -8px; }
-.climate__label { opacity: .85; margin-top: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.climate__now:has(.clock:not([hidden])) { gap: var(--s-3); }
+.climate__now:has(.clock:not([hidden])) .t-stat { font-size: 32px; }
+.climate__now:has(.clock:not([hidden])) .climate__label {
+  font-size: 13px; line-height: 1.25;
+  display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; line-clamp: 2; overflow: hidden;
+}
+.climate__now:has(.clock:not([hidden])) .wx { --wx-size: 56px; margin: -8px -6px -8px -6px; }
+.climate__label { opacity: .85; margin-top: 4px; line-height: 1.3; }
 .climate__now > div { min-width: 0; }
+.climate .clock { padding-right: var(--s-3); margin-right: 0; }
+.climate .clock b { font-size: 24px; font-weight: 600; line-height: 1; letter-spacing: -0.02em; }
+.climate .clock span { font-size: 11px; opacity: .85; }
 .climate__months {
   display: grid; grid-template-columns: repeat(5, 1fr);
   margin: var(--s-5) 0 0; padding: var(--s-4) 0 0; list-style: none;
