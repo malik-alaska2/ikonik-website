@@ -627,6 +627,8 @@ ul { margin: 0; padding: 0; list-style: none; }
 .footer__line .i { margin-top: 2px; color: var(--primary); }
 .footer__line:hover { color: var(--ink); }
 .footer__copy { grid-column: 1 / -1; padding-top: var(--s-6); border-top: 1px solid var(--border); }
+.footer__credit { text-decoration: underline; text-underline-offset: 2px; }
+.footer__credit:hover { color: var(--ink); }
 @media (max-width: 900px) {
   .footer__inner { grid-template-columns: 1fr; gap: var(--s-6); }
   .footer__links { padding-top: 0; }

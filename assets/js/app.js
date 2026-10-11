@@ -353,6 +353,11 @@
   });
   document.querySelectorAll('[data-copyright]').forEach(function (el) {
     el.textContent = '© ' + new Date().getFullYear() + ' ' + co.name;
+    // погода MET Norway идёт по лицензии CC BY 4.0: указываем источник там, где она показана
+    if (window.IKLiveWeather) {
+      el.insertAdjacentHTML('beforeend', ' · <a class="footer__credit" href="https://www.met.no/en" target="_blank" rel="noopener">' +
+        esc(I.t('wx.credit')) + '</a> (<a class="footer__credit" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>)');
+    }
   });
 
   window.IK = {

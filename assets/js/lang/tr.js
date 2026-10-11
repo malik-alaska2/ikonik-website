@@ -76,6 +76,7 @@ window.IK_LANG_PACK = {
     'wx.at.arabia': 'Şu an Dubai’de',
     'wx.at.turkey': 'Şu an Kapadokya’da',
     'wx.at.europe': 'Şu an Floransa’da',
+    'wx.credit': 'Hava durumu: MET Norway',
 
     'meta.brand.title': 'İkonik Turizm: Afrika safarisi, Arabistan çölleri, Türkiye ve Avrupa',
     'meta.brand.desc': 'İkonik Turizm: Kenya ve Tanzanya’da safari, BAE ve Umman’da çölde bir gece, Kapadokya’da balon, Avrupa’nın gölleri ve şehirleri. Bölgenizi seçin, talebinizi çevrimiçi gönderin.',

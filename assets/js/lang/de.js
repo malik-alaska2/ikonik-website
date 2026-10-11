@@ -76,6 +76,7 @@ window.IK_LANG_PACK = {
     'wx.at.arabia': 'Jetzt in Dubai',
     'wx.at.turkey': 'Jetzt in Kappadokien',
     'wx.at.europe': 'Jetzt in Florenz',
+    'wx.credit': 'Wetter: MET Norway',
 
     'meta.brand.title': 'İkonik Turizm: Safaris in Afrika, Wüsten Arabiens, Türkei und Europa',
     'meta.brand.desc': 'Reiseveranstalter İkonik Turizm: Safaris in Kenia und Tansania, eine Nacht in der Wüste in den VAE und Oman, Ballone über Kappadokien, Seen und Städte Europas. Reiseziel wählen und online anfragen.',

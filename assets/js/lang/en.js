@@ -76,6 +76,7 @@ window.IK_LANG_PACK = {
     'wx.at.arabia': 'Now in Dubai',
     'wx.at.turkey': 'Now in Cappadocia',
     'wx.at.europe': 'Now in Florence',
+    'wx.credit': 'Weather: MET Norway',
 
     'meta.brand.title': 'İkonik Turizm: African safaris, Arabian deserts, Turkey and Europe',
     'meta.brand.desc': 'Tour operator İkonik Turizm: safaris in Kenya and Tanzania, a night in the desert in the UAE and Oman, balloons over Cappadocia, lakes and cities of Europe. Choose a destination and send a request online.',

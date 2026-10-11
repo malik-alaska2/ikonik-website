@@ -76,6 +76,7 @@ window.IK_LANG_PACK = {
     'wx.at.arabia': 'Ora a Dubai',
     'wx.at.turkey': 'Ora in Cappadocia',
     'wx.at.europe': 'Ora a Firenze',
+    'wx.credit': 'Meteo: MET Norway',
 
     'meta.brand.title': 'İkonik Turizm: safari in Africa, deserti d’Arabia, Turchia ed Europa',
     'meta.brand.desc': 'Tour operator İkonik Turizm: safari in Kenya e Tanzania, una notte nel deserto negli Emirati e in Oman, mongolfiere in Cappadocia, laghi e città d’Europa. Scegli la destinazione e invia la richiesta online.',
