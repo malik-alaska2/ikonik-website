@@ -81,7 +81,7 @@
     business: ['buildings', 'scales', 'chart-line-up', 'presentation-chart', 'identification-card', 'handshake'],
     projects: ['magnifying-glass', 'calculator', 'compass-tool', 'stamp', 'kanban', 'key'],
     construction: ['clipboard-text', 'currency-circle-dollar', 'files', 'hard-hat', 'shield-check', 'scales'],
-    logistics: ['boat', 'stamp', 'warehouse', 'package', 'magnifying-glass', 'truck']
+    logistics: ['boat', 'stamp', 'storefront', 'package', 'magnifying-glass', 'truck']
   };
   var WHY = ['translate', 'map-pin', 'user-focus', 'receipt'];
   // «Для кого»: три аудитории каждого направления (тексты: <id>.for.<n>.t / .d)
@@ -89,10 +89,15 @@
     business: ['globe-hemisphere-west', 'storefront', 'chart-pie-slice'],
     projects: ['map-trifold', 'coins', 'bed'],
     construction: ['house-line', 'buildings', 'key'],
-    logistics: ['globe-hemisphere-west', 'storefront', 'crane-tower']
+    logistics: ['globe-hemisphere-west', 'shopping-cart', 'crane-tower']
   };
-  // частые вопросы: два своих у направления и два общих
-  function faqKeys(id) { return [id + '.faq.0', id + '.faq.1', 'svc.faq.price', 'svc.faq.lang']; }
+  // частые вопросы: свои у направления (обычно два, у логистики три) и два общих
+  var FAQ_OWN = { logistics: 3 };
+  function faqKeys(id) {
+    var keys = [];
+    for (var n = 0; n < (FAQ_OWN[id] || 2); n++) keys.push(id + '.faq.' + n);
+    return keys.concat('svc.faq.price', 'svc.faq.lang');
+  }
 
   // видео вместо фото в галерее: assets/video/svc/<имя>.mp4 (без звука, бесшовная петля), фото остаётся постером
   var VIDEO = { 'business-g0': true, 'projects-g0': true, 'construction-g0': true, 'logistics-g0': true };
