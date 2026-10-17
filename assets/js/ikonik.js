@@ -95,7 +95,7 @@
   function faqKeys(id) { return [id + '.faq.0', id + '.faq.1', 'svc.faq.price', 'svc.faq.lang']; }
 
   // видео вместо фото в галерее: assets/video/svc/<имя>.mp4 (без звука, бесшовная петля), фото остаётся постером
-  var VIDEO = { 'logistics-g0': true };
+  var VIDEO = { 'business-g0': true, 'projects-g0': true, 'construction-g0': true, 'logistics-g0': true };
 
   // фото направления: assets/img/svc/<id>-s<n>.webp (услуги, 960×640) и <id>-g<n>.webp (галерея, первое 1440×960)
   function photo(name, cls, alt) {
