@@ -234,3 +234,17 @@
   --art-b: #D9CFC4;
   --art-c: #F0B53C;
 }
+
+/* Логистика: охра контейнеров и портовых кранов, морской синий */
+[data-theme="logistics"] {
+  --bg: #F4F0E6;
+  --primary: #8A6210;
+  --primary-deep: #6C4C0B;
+  --primary-soft: #F0E3C2;
+  --accent: #1F4E8C;
+  --gold: #8A6210;
+  --tint: #F6EEDA;
+  --art-a: #A67614;
+  --art-b: #C9D6E6;
+  --art-c: #E8B33C;
+}

@@ -46,7 +46,7 @@
 }
 
 /* ---------- стартовая страница: архипелаг ----------
-   Четыре острова-диорамы на воде. Компьютер: свободная композиция в коробке с постоянными пропорциями,
+   Пять островов-диорам на воде. Компьютер: свободная композиция в коробке с постоянными пропорциями,
    планшет: две колонки со сдвигом, телефон: одна колонка, острова по очереди слева и справа. */
 .arch {
   position: relative; isolation: isolate; overflow: hidden;
@@ -136,13 +136,14 @@
   .arch__isles { position: absolute; inset: 0; }
   .isle { position: absolute; z-index: 1; }
   .isle.is-active { z-index: 3; }
-  .isle--tourism      { left: 45%;  top: 0;   width: 37%; }
-  .isle--business     { left: -1%;  top: 47%; width: 27%; }
-  .isle--projects     { left: 32%;  top: 55%; width: 28%; }
-  .isle--construction { left: 69%;  top: 52%; width: 26%; }
+  .isle--tourism      { left: 42%;  top: 0;   width: 33%; }
+  .isle--logistics    { left: 77%;  top: 9%;  width: 23%; }
+  .isle--business     { left: -1%;  top: 49%; width: 25%; }
+  .isle--projects     { left: 30%;  top: 57%; width: 26%; }
+  .isle--construction { left: 66%;  top: 51%; width: 25%; }
   /* подпись под островом немного уже картинки и прижата к её центру */
-  .isle__card { width: max-content; max-width: 360px; margin-left: 50%; transform: translateX(-50%); margin-top: -4%; }
-  .isle__name { white-space: nowrap; }
+  .isle__card { width: max-content; max-width: min(360px, 31cqw); margin-left: 50%; transform: translateX(-50%); margin-top: -4%; }
+  .isle__name { text-wrap: balance; }
   .isle--tourism .isle__card { margin-top: -6%; }
 }
 
@@ -178,6 +179,7 @@
   .isle:nth-child(2) .isle__float, .isle:nth-child(2) .isle__shadow { animation-duration: 6.8s; }
   .isle:nth-child(3) .isle__float, .isle:nth-child(3) .isle__shadow { animation-duration: 5.6s; }
   .isle:nth-child(4) .isle__float, .isle:nth-child(4) .isle__shadow { animation-duration: 7.2s; }
+  .isle:nth-child(5) .isle__float, .isle:nth-child(5) .isle__shadow { animation-duration: 6.4s; }
   @keyframes isle-bob { from { transform: translateY(-1.2%) rotate(-0.6deg); } to { transform: translateY(1.2%) rotate(0.5deg); } }
   @keyframes isle-shadow { from { transform: scale(.9); opacity: .75; } to { transform: scale(1.04); opacity: 1; } }
   .arch__sea::after { animation: sea-drift 14s linear infinite; }
@@ -220,7 +222,11 @@
 }
 .dnav__badge { --badge-size: 28px; border-radius: 30%; box-shadow: 0 2px 6px rgba(74, 52, 24, .14), inset 0 1px 0 rgba(255, 255, 255, .3); }
 .dnav:hover, .dnav:focus-visible { color: var(--primary-deep); background: color-mix(in srgb, var(--primary) 10%, transparent); }
-@media (max-width: 1240px) { .nav--dirs { margin-left: var(--s-4); padding-left: var(--s-4); gap: 2px; } }
+@media (max-width: 1240px) {
+  .nav--dirs { margin-left: var(--s-4); padding-left: var(--s-4); gap: 0; }
+  .dnav { padding: 4px 8px 4px 4px; gap: 6px; }
+  .dnav__badge { --badge-size: 24px; }
+}
 
 /* ---------- одна команда: текст слева, факты справа ---------- */
 .team { padding-block: var(--s-24) var(--s-16); }

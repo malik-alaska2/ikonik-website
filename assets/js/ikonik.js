@@ -23,7 +23,8 @@
     { id: 'tourism', url: 'tourism/index.html' },
     { id: 'business', url: 'business/index.html' },
     { id: 'projects', url: 'projects/index.html' },
-    { id: 'construction', url: 'construction/index.html' }
+    { id: 'construction', url: 'construction/index.html' },
+    { id: 'logistics', url: 'logistics/index.html' }
   ];
 
   // фирменные значки направлений: 32×32, двухцветные; currentColor + золотая деталь var(--badge-gold)
@@ -63,6 +64,15 @@
       '<path d="M24 7v8.5"/>' +
       '<path d="M20.5 18.5a3.5 3.5 0 0 1 7 0v1.2h-7Z" fill="' + G + '"/>' +
       '<path d="M19.5 19.7h9"/>' +
+      '</svg>',
+    logistics:
+      '<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">' +
+      '<rect x="2.5" y="9" width="19" height="13.5" rx="1.5" fill="currentColor" fill-opacity=".22"/>' +
+      '<path d="M7 12v7.5M11 12v7.5M15 12v7.5M19 12v7.5" stroke-width="1.3"/>' +
+      '<path d="M21.5 13.5h4l3.5 4.5v4.5h-7.5" fill="currentColor" fill-opacity=".35"/>' +
+      '<path d="M25 14v4h4"/>' +
+      '<circle cx="8" cy="25.5" r="2.4" fill="' + G + '"/>' +
+      '<circle cx="24.5" cy="25.5" r="2.4" fill="' + G + '"/>' +
       '</svg>'
   };
 
@@ -70,14 +80,16 @@
   var SERVICES = {
     business: ['buildings', 'scales', 'chart-line-up', 'presentation-chart', 'identification-card', 'handshake'],
     projects: ['magnifying-glass', 'calculator', 'compass-tool', 'stamp', 'kanban', 'key'],
-    construction: ['clipboard-text', 'currency-circle-dollar', 'files', 'hard-hat', 'shield-check', 'scales']
+    construction: ['clipboard-text', 'currency-circle-dollar', 'files', 'hard-hat', 'shield-check', 'scales'],
+    logistics: ['boat', 'stamp', 'warehouse', 'package', 'magnifying-glass', 'truck']
   };
   var WHY = ['translate', 'map-pin', 'user-focus', 'receipt'];
   // «Для кого»: три аудитории каждого направления (тексты: <id>.for.<n>.t / .d)
   var AUDIENCE = {
     business: ['globe-hemisphere-west', 'storefront', 'chart-pie-slice'],
     projects: ['map-trifold', 'coins', 'bed'],
-    construction: ['house-line', 'buildings', 'key']
+    construction: ['house-line', 'buildings', 'key'],
+    logistics: ['globe-hemisphere-west', 'storefront', 'crane-tower']
   };
   // частые вопросы: два своих у направления и два общих
   function faqKeys(id) { return [id + '.faq.0', id + '.faq.1', 'svc.faq.price', 'svc.faq.lang']; }
@@ -90,7 +102,7 @@
   }
 
   // диорама направления: assets/img/<id>-diorama.webp (прозрачный фон)
-  var ART_SIZE = { tourism: [1528, 1017], business: [1536, 1014], projects: [1515, 1024], construction: [1417, 1006] };
+  var ART_SIZE = { tourism: [1528, 1017], business: [1536, 1014], projects: [1515, 1024], construction: [1417, 1006], logistics: [1500, 990] };
   function diorama(id, cls, eager) {
     return '<img class="' + cls + '" src="' + BASE + 'assets/img/' + id + '-diorama.webp" alt="" width="' + ART_SIZE[id][0] +
       '" height="' + ART_SIZE[id][1] + '" decoding="async"' + (eager ? '' : ' loading="lazy"') + '>';
@@ -116,7 +128,7 @@
   /* ---------- стартовая страница: архипелаг из четырёх островов ----------
      Острова покачиваются на воде, слегка следуют за курсором (параллакс), при наведении
      поднимаются и окрашивают фон в цвет направления; по клику остров «приближается» и открывается сайт. */
-  var DEPTH = { tourism: 22, business: 12, projects: 16, construction: 14 };
+  var DEPTH = { tourism: 22, business: 12, projects: 16, construction: 14, logistics: 18 };
   var FACTS = ['map-pin', 'translate', 'user-focus'];
 
   function renderGateway() {
@@ -152,7 +164,7 @@
     var dnav = document.querySelector('[data-dir-nav]');
     if (dnav) {
       dnav.innerHTML = DIRS.map(function (d, i) {
-        return '<a class="nav__link dnav" href="' + BASE + d.url + '" data-dir="' + d.id + '" data-theme="' + d.id + '" data-nav-prio="' + (4 - i) + '">' +
+        return '<a class="nav__link dnav" href="' + BASE + d.url + '" data-dir="' + d.id + '" data-theme="' + d.id + '" data-nav-prio="' + (DIRS.length - i) + '">' +
           '<span class="badge dnav__badge" aria-hidden="true">' + DIR_ICON[d.id] + '</span><span>' + esc(T('nav.dir.' + d.id)) + '</span></a>';
       }).join('');
       if (window.IKFitNav) window.IKFitNav();
