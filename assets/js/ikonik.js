@@ -94,6 +94,9 @@
   // частые вопросы: два своих у направления и два общих
   function faqKeys(id) { return [id + '.faq.0', id + '.faq.1', 'svc.faq.price', 'svc.faq.lang']; }
 
+  // видео вместо фото в галерее: assets/video/svc/<имя>.mp4 (без звука, бесшовная петля), фото остаётся постером
+  var VIDEO = { 'logistics-g0': true };
+
   // фото направления: assets/img/svc/<id>-s<n>.webp (услуги, 960×640) и <id>-g<n>.webp (галерея, первое 1440×960)
   function photo(name, cls, alt) {
     var big = /-g0$/.test(name);
@@ -296,9 +299,15 @@
     if (gallery) {
       gallery.innerHTML = [0, 1, 2].map(function (n) {
         var cap = T(id + '.g.' + n);
-        return '<figure class="gal' + (n === 0 ? ' gal--big' : '') + '">' + photo(id + '-g' + n, 'gal__img', cap) +
+        var name = id + '-g' + n;
+        var media = VIDEO[name]
+          ? '<video class="gal__img" data-autoplay muted loop playsinline preload="none" aria-label="' + esc(cap) + '"' +
+              ' poster="' + BASE + 'assets/img/svc/' + name + '.webp" src="' + BASE + 'assets/video/svc/' + name + '.mp4"></video>'
+          : photo(name, 'gal__img', cap);
+        return '<figure class="gal' + (n === 0 ? ' gal--big' : '') + '">' + media +
           '<figcaption class="gal__cap">' + esc(cap) + '</figcaption></figure>';
       }).join('');
+      autoplayInView(gallery);
     }
 
     var aud = document.querySelector('[data-for]');
@@ -344,6 +353,24 @@
     });
 
     initForm(id, list);
+  }
+
+  // видео играет, только пока видно на экране; при «уменьшении движения» остаётся постер
+  function autoplayInView(root) {
+    var vids = [].slice.call(root.querySelectorAll('video[data-autoplay]'));
+    if (!vids.length || window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        var v = en.target;
+        if (en.isIntersecting) {
+          if (v.preload !== 'auto') v.preload = 'auto';
+          var p = v.play(); if (p && p.catch) p.catch(function () {});
+        } else {
+          v.pause();
+        }
+      });
+    }, { threshold: 0.25 });
+    vids.forEach(function (v) { io.observe(v); });
   }
 
   /* ---------- форма запроса ---------- */
