@@ -6,6 +6,7 @@
 window.IKI18N.extend({
   /* ===================== RU ===================== */
   ru: {
+    'svc.tab.process': 'Этапы', 'svc.tab.home': 'Главная',
     'meta.gateway.title': 'İKONİK: туризм, бизнес-консалтинг, девелопмент и строительный консалтинг',
     'meta.gateway.desc': 'İKONİK, Стамбул: туры и путешествия, бизнес-консалтинг в Турции, девелопмент проектов и строительный консалтинг. Выберите направление.',
     'meta.business.title': 'Бизнес-консалтинг в Турции | İKONİK',
@@ -151,6 +152,7 @@ window.IKI18N.extend({
 
   /* ===================== EN ===================== */
   en: {
+    'svc.tab.process': 'Process', 'svc.tab.home': 'Home',
     'meta.gateway.title': 'İKONİK: travel, business consultancy, project development and construction consultancy',
     'meta.gateway.desc': 'İKONİK, Istanbul: tours and travel, business consultancy in Turkey, project development and construction consultancy. Choose a service.',
     'meta.business.title': 'Business Consultancy in Turkey | İKONİK',
@@ -296,6 +298,7 @@ window.IKI18N.extend({
 
   /* ===================== TR ===================== */
   tr: {
+    'svc.tab.process': 'Süreç', 'svc.tab.home': 'Ana sayfa',
     'meta.gateway.title': 'İKONİK: turizm, iş danışmanlığı, proje geliştirme ve inşaat danışmanlığı',
     'meta.gateway.desc': 'İKONİK, İstanbul: tur ve seyahat, Türkiye’de iş danışmanlığı, proje geliştirme ve inşaat danışmanlığı. Hizmetinizi seçin.',
     'meta.business.title': 'Türkiye’de İş Danışmanlığı | İKONİK',
@@ -441,6 +444,7 @@ window.IKI18N.extend({
 
   /* ===================== IT ===================== */
   it: {
+    'svc.tab.process': 'Fasi', 'svc.tab.home': 'Home',
     'meta.gateway.title': 'İKONİK: viaggi, consulenza aziendale, sviluppo progetti e consulenza edile',
     'meta.gateway.desc': 'İKONİK, Istanbul: tour e viaggi, consulenza aziendale in Turchia, sviluppo progetti e consulenza edile. Scegli il servizio.',
     'meta.business.title': 'Consulenza aziendale in Turchia | İKONİK',
@@ -586,6 +590,7 @@ window.IKI18N.extend({
 
   /* ===================== DE ===================== */
   de: {
+    'svc.tab.process': 'Ablauf', 'svc.tab.home': 'Start',
     'meta.gateway.title': 'İKONİK: Reisen, Unternehmensberatung, Projektentwicklung und Bauberatung',
     'meta.gateway.desc': 'İKONİK, Istanbul: Touren und Reisen, Unternehmensberatung in der Türkei, Projektentwicklung und Bauberatung. Wählen Sie Ihren Bereich.',
     'meta.business.title': 'Unternehmensberatung in der Türkei | İKONİK',
@@ -605,9 +610,9 @@ window.IKI18N.extend({
 
     'dir.tourism.name': 'Tourismus & Reisen',
     'dir.tourism.text': 'Safaris in Kenia und Tansania, Wüsten Arabiens, Türkei und Europa. Touren zu Ihren Terminen.',
-    'dir.business.name': 'Unternehmensberatung',
+    'dir.business.name': 'Unternehmens­beratung',
     'dir.business.text': 'Firmengründung in der Türkei, Behördengänge, Steuern, Markteintritt und Investitionen.',
-    'dir.projects.name': 'Projektentwicklung',
+    'dir.projects.name': 'Projekt­entwicklung',
     'dir.projects.text': 'Wohn-, Hotel- und Gewerbeprojekte: vom Grundstück und der Kalkulation bis zur Übergabe.',
     'dir.construction.name': 'Bauberatung',
     'dir.construction.text': 'Kostenschätzung, Ausschreibungen, Bauüberwachung und Qualitätskontrolle.',
@@ -643,7 +648,7 @@ window.IKI18N.extend({
     'svc.wa.request': 'Anfrage', 'svc.wa.service': 'Leistung',
 
     'business.eyebrow': 'Business Consultancy',
-    'business.title': 'Unternehmensberatung in der Türkei',
+    'business.title': 'Unternehmens­beratung in der Türkei',
     'business.lead': 'Wir helfen Ihnen, ein Unternehmen in der Türkei zu gründen und auszubauen: Firmengründung, Unterlagen, Steuern, Partner und Investitionen.',
     'business.ctaTitle': 'Planen Sie ein Geschäft in der Türkei?',
     'business.ctaText': 'Erzählen Sie uns, was Sie machen und was Sie vorhaben. Wir sagen Ihnen, wo Sie anfangen, welche Unterlagen nötig sind und was es kostet.',
@@ -655,7 +660,7 @@ window.IKI18N.extend({
     'business.s.5.t': 'Investitionen und Transaktionen', 'business.s.5.d': 'Suche nach Investitionsobjekten, Prüfung von Partnern, Begleitung von Verhandlung und Abschluss.',
 
     'projects.eyebrow': 'Project Development',
-    'projects.title': 'Projektentwicklung von der Idee bis zur Übergabe',
+    'projects.title': 'Projekt­entwicklung von der Idee bis zur Übergabe',
     'projects.lead': 'Wohn-, Hotel- und Gewerbeprojekte in der Türkei: Wir finden das Grundstück, rechnen die Wirtschaftlichkeit, holen Genehmigungen ein und steuern die Umsetzung.',
     'projects.ctaTitle': 'Sie haben eine Projektidee oder ein Grundstück?',
     'projects.ctaText': 'Erzählen Sie uns, was und wo Sie bauen möchten. Wir bewerten das Potenzial und schlagen den nächsten Schritt vor.',

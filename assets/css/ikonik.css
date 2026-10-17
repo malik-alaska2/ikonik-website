@@ -73,7 +73,7 @@
 }
 .dir__img { width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 12px 14px rgba(74, 52, 24, .18)); }
 .dir__badge { position: absolute; left: var(--s-4); bottom: -24px; }
-.dir__body { display: grid; gap: var(--s-2); padding: calc(var(--s-8) + var(--s-3)) var(--s-3) var(--s-3); flex: 1; align-content: start; }
+.dir__body { display: grid; gap: var(--s-2); padding: calc(var(--s-8) + var(--s-3)) var(--s-3) var(--s-3); flex: 1; min-width: 0; align-content: start; }
 .dir__name { font-size: 20px; font-weight: 800; line-height: 1.2; letter-spacing: -0.01em; }
 .dir__text { font-size: 14px; line-height: 1.5; color: var(--ink-muted); }
 .dir__go {
@@ -152,7 +152,7 @@
 }
 
 @media (max-width: 1024px) {
-  .svc-hero__grid { grid-template-columns: 1fr; gap: var(--s-8); }
+  .svc-hero__grid { grid-template-columns: minmax(0, 1fr); gap: var(--s-8); }
   .svc-stage { aspect-ratio: 16 / 10; }
 }
 @media (max-width: 640px) {
@@ -204,6 +204,11 @@
   padding: 8px 14px; border-radius: var(--r-full);
   background: rgba(28, 22, 16, .58); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
   color: #FFF8EE; font-size: 14px; font-weight: 700; line-height: 1.2;
+}
+@media (max-width: 1024px) and (min-width: 761px) {
+  /* на планшете большое фото сверху, два под ним */
+  .gallery { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .gal--big { grid-column: 1 / -1; grid-row: auto; }
 }
 @media (max-width: 760px) {
   /* на телефоне фото листаются вбок */
@@ -313,4 +318,11 @@
 .header--svc .header__lang { margin-left: 0; }
 @media (max-width: 860px) {
   .header--svc .header__lang { margin-left: auto; }
+}
+@media (max-width: 520px) {
+  .header--svc .header__inner { gap: var(--s-3); }
+}
+/* на самых узких экранах кнопка «Все направления» есть только внизу (Главная), в шапке не помещается */
+@media (max-width: 400px) {
+  .header--svc .back { display: none; }
 }

@@ -340,6 +340,35 @@
 
   I.apply(document);
 
+  /* ---------- шапка: если меню не помещается, прячем наименее важные пункты ----------
+     порядок: data-nav-prio (1 прячем первым), без него — с конца; на этих языках длина пунктов разная */
+  var headInner = document.querySelector('.header__inner');
+  var headNav = headInner && headInner.querySelector('.nav');
+  if (headNav) {
+    var navLinks = [].slice.call(headNav.querySelectorAll('.nav__link'));
+    var tuckOrder = navLinks.map(function (a, i) { return { a: a, p: +(a.getAttribute('data-nav-prio') || 100 - i) }; })
+      .sort(function (x, y) { return x.p - y.p; });
+    var headOverflows = function () {
+      var limit = headInner.getBoundingClientRect().right - parseFloat(getComputedStyle(headInner).paddingRight) + 0.5;
+      return [].some.call(headInner.children, function (el) {
+        return el.offsetWidth && el.getBoundingClientRect().right > limit;
+      });
+    };
+    var fitNav = function () {
+      navLinks.forEach(function (a) { a.classList.remove('is-tucked'); });
+      if (getComputedStyle(headNav).display === 'none') return;
+      for (var k = 0; k < tuckOrder.length - 1 && headOverflows(); k++) tuckOrder[k].a.classList.add('is-tucked');
+    };
+    var fitQueued = false;
+    window.addEventListener('resize', function () {
+      if (fitQueued) return;
+      fitQueued = true;
+      requestAnimationFrame(function () { fitQueued = false; fitNav(); });
+    });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitNav);
+    fitNav();
+  }
+
   /* ---------- реквизиты компании в подвале ---------- */
   var co = D.config.company;
   document.querySelectorAll('[data-company]').forEach(function (box) {

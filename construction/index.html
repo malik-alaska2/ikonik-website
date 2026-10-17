@@ -39,11 +39,11 @@
       </a>
       <a class="back" href="../index.html" aria-label="İKONİK, все направления" data-i18n-aria="svc.backAria"><i data-icon="squares-four" class="i--sm"></i><span data-i18n="svc.allServices">Все направления</span></a>
       <nav class="nav" aria-label="Основная навигация" data-i18n-aria="nav.main">
-        <a class="nav__link" href="#services" data-i18n="svc.nav.services">Услуги</a>
-        <a class="nav__link" href="#process" data-i18n="svc.nav.process">Как работаем</a>
-        <a class="nav__link" href="#why" data-i18n="svc.nav.why">Почему мы</a>
-        <a class="nav__link" href="#faq" data-i18n="svc.nav.faq">Вопросы</a>
-        <a class="nav__link" href="#contact" data-i18n="svc.nav.contact">Контакты</a>
+        <a class="nav__link" href="#services" data-nav-prio="4" data-i18n="svc.nav.services">Услуги</a>
+        <a class="nav__link" href="#process" data-nav-prio="2" data-i18n="svc.nav.process">Как работаем</a>
+        <a class="nav__link" href="#why" data-nav-prio="1" data-i18n="svc.nav.why">Почему мы</a>
+        <a class="nav__link" href="#faq" data-nav-prio="3" data-i18n="svc.nav.faq">Вопросы</a>
+        <a class="nav__link" href="#contact" data-nav-prio="5" data-i18n="svc.nav.contact">Контакты</a>
       </nav>
       <div class="header__lang" data-lang-switch></div>
       <a class="btn btn--primary btn--sm header__cta" href="#contact" data-i18n="svc.cta">Получить консультацию</a>
@@ -193,10 +193,10 @@
 
   <nav class="tabbar" aria-label="Быстрая навигация" data-i18n-aria="nav.quick">
     <a class="tabbar__item" href="#services"><i data-icon="hard-hat"></i><span data-i18n="svc.nav.services">Услуги</span></a>
-    <a class="tabbar__item" href="#process"><i data-icon="route"></i><span data-i18n="svc.nav.process">Как работаем</span></a>
+    <a class="tabbar__item" href="#process"><i data-icon="route"></i><span data-i18n="svc.tab.process">Этапы</span></a>
     <a class="tabbar__main" href="#contact" aria-label="Получить консультацию" data-i18n-aria="svc.cta"><i data-icon="paper-plane-tilt"></i></a>
     <a class="tabbar__item" href="#contact"><i data-icon="phone"></i><span data-i18n="svc.nav.contact">Контакты</span></a>
-    <a class="tabbar__item" href="../index.html"><i data-icon="squares-four"></i><span data-i18n="svc.allServices">Все направления</span></a>
+    <a class="tabbar__item" href="../index.html" aria-label="Все направления" data-i18n-aria="svc.allServices"><i data-icon="squares-four"></i><span data-i18n="svc.tab.home">Главная</span></a>
   </nav>
 
   <script src="../assets/js/data.js"></script>

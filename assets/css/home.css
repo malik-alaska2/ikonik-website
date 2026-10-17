@@ -24,8 +24,9 @@ body { transition: background-color var(--t-slow) var(--ease); }
 }
 .header__inner { height: 72px; display: flex; align-items: center; gap: var(--s-8); }
 .nav { display: flex; gap: var(--s-6); margin-left: auto; }
-.nav__link { font-size: 15px; font-weight: 700; color: var(--ink-muted); }
+.nav__link { font-size: 15px; font-weight: 700; color: var(--ink-muted); white-space: nowrap; }
 .nav__link:hover { color: var(--primary); }
+.nav__link.is-tucked { display: none; }
 
 @media (max-width: 860px) {
   .nav { display: none; }
