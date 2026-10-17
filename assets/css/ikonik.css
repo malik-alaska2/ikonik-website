@@ -42,65 +42,190 @@
 .badge--sm { --badge-size: 40px; }
 @media (prefers-reduced-motion: no-preference) {
   .badge svg { transition: transform var(--t-base) var(--ease); }
-  .dir:hover .badge svg { transform: translateY(-2px) rotate(-4deg); }
+  .isle.is-active .badge svg { transform: translateY(-2px) rotate(-4deg); }
 }
 
-/* ---------- стартовая страница ---------- */
-.gw { padding-block: var(--s-16) var(--s-24); }
-.gw__head { display: grid; gap: var(--s-4); max-width: 760px; margin-bottom: var(--s-12); }
-.gw__lead { font-size: 18px; line-height: 1.5; color: var(--ink-muted); max-width: 56ch; }
-
-.dirs { display: grid; gap: var(--s-6); grid-template-columns: repeat(4, minmax(0, 1fr)); }
-.dirs > li { display: flex; }
-@media (max-width: 1140px) { .dirs { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 600px) { .dirs { grid-template-columns: 1fr; gap: var(--s-4); } }
-
-.dir {
-  width: 100%; display: flex; flex-direction: column;
-  background: var(--surface); border: 1px solid var(--border);
-  border-radius: var(--r-xl); box-shadow: var(--shadow-md), var(--highlight);
-  padding: var(--s-3);
-  transition: transform var(--t-base) var(--ease), box-shadow var(--t-base) var(--ease);
+/* ---------- стартовая страница: архипелаг ----------
+   Четыре острова-диорамы на воде. Компьютер: свободная композиция в коробке с постоянными пропорциями,
+   планшет: две колонки со сдвигом, телефон: одна колонка, острова по очереди слева и справа. */
+.arch {
+  position: relative; isolation: isolate; overflow: hidden;
+  min-height: calc(100dvh - 72px);
+  display: grid; align-items: center;
+  padding-block: var(--s-6) var(--s-12);
+  --px: 0; --py: 0; --wx: 50%; --wy: 45%;
 }
-.dir:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg), var(--highlight); }
-.dir__art {
-  position: relative; display: grid; place-items: center;
-  aspect-ratio: 4 / 3; padding: var(--s-4) var(--s-4) var(--s-6);
-  border-radius: var(--r-lg);
+/* море у горизонта: мягкий бирюзовый низ и медленная рябь */
+.arch__sea {
+  position: absolute; inset: 0; z-index: -2; pointer-events: none;
   background:
-    radial-gradient(70% 60% at 50% 40%, var(--surface-raised) 0%, transparent 72%),
-    linear-gradient(170deg, var(--tint), var(--primary-soft));
+    radial-gradient(60% 45% at 18% 12%, var(--surface-raised) 0%, transparent 70%),
+    linear-gradient(180deg, transparent 38%, rgba(126, 190, 196, .16) 62%, rgba(92, 168, 178, .28) 100%);
 }
-.dir__img { width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 12px 14px rgba(74, 52, 24, .18)); }
-.dir__badge { position: absolute; left: var(--s-4); bottom: -24px; }
-.dir__body { display: grid; gap: var(--s-2); padding: calc(var(--s-8) + var(--s-3)) var(--s-3) var(--s-3); flex: 1; min-width: 0; align-content: start; }
-.dir__name { font-size: 20px; font-weight: 800; line-height: 1.2; letter-spacing: -0.01em; }
-.dir__text { font-size: 14px; line-height: 1.5; color: var(--ink-muted); }
-.dir__go {
-  margin-top: auto; padding-top: var(--s-3);
-  display: inline-flex; align-items: center; gap: 6px;
-  font-size: 14px; font-weight: 800; color: var(--primary);
+.arch__sea::after {
+  content: ""; position: absolute; inset: 52% 0 0;
+  background:
+    repeating-linear-gradient(179deg, transparent 0 26px, rgba(255, 255, 255, .5) 26px 27.5px, transparent 27.5px 54px),
+    repeating-linear-gradient(181deg, transparent 0 41px, rgba(255, 255, 255, .28) 41px 42px, transparent 42px 83px);
+  -webkit-mask-image: linear-gradient(180deg, transparent, #000 40%);
+  mask-image: linear-gradient(180deg, transparent, #000 40%);
+  opacity: .7;
 }
-.dir__go .i { transition: transform var(--t-base) var(--ease); }
-.dir:hover .dir__go .i { transform: translateX(4px); }
+/* цвет активного направления разливается от курсора */
+.arch__wash {
+  position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: radial-gradient(60% 65% at var(--wx) var(--wy), color-mix(in srgb, var(--wash, #F5EDE2) 34%, transparent), transparent 74%);
+  opacity: 0; transition: opacity 600ms var(--ease);
+}
+.arch.has-active .arch__wash { opacity: 1; }
+.arch.is-leaving .arch__wash {
+  opacity: 1; transition-duration: 480ms;
+  background: color-mix(in srgb, var(--wash, #F5EDE2) 30%, var(--bg));
+}
 
+.arch__box { position: relative; container-type: inline-size; }
+.arch__head { display: grid; gap: var(--s-4); max-width: 34rem; }
+.arch__title { font-size: clamp(34px, 5.3cqw, 66px); line-height: 1.02; text-wrap: balance; }
+.arch__lead { font-size: clamp(15px, 1.5cqw, 19px); line-height: 1.5; color: var(--ink-muted); max-width: 42ch; }
+
+.arch__isles { position: relative; }
+.isle__link { display: block; color: inherit; }
+.isle__body { position: relative; display: block; }
+.isle__lift, .isle__float { display: block; }
+.isle__img { display: block; width: 100%; height: auto; }
+/* тень острова на воде */
+.isle__shadow {
+  position: absolute; left: 14%; right: 14%; bottom: 2%; height: 10%; z-index: -1;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(52, 78, 74, .30), transparent);
+  filter: blur(6px);
+}
+
+/* подпись острова */
+.isle__card {
+  position: relative;
+  display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 4px var(--s-3);
+  margin-top: var(--s-2); padding: 8px 10px 8px 8px;
+  border-radius: var(--r-lg); background: color-mix(in srgb, var(--surface) 82%, transparent);
+  border: 1px solid var(--border); box-shadow: var(--shadow-sm), var(--highlight);
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  transition: box-shadow var(--t-base) var(--ease), background-color var(--t-base) var(--ease);
+}
+.isle__badge { --badge-size: 38px; }
+.isle__name { font-size: clamp(15px, 1.45cqw, 19px); font-weight: 800; line-height: 1.2; letter-spacing: -0.01em; }
+.isle__go {
+  width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center;
+  background: var(--primary-soft); color: var(--primary-deep);
+  transition: transform var(--t-base) var(--ease), background-color var(--t-base) var(--ease), color var(--t-base) var(--ease);
+}
+/* описание раскрывается у активного острова; ширину карточки задаёт название, а не описание */
+.isle__more { grid-column: 1 / -1; display: grid; grid-template-rows: 0fr; width: 0; min-width: 100%; transition: grid-template-rows 420ms var(--ease); }
+.isle__more > span { overflow: hidden; }
+.isle__text { display: block; padding: 2px 4px 4px; font-size: 14px; line-height: 1.5; color: var(--ink-muted); }
+.isle.is-active .isle__more { grid-template-rows: 1fr; }
+.isle.is-active .isle__card { box-shadow: var(--shadow-lg), var(--highlight); background: var(--surface); }
+.isle.is-active .isle__go { background: var(--primary); color: var(--on-primary); transform: translateX(3px); }
+.isle__link:focus-visible { outline: none; }
+.isle__link:focus-visible .isle__card { outline: 2px solid var(--primary); outline-offset: 3px; }
+@media (hover: none) { .isle .isle__more { grid-template-rows: 1fr; } }
+
+/* ----- компьютер: свободная композиция ----- */
+@media (min-width: 1101px) {
+  .arch__box { aspect-ratio: 1.62; width: min(100%, calc((100dvh - 150px) * 1.62)); margin-inline: auto; }
+  .arch__head { position: absolute; left: 0; top: 7%; width: 42%; z-index: 2; }
+  .arch__isles { position: absolute; inset: 0; }
+  .isle { position: absolute; z-index: 1; }
+  .isle.is-active { z-index: 3; }
+  .isle--tourism      { left: 45%;  top: 0;   width: 37%; }
+  .isle--business     { left: -1%;  top: 47%; width: 27%; }
+  .isle--projects     { left: 32%;  top: 55%; width: 28%; }
+  .isle--construction { left: 69%;  top: 52%; width: 26%; }
+  /* подпись под островом немного уже картинки и прижата к её центру */
+  .isle__card { width: max-content; max-width: 360px; margin-left: 50%; transform: translateX(-50%); margin-top: -4%; }
+  .isle__name { white-space: nowrap; }
+  .isle--tourism .isle__card { margin-top: -6%; }
+}
+
+/* ----- планшет: две колонки, правая сдвинута вниз ----- */
+@media (min-width: 761px) and (max-width: 1100px) {
+  .arch { min-height: 0; padding-block: var(--s-12) var(--s-16); }
+  .arch__head { margin-bottom: var(--s-8); }
+  .arch__title { font-size: clamp(40px, 6cqw, 60px); }
+  .arch__isles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-6) var(--s-8); }
+  .isle:nth-child(even) { margin-top: var(--s-16); margin-bottom: calc(-1 * var(--s-16)); }
+  .isle__card { margin-top: -2%; }
+}
+
+/* ----- телефон: острова друг под другом, по очереди слева и справа ----- */
+@media (max-width: 760px) {
+  .arch { min-height: 0; padding-block: var(--s-8) var(--s-12); }
+  .arch__title { font-size: clamp(34px, 10cqw, 44px); }
+  .arch__lead { font-size: 16px; }
+  .arch__head { margin-bottom: var(--s-6); }
+  .arch__isles { display: grid; gap: var(--s-8); }
+  .isle__body { width: 88%; }
+  .isle:nth-child(even) .isle__body { margin-left: auto; }
+  .isle__card { margin-top: -3%; }
+  .arch__sea { background: linear-gradient(180deg, transparent 10%, rgba(126, 190, 196, .14) 45%, rgba(92, 168, 178, .22) 100%); }
+  .arch__sea::after { inset: 20% 0 0; }
+}
+
+/* ----- движение ----- */
 @media (prefers-reduced-motion: no-preference) {
-  .dir { animation: dir-in 600ms var(--ease) both; animation-delay: calc(var(--i, 0) * 80ms + 100ms); }
-  @keyframes dir-in { from { opacity: 0; transform: translateY(16px); } }
+  /* покачивание на воде: у каждого острова свой ритм */
+  .isle__float { animation: isle-bob 6s ease-in-out infinite alternate; animation-delay: calc(var(--i) * -1.7s); }
+  .isle__shadow { animation: isle-shadow 6s ease-in-out infinite alternate; animation-delay: calc(var(--i) * -1.7s); }
+  .isle:nth-child(2) .isle__float, .isle:nth-child(2) .isle__shadow { animation-duration: 6.8s; }
+  .isle:nth-child(3) .isle__float, .isle:nth-child(3) .isle__shadow { animation-duration: 5.6s; }
+  .isle:nth-child(4) .isle__float, .isle:nth-child(4) .isle__shadow { animation-duration: 7.2s; }
+  @keyframes isle-bob { from { transform: translateY(-1.2%) rotate(-0.6deg); } to { transform: translateY(1.2%) rotate(0.5deg); } }
+  @keyframes isle-shadow { from { transform: scale(.9); opacity: .75; } to { transform: scale(1.04); opacity: 1; } }
+  .arch__sea::after { animation: sea-drift 14s linear infinite; }
+  @keyframes sea-drift { to { background-position: 0 92px; } }
+
+  /* параллакс и подъём при наведении */
+  .isle__body { transform: translate3d(calc(var(--px) * var(--d) * 1px), calc(var(--py) * var(--d) * 0.6px), 0); transition: transform 700ms cubic-bezier(.16, 1, .3, 1); }
+  .isle__lift { transition: transform 600ms cubic-bezier(.16, 1, .3, 1), opacity 500ms var(--ease), filter 500ms var(--ease); transform-origin: 50% 70%; }
+  .isle.is-active .isle__lift { transform: translateY(-4%) scale(1.06); }
+  .arch.has-active .isle:not(.is-active) .isle__lift { opacity: .55; transform: scale(.96); }
+  .arch.has-active .isle:not(.is-active) .isle__card { opacity: .7; }
+  .isle__card { transition: opacity 500ms var(--ease), box-shadow var(--t-base) var(--ease), background-color var(--t-base) var(--ease); }
+
+  /* переход на сайт направления */
+  .isle.is-leaving .isle__lift { transform: translateY(-8%) scale(1.7); opacity: 0; transition-duration: 520ms; transition-timing-function: cubic-bezier(.7, 0, .84, 0); }
+  .arch.is-leaving .isle:not(.is-leaving), .arch.is-leaving .arch__head, .arch.is-leaving .isle.is-leaving .isle__card { opacity: 0; transition: opacity 300ms var(--ease); }
+
+  /* появление: заголовок, затем острова всплывают по очереди */
+  .arch.is-pending .arch__head, .arch.is-pending .isle { opacity: 0; }
+  .arch.is-ready .arch__head { animation: arch-in 800ms cubic-bezier(.16, 1, .3, 1) both; }
+  .arch.is-ready .isle { animation: isle-in 1100ms cubic-bezier(.16, 1, .3, 1) both; animation-delay: calc(var(--i) * 120ms + 200ms); }
+  @keyframes arch-in { from { opacity: 0; transform: translateY(18px); } }
+  @keyframes isle-in { from { opacity: 0; transform: translateY(70px) scale(.94); } }
+  /* на телефоне острова всплывают при прокрутке */
+  @media (max-width: 760px) {
+    .arch.is-ready .isle { animation: none; }
+    .isle { opacity: 0; transform: translateY(48px); transition: opacity 800ms var(--ease), transform 900ms cubic-bezier(.16, 1, .3, 1); }
+    .isle.is-in { opacity: 1; transform: none; }
+    .isle__body { transform: none; }
+  }
 }
 
-/* на телефоне карточки горизонтальные: картинка слева */
-@media (max-width: 600px) {
-  .gw { padding-block: var(--s-8) var(--s-16); }
-  .gw__head { margin-bottom: var(--s-8); }
-  .gw__lead { font-size: 16px; }
-  .dir { flex-direction: row; align-items: stretch; gap: var(--s-2); }
-  .dir__art { flex: 0 0 38%; aspect-ratio: auto; min-height: 140px; padding: var(--s-2); }
-  .dir__badge { --badge-size: 42px; left: auto; right: -16px; bottom: auto; top: var(--s-3); }
-  .dir__body { padding: var(--s-3) var(--s-3) var(--s-2) var(--s-5); gap: 6px; }
-  .dir__name { font-size: 17px; }
-  .dir__text { font-size: 13px; }
-  .dir__go { padding-top: var(--s-1); }
+/* ---------- одна команда: текст слева, факты справа ---------- */
+.team { padding-block: var(--s-24) var(--s-16); }
+.team__grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: var(--s-12); align-items: start; }
+.team__text { display: grid; gap: var(--s-4); max-width: 30rem; }
+.team__facts { display: grid; }
+.fact { display: grid; grid-template-columns: 44px 1fr; gap: var(--s-4); align-items: start; padding-block: var(--s-5); }
+.fact + .fact { border-top: 1px solid var(--border); }
+.fact:first-child { padding-top: 0; }
+.fact__icon {
+  width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center;
+  font-size: 21px; color: #14305E; background: color-mix(in srgb, #14305E 9%, var(--surface));
+}
+.fact h3 { margin-bottom: 2px; }
+@media (max-width: 860px) {
+  .team { padding-block: var(--s-12) var(--s-8); }
+  .team__grid { grid-template-columns: minmax(0, 1fr); gap: var(--s-6); }
 }
 
 .gw-help { padding-bottom: var(--s-24); }

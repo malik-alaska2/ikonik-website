@@ -113,22 +113,118 @@
     a.href = waLink(''); a.target = '_blank'; a.rel = 'noopener';
   });
 
-  /* ---------- стартовая страница ---------- */
+  /* ---------- стартовая страница: архипелаг из четырёх островов ----------
+     Острова покачиваются на воде, слегка следуют за курсором (параллакс), при наведении
+     поднимаются и окрашивают фон в цвет направления; по клику остров «приближается» и открывается сайт. */
+  var DEPTH = { tourism: 22, business: 12, projects: 16, construction: 14 };
+  var FACTS = ['map-pin', 'translate', 'user-focus'];
+
   function renderGateway() {
     var box = document.querySelector('[data-dirs]');
-    if (!box) return;
+    var arch = document.querySelector('[data-arch]');
+    if (!box || !arch) return;
     box.innerHTML = DIRS.map(function (d, i) {
-      var art = diorama(d.id, 'dir__img', true);
-      return '<li data-theme="' + d.id + '">' +
-        '<a class="dir" href="' + BASE + d.url + '" style="--i:' + i + '">' +
-          '<span class="dir__art">' + art + '<span class="badge dir__badge" aria-hidden="true">' + DIR_ICON[d.id] + '</span></span>' +
-          '<span class="dir__body">' +
-            '<span class="dir__name">' + esc(T('dir.' + d.id + '.name')) + '</span>' +
-            '<span class="dir__text">' + esc(T('dir.' + d.id + '.text')) + '</span>' +
-            '<span class="dir__go">' + esc(T('gw.open')) + icon('arrow-right', 'i--sm') + '</span>' +
+      return '<li class="isle isle--' + d.id + '" data-theme="' + d.id + '" style="--i:' + i + ';--d:' + DEPTH[d.id] + '">' +
+        '<a class="isle__link" href="' + BASE + d.url + '">' +
+          '<span class="isle__body"><span class="isle__lift"><span class="isle__float">' + diorama(d.id, 'isle__img', true) + '</span></span>' +
+            '<span class="isle__shadow" aria-hidden="true"></span></span>' +
+          '<span class="isle__card">' +
+            '<span class="badge badge--sm isle__badge" aria-hidden="true">' + DIR_ICON[d.id] + '</span>' +
+            '<span class="isle__name">' + esc(T('dir.' + d.id + '.name')) + '</span>' +
+            '<span class="isle__go" aria-hidden="true">' + icon('arrow-right', 'i--sm') + '</span>' +
+            '<span class="isle__more"><span><span class="isle__text">' + esc(T('dir.' + d.id + '.text')) + '</span></span></span>' +
           '</span>' +
         '</a></li>';
     }).join('');
+
+    var facts = document.querySelector('[data-facts]');
+    if (facts) {
+      // факты о компании: тексты общие с «Почему İKONİK» на сайтах направлений
+      var order = [1, 0, 2];
+      facts.innerHTML = order.map(function (n, k) {
+        return '<li class="fact"><span class="fact__icon">' + icon(FACTS[k]) + '</span><div>' +
+          '<h3 class="t-h3">' + esc(T('svc.why.' + n + '.t')) + '</h3>' +
+          '<p class="t-small t-muted">' + esc(T('svc.why.' + n + '.d')) + '</p></div></li>';
+      }).join('');
+    }
+
+    var root = document.documentElement;
+    var still = window.matchMedia('(prefers-reduced-motion: reduce)');
+    var fine = window.matchMedia('(hover: hover) and (pointer: fine)');
+    var isles = [].slice.call(box.querySelectorAll('.isle'));
+
+    // появление: после заставки, если она показывается
+    function ready() { arch.classList.remove('is-pending'); arch.classList.add('is-ready'); }
+    if (root.classList.contains('ik-intro-lock')) {
+      arch.classList.add('is-pending');
+      document.addEventListener('ik:intro-done', ready, { once: true });
+    } else {
+      ready();
+    }
+
+    // активный остров: подсветка и цвет фона его направления
+    function activate(li) {
+      isles.forEach(function (x) { x.classList.toggle('is-active', x === li); });
+      arch.classList.toggle('has-active', !!li);
+      if (li) arch.style.setProperty('--wash', getComputedStyle(li).getPropertyValue('--primary'));
+    }
+    isles.forEach(function (li) {
+      li.addEventListener('pointerenter', function (e) { if (e.pointerType === 'mouse') activate(li); });
+      li.addEventListener('pointerleave', function (e) { if (e.pointerType === 'mouse') activate(null); });
+      li.addEventListener('focusin', function () { activate(li); });
+      li.addEventListener('focusout', function () { activate(null); });
+    });
+
+    // параллакс за курсором: только мышь и без «уменьшения движения»
+    var raf = 0, px = 0, py = 0;
+    arch.addEventListener('pointermove', function (e) {
+      if (e.pointerType !== 'mouse' || still.matches || !fine.matches) return;
+      var r = arch.getBoundingClientRect();
+      px = ((e.clientX - r.left) / r.width - 0.5) * 2;
+      py = ((e.clientY - r.top) / r.height - 0.5) * 2;
+      if (!raf) raf = requestAnimationFrame(function () {
+        raf = 0;
+        arch.style.setProperty('--px', px.toFixed(3));
+        arch.style.setProperty('--py', py.toFixed(3));
+        arch.style.setProperty('--wx', ((px + 1) * 50).toFixed(1) + '%');
+        arch.style.setProperty('--wy', ((py + 1) * 50).toFixed(1) + '%');
+      });
+    });
+    arch.addEventListener('pointerleave', function () {
+      arch.style.setProperty('--px', 0);
+      arch.style.setProperty('--py', 0);
+    });
+
+    // переход: остров приближается и растворяется в цвете направления, затем открывается сайт
+    box.addEventListener('click', function (e) {
+      var a = e.target.closest('.isle__link');
+      if (!a || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || still.matches) return;
+      e.preventDefault();
+      var li = a.closest('.isle');
+      activate(li);
+      li.classList.add('is-leaving');
+      arch.classList.add('is-leaving');
+      setTimeout(function () { location.href = a.href; }, 520);
+    });
+    // возврат кнопкой «назад» из кэша страницы: убираем состояние перехода
+    window.addEventListener('pageshow', function (e) {
+      if (!e.persisted) return;
+      arch.classList.remove('is-leaving');
+      isles.forEach(function (x) { x.classList.remove('is-leaving'); });
+      activate(null);
+    });
+
+    // на телефоне острова всплывают по мере прокрутки
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (en.isIntersecting) { en.target.classList.add('is-in'); io.unobserve(en.target); }
+        });
+      }, { rootMargin: '0px 0px -12% 0px' });
+      isles.forEach(function (li) { io.observe(li); });
+    } else {
+      isles.forEach(function (li) { li.classList.add('is-in'); });
+    }
   }
 
   /* ---------- сайт направления ---------- */

@@ -46,19 +46,33 @@
   </header>
 
   <main id="main">
-    <section class="gw" aria-labelledby="gw-title">
+    <section class="arch" aria-labelledby="gw-title" data-arch>
+      <div class="arch__sea" aria-hidden="true"></div>
+      <div class="arch__wash" aria-hidden="true"></div>
       <div class="container">
-        <div class="gw__head">
-          <h1 class="t-display" id="gw-title" data-i18n="gw.title">Что вам нужно от İKONİK?</h1>
-          <p class="gw__lead" data-i18n="gw.lead">Четыре направления одной компании. Выберите своё, и откроется отдельный сайт с услугами и контактами.</p>
+        <div class="arch__box">
+          <div class="arch__head">
+            <h1 class="t-display arch__title" id="gw-title" data-i18n="gw.title">Что вам нужно от İKONİK?</h1>
+            <p class="arch__lead" data-i18n="gw.lead">Четыре направления одной компании. Выберите своё, и откроется отдельный сайт с услугами и контактами.</p>
+          </div>
+          <ul class="arch__isles" data-dirs aria-label="Направления İKONİK" data-i18n-aria="gw.pickAria">
+            <!-- острова рисует assets/js/ikonik.js; ссылки ниже на случай без JS -->
+            <li><a href="tourism/index.html" data-i18n="dir.tourism.name">Туризм и путешествия</a></li>
+            <li><a href="business/index.html" data-i18n="dir.business.name">Бизнес-консалтинг</a></li>
+            <li><a href="projects/index.html" data-i18n="dir.projects.name">Девелопмент проектов</a></li>
+            <li><a href="construction/index.html" data-i18n="dir.construction.name">Строительный консалтинг</a></li>
+          </ul>
         </div>
-        <ul class="dirs" data-dirs aria-label="Направления İKONİK" data-i18n-aria="gw.pickAria">
-          <!-- карточки рисует assets/js/ikonik.js; ссылки ниже на случай без JS -->
-          <li><a class="dir" href="tourism/index.html"><span class="dir__body"><span class="dir__name">Туризм и путешествия</span></span></a></li>
-          <li><a class="dir" href="business/index.html"><span class="dir__body"><span class="dir__name">Бизнес-консалтинг</span></span></a></li>
-          <li><a class="dir" href="projects/index.html"><span class="dir__body"><span class="dir__name">Девелопмент проектов</span></span></a></li>
-          <li><a class="dir" href="construction/index.html"><span class="dir__body"><span class="dir__name">Строительный консалтинг</span></span></a></li>
-        </ul>
+      </div>
+    </section>
+
+    <section class="team" aria-labelledby="team-title">
+      <div class="container team__grid">
+        <div class="team__text">
+          <h2 class="t-h1" id="team-title" data-i18n="gw.teamTitle">Одна команда в Стамбуле</h2>
+          <p class="t-body t-muted" data-i18n="gw.teamText">Туры, бизнес, девелопмент и стройка в одной компании. Если задача касается нескольких направлений, ведём её вместе.</p>
+        </div>
+        <ul class="team__facts" data-facts></ul>
       </div>
     </section>
 

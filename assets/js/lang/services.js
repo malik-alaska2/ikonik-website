@@ -6,6 +6,7 @@
 window.IKI18N.extend({
   /* ===================== RU ===================== */
   ru: {
+    'gw.teamTitle': "Одна команда в Стамбуле", 'gw.teamText': "Туры, бизнес, девелопмент и стройка в одной компании. Если задача касается нескольких направлений, ведём её вместе.",
     'svc.tab.process': 'Этапы', 'svc.tab.home': 'Главная',
     'meta.gateway.title': 'İKONİK: туризм, бизнес-консалтинг, девелопмент и строительный консалтинг',
     'meta.gateway.desc': 'İKONİK, Стамбул: туры и путешествия, бизнес-консалтинг в Турции, девелопмент проектов и строительный консалтинг. Выберите направление.',
@@ -152,6 +153,7 @@ window.IKI18N.extend({
 
   /* ===================== EN ===================== */
   en: {
+    'gw.teamTitle': "One team in Istanbul", 'gw.teamText': "Travel, business, development and construction in one company. If your task spans several fields, we handle it together.",
     'svc.tab.process': 'Process', 'svc.tab.home': 'Home',
     'meta.gateway.title': 'İKONİK: travel, business consultancy, project development and construction consultancy',
     'meta.gateway.desc': 'İKONİK, Istanbul: tours and travel, business consultancy in Turkey, project development and construction consultancy. Choose a service.',
@@ -298,6 +300,7 @@ window.IKI18N.extend({
 
   /* ===================== TR ===================== */
   tr: {
+    'gw.teamTitle': "İstanbul’da tek ekip", 'gw.teamText': "Seyahat, iş danışmanlığı, proje geliştirme ve inşaat tek şirkette. İşiniz birden fazla alanı kapsıyorsa birlikte yürütürüz.",
     'svc.tab.process': 'Süreç', 'svc.tab.home': 'Ana sayfa',
     'meta.gateway.title': 'İKONİK: turizm, iş danışmanlığı, proje geliştirme ve inşaat danışmanlığı',
     'meta.gateway.desc': 'İKONİK, İstanbul: tur ve seyahat, Türkiye’de iş danışmanlığı, proje geliştirme ve inşaat danışmanlığı. Hizmetinizi seçin.',
@@ -444,6 +447,7 @@ window.IKI18N.extend({
 
   /* ===================== IT ===================== */
   it: {
+    'gw.teamTitle': "Un unico team a Istanbul", 'gw.teamText': "Viaggi, consulenza, sviluppo e costruzioni in un’unica società. Se il vostro progetto tocca più ambiti, lo seguiamo insieme.",
     'svc.tab.process': 'Fasi', 'svc.tab.home': 'Home',
     'meta.gateway.title': 'İKONİK: viaggi, consulenza aziendale, sviluppo progetti e consulenza edile',
     'meta.gateway.desc': 'İKONİK, Istanbul: tour e viaggi, consulenza aziendale in Turchia, sviluppo progetti e consulenza edile. Scegli il servizio.',
@@ -590,6 +594,7 @@ window.IKI18N.extend({
 
   /* ===================== DE ===================== */
   de: {
+    'gw.teamTitle': "Ein Team in Istanbul", 'gw.teamText': "Reisen, Beratung, Projektentwicklung und Bau in einem Unternehmen. Betrifft Ihr Anliegen mehrere Bereiche, bearbeiten wir es gemeinsam.",
     'svc.tab.process': 'Ablauf', 'svc.tab.home': 'Start',
     'meta.gateway.title': 'İKONİK: Reisen, Unternehmensberatung, Projektentwicklung und Bauberatung',
     'meta.gateway.desc': 'İKONİK, Istanbul: Touren und Reisen, Unternehmensberatung in der Türkei, Projektentwicklung und Bauberatung. Wählen Sie Ihren Bereich.',
