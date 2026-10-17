@@ -148,6 +148,16 @@
       }).join('');
     }
 
+    // направления в шапке рядом с логотипом: наведение подсвечивает свой остров
+    var dnav = document.querySelector('[data-dir-nav]');
+    if (dnav) {
+      dnav.innerHTML = DIRS.map(function (d, i) {
+        return '<a class="nav__link dnav" href="' + BASE + d.url + '" data-dir="' + d.id + '" data-theme="' + d.id + '" data-nav-prio="' + (4 - i) + '">' +
+          '<span class="badge dnav__badge" aria-hidden="true">' + DIR_ICON[d.id] + '</span><span>' + esc(T('nav.dir.' + d.id)) + '</span></a>';
+      }).join('');
+      if (window.IKFitNav) window.IKFitNav();
+    }
+
     var root = document.documentElement;
     var still = window.matchMedia('(prefers-reduced-motion: reduce)');
     var fine = window.matchMedia('(hover: hover) and (pointer: fine)');
@@ -168,11 +178,19 @@
       arch.classList.toggle('has-active', !!li);
       if (li) arch.style.setProperty('--wash', getComputedStyle(li).getPropertyValue('--primary'));
     }
+    function isleOf(id) { return box.querySelector('.isle--' + id); }
     isles.forEach(function (li) {
       li.addEventListener('pointerenter', function (e) { if (e.pointerType === 'mouse') activate(li); });
       li.addEventListener('pointerleave', function (e) { if (e.pointerType === 'mouse') activate(null); });
       li.addEventListener('focusin', function () { activate(li); });
       li.addEventListener('focusout', function () { activate(null); });
+    });
+    if (dnav) [].forEach.call(dnav.querySelectorAll('[data-dir]'), function (a) {
+      var li = isleOf(a.getAttribute('data-dir'));
+      a.addEventListener('pointerenter', function (e) { if (e.pointerType === 'mouse') activate(li); });
+      a.addEventListener('pointerleave', function (e) { if (e.pointerType === 'mouse') activate(null); });
+      a.addEventListener('focus', function () { activate(li); });
+      a.addEventListener('blur', function () { activate(null); });
     });
 
     // параллакс за курсором: только мышь и без «уменьшения движения»
@@ -196,15 +214,21 @@
     });
 
     // переход: остров приближается и растворяется в цвете направления, затем открывается сайт
-    box.addEventListener('click', function (e) {
-      var a = e.target.closest('.isle__link');
-      if (!a || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || still.matches) return;
+    function fly(e, a, li) {
+      if (!a || !li || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || still.matches) return;
       e.preventDefault();
-      var li = a.closest('.isle');
       activate(li);
       li.classList.add('is-leaving');
       arch.classList.add('is-leaving');
       setTimeout(function () { location.href = a.href; }, 520);
+    }
+    box.addEventListener('click', function (e) {
+      var a = e.target.closest('.isle__link');
+      fly(e, a, a && a.closest('.isle'));
+    });
+    if (dnav) dnav.addEventListener('click', function (e) {
+      var a = e.target.closest('[data-dir]');
+      if (a && arch.getBoundingClientRect().bottom > 120) fly(e, a, isleOf(a.getAttribute('data-dir')));
     });
     // возврат кнопкой «назад» из кэша страницы: убираем состояние перехода
     window.addEventListener('pageshow', function (e) {

@@ -210,6 +210,18 @@
   }
 }
 
+/* ---------- направления в шапке стартовой страницы, рядом с логотипом ---------- */
+.nav--dirs { margin-left: var(--s-8); padding-left: var(--s-8); gap: var(--s-2); border-left: 1px solid var(--border); align-items: center; }
+.dnav {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 5px 12px 5px 5px; border-radius: var(--r-full);
+  color: var(--ink-muted);
+  transition: background-color var(--t-fast) var(--ease), color var(--t-fast) var(--ease);
+}
+.dnav__badge { --badge-size: 28px; border-radius: 30%; box-shadow: 0 2px 6px rgba(74, 52, 24, .14), inset 0 1px 0 rgba(255, 255, 255, .3); }
+.dnav:hover, .dnav:focus-visible { color: var(--primary-deep); background: color-mix(in srgb, var(--primary) 10%, transparent); }
+@media (max-width: 1240px) { .nav--dirs { margin-left: var(--s-4); padding-left: var(--s-4); gap: 2px; } }
+
 /* ---------- одна команда: текст слева, факты справа ---------- */
 .team { padding-block: var(--s-24) var(--s-16); }
 .team__grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: var(--s-12); align-items: start; }

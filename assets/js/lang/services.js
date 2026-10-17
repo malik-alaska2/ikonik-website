@@ -6,6 +6,7 @@
 window.IKI18N.extend({
   /* ===================== RU ===================== */
   ru: {
+    'nav.dir.tourism': 'Туризм', 'nav.dir.business': 'Бизнес-консалтинг', 'nav.dir.projects': 'Девелопмент', 'nav.dir.construction': 'Строительство',
     'gw.teamTitle': "Одна команда в Стамбуле", 'gw.teamText': "Туры, бизнес, девелопмент и стройка в одной компании. Если задача касается нескольких направлений, ведём её вместе.",
     'svc.tab.process': 'Этапы', 'svc.tab.home': 'Главная',
     'meta.gateway.title': 'İKONİK: туризм, бизнес-консалтинг, девелопмент и строительный консалтинг',
@@ -153,6 +154,7 @@ window.IKI18N.extend({
 
   /* ===================== EN ===================== */
   en: {
+    'nav.dir.tourism': 'Tourism', 'nav.dir.business': 'Business', 'nav.dir.projects': 'Development', 'nav.dir.construction': 'Construction',
     'gw.teamTitle': "One team in Istanbul", 'gw.teamText': "Travel, business, development and construction in one company. If your task spans several fields, we handle it together.",
     'svc.tab.process': 'Process', 'svc.tab.home': 'Home',
     'meta.gateway.title': 'İKONİK: travel, business consultancy, project development and construction consultancy',
@@ -300,6 +302,7 @@ window.IKI18N.extend({
 
   /* ===================== TR ===================== */
   tr: {
+    'nav.dir.tourism': 'Turizm', 'nav.dir.business': 'İş danışmanlığı', 'nav.dir.projects': 'Proje geliştirme', 'nav.dir.construction': 'İnşaat',
     'gw.teamTitle': "İstanbul’da tek ekip", 'gw.teamText': "Seyahat, iş danışmanlığı, proje geliştirme ve inşaat tek şirkette. İşiniz birden fazla alanı kapsıyorsa birlikte yürütürüz.",
     'svc.tab.process': 'Süreç', 'svc.tab.home': 'Ana sayfa',
     'meta.gateway.title': 'İKONİK: turizm, iş danışmanlığı, proje geliştirme ve inşaat danışmanlığı',
@@ -447,6 +450,7 @@ window.IKI18N.extend({
 
   /* ===================== IT ===================== */
   it: {
+    'nav.dir.tourism': 'Turismo', 'nav.dir.business': 'Business', 'nav.dir.projects': 'Sviluppo', 'nav.dir.construction': 'Costruzioni',
     'gw.teamTitle': "Un unico team a Istanbul", 'gw.teamText': "Viaggi, consulenza, sviluppo e costruzioni in un’unica società. Se il vostro progetto tocca più ambiti, lo seguiamo insieme.",
     'svc.tab.process': 'Fasi', 'svc.tab.home': 'Home',
     'meta.gateway.title': 'İKONİK: viaggi, consulenza aziendale, sviluppo progetti e consulenza edile',
@@ -594,6 +598,7 @@ window.IKI18N.extend({
 
   /* ===================== DE ===================== */
   de: {
+    'nav.dir.tourism': 'Tourismus', 'nav.dir.business': 'Business', 'nav.dir.projects': 'Projekte', 'nav.dir.construction': 'Bau',
     'gw.teamTitle': "Ein Team in Istanbul", 'gw.teamText': "Reisen, Beratung, Projektentwicklung und Bau in einem Unternehmen. Betrifft Ihr Anliegen mehrere Bereiche, bearbeiten wir es gemeinsam.",
     'svc.tab.process': 'Ablauf', 'svc.tab.home': 'Start',
     'meta.gateway.title': 'İKONİK: Reisen, Unternehmensberatung, Projektentwicklung und Bauberatung',

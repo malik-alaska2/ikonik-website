@@ -345,9 +345,6 @@
   var headInner = document.querySelector('.header__inner');
   var headNav = headInner && headInner.querySelector('.nav');
   if (headNav) {
-    var navLinks = [].slice.call(headNav.querySelectorAll('.nav__link'));
-    var tuckOrder = navLinks.map(function (a, i) { return { a: a, p: +(a.getAttribute('data-nav-prio') || 100 - i) }; })
-      .sort(function (x, y) { return x.p - y.p; });
     var headOverflows = function () {
       var limit = headInner.getBoundingClientRect().right - parseFloat(getComputedStyle(headInner).paddingRight) + 0.5;
       return [].some.call(headInner.children, function (el) {
@@ -355,6 +352,10 @@
       });
     };
     var fitNav = function () {
+      // пункты читаем каждый раз: на стартовой странице меню дорисовывает ikonik.js
+      var navLinks = [].slice.call(headNav.querySelectorAll('.nav__link'));
+      var tuckOrder = navLinks.map(function (a, i) { return { a: a, p: +(a.getAttribute('data-nav-prio') || 100 - i) }; })
+        .sort(function (x, y) { return x.p - y.p; });
       navLinks.forEach(function (a) { a.classList.remove('is-tucked'); });
       if (getComputedStyle(headNav).display === 'none') return;
       for (var k = 0; k < tuckOrder.length - 1 && headOverflows(); k++) tuckOrder[k].a.classList.add('is-tucked');
@@ -367,6 +368,7 @@
     });
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitNav);
     fitNav();
+    window.IKFitNav = fitNav;
   }
 
   /* ---------- реквизиты компании в подвале ---------- */
