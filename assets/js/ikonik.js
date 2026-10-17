@@ -1,6 +1,6 @@
 /* İKONİK: стартовая страница (выбор направления) и сайты направлений.
    <html data-page="gateway">   — карточки направлений в [data-dirs]
-   <html data-page="business|projects|construction"> — услуги, этапы, преимущества, форма запроса.
+   <html data-page="business|projects|construction"> — услуги с фото, галерея, «Для кого», этапы, преимущества, вопросы, форма запроса.
    Тексты: assets/js/lang/services.js. Контакты и реквизиты: config в data.js.
    Подключается после data.js, icons.js и app.js. */
 
@@ -73,6 +73,21 @@
     construction: ['clipboard-text', 'currency-circle-dollar', 'files', 'hard-hat', 'shield-check', 'scales']
   };
   var WHY = ['translate', 'map-pin', 'user-focus', 'receipt'];
+  // «Для кого»: три аудитории каждого направления (тексты: <id>.for.<n>.t / .d)
+  var AUDIENCE = {
+    business: ['globe-hemisphere-west', 'storefront', 'chart-pie-slice'],
+    projects: ['map-trifold', 'coins', 'bed'],
+    construction: ['house-line', 'buildings', 'key']
+  };
+  // частые вопросы: два своих у направления и два общих
+  function faqKeys(id) { return [id + '.faq.0', id + '.faq.1', 'svc.faq.price', 'svc.faq.lang']; }
+
+  // фото направления: assets/img/svc/<id>-s<n>.webp (услуги, 960×640) и <id>-g<n>.webp (галерея, первое 1440×960)
+  function photo(name, cls, alt) {
+    var big = /-g0$/.test(name);
+    return '<img class="' + cls + '" src="' + BASE + 'assets/img/svc/' + name + '.webp" alt="' + esc(alt) +
+      '" width="' + (big ? 1440 : 960) + '" height="' + (big ? 960 : 640) + '" loading="lazy" decoding="async">';
+  }
 
   // диорама направления: assets/img/<id>-diorama.webp (прозрачный фон)
   var ART_SIZE = { tourism: [1528, 1017], business: [1536, 1014], projects: [1515, 1024], construction: [1417, 1006] };
@@ -137,10 +152,37 @@
     if (grid) {
       grid.innerHTML = list.map(function (ic, n) {
         return '<li class="svc">' +
+          '<span class="svc__media">' + photo(id + '-s' + n, 'svc__img', '') + '</span>' +
           '<span class="svc__icon">' + icon(ic) + '</span>' +
           '<h3 class="t-h3">' + esc(T(id + '.s.' + n + '.t')) + '</h3>' +
           '<p class="t-small t-muted">' + esc(T(id + '.s.' + n + '.d')) + '</p>' +
         '</li>';
+      }).join('');
+    }
+
+    var gallery = document.querySelector('[data-gallery]');
+    if (gallery) {
+      gallery.innerHTML = [0, 1, 2].map(function (n) {
+        var cap = T(id + '.g.' + n);
+        return '<figure class="gal' + (n === 0 ? ' gal--big' : '') + '">' + photo(id + '-g' + n, 'gal__img', cap) +
+          '<figcaption class="gal__cap">' + esc(cap) + '</figcaption></figure>';
+      }).join('');
+    }
+
+    var aud = document.querySelector('[data-for]');
+    if (aud) {
+      aud.innerHTML = AUDIENCE[id].map(function (ic, n) {
+        return '<li class="for"><span class="for__icon">' + icon(ic) + '</span>' +
+          '<h3 class="t-h3">' + esc(T(id + '.for.' + n + '.t')) + '</h3>' +
+          '<p class="t-small t-muted">' + esc(T(id + '.for.' + n + '.d')) + '</p></li>';
+      }).join('');
+    }
+
+    var faq = document.querySelector('[data-faq]');
+    if (faq) {
+      faq.innerHTML = faqKeys(id).map(function (k, n) {
+        return '<details class="qa"' + (n === 0 ? ' open' : '') + '><summary><span>' + esc(T(k + '.q')) + '</span>' + icon('plus', 'i--sm') + '</summary>' +
+          '<p>' + esc(T(k + '.a')) + '</p></details>';
       }).join('');
     }
 

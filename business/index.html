@@ -42,6 +42,7 @@
         <a class="nav__link" href="#services" data-i18n="svc.nav.services">Услуги</a>
         <a class="nav__link" href="#process" data-i18n="svc.nav.process">Как работаем</a>
         <a class="nav__link" href="#why" data-i18n="svc.nav.why">Почему мы</a>
+        <a class="nav__link" href="#faq" data-i18n="svc.nav.faq">Вопросы</a>
         <a class="nav__link" href="#contact" data-i18n="svc.nav.contact">Контакты</a>
       </nav>
       <div class="header__lang" data-lang-switch></div>
@@ -87,6 +88,28 @@
       </div>
     </section>
 
+    <section class="section" id="gallery" aria-labelledby="gallery-title">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-head__text">
+            <h2 class="t-h1" id="gallery-title" data-i18n="svc.galleryTitle">Как это выглядит</h2>
+          </div>
+        </div>
+        <div class="gallery" data-gallery></div>
+      </div>
+    </section>
+
+    <section class="section section--tint" id="for" aria-labelledby="for-title">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-head__text">
+            <h2 class="t-h1" id="for-title" data-i18n="svc.forTitle">Для кого</h2>
+          </div>
+        </div>
+        <ul class="for-grid" data-for></ul>
+      </div>
+    </section>
+
     <section class="section how" id="process" aria-labelledby="process-title">
       <div class="container">
         <h2 class="t-h1" id="process-title" data-i18n="svc.processTitle">Как мы работаем</h2>
@@ -102,6 +125,17 @@
           </div>
         </div>
         <ul class="why-grid" data-why></ul>
+      </div>
+    </section>
+
+    <section class="section" id="faq" aria-labelledby="faq-title">
+      <div class="container faq-wrap">
+        <div class="faq-head">
+          <h2 class="t-h1" id="faq-title" data-i18n="svc.faqTitle">Частые вопросы</h2>
+          <p class="t-body t-muted" data-i18n="svc.faqMore">Не нашли ответ?</p>
+          <a class="btn btn--ghost" data-wa><i data-icon="whatsapp-logo" class="i--sm"></i><span data-i18n="svc.faqWrite">Спросить в WhatsApp</span></a>
+        </div>
+        <div class="faq" data-faq></div>
       </div>
     </section>
 
